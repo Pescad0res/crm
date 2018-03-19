@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.crm1.beans.FicheSuivi" table="fiche_suivi" catalog="crm" optimistic-lock="version">
+        <id name="idFiche" type="java.lang.Integer">
+            <column name="Id_fiche" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pvIntervention" class="com.crm1.beans.PvIntervention" fetch="select">
+            <column name="id_pv" not-null="true" />
+        </many-to-one>
+        <property name="dateInterv" type="date">
+            <column name="Date_interv" length="10" not-null="true">
+                <comment>Date d&#146;intervention</comment>
+            </column>
+        </property>
+        <property name="typeJour" type="string">
+            <column name="Type_jour" length="6" not-null="true">
+                <comment>T ype jour d&#146;intervention</comment>
+            </column>
+        </property>
+        <property name="heureArrivee" type="time">
+            <column name="Heure_arrivee" length="8" not-null="true">
+                <comment>Heure d&#146;arriv&#233;e de l&#146;intervenant (intervenant logiciel ou technicien) chez le clien</comment>
+            </column>
+        </property>
+        <property name="heureDepart" type="time">
+            <column name="Heure_depart" length="8" not-null="true">
+                <comment>Heure de d&#233;part de l&#146;intervenant (intervenant logiciel ou technic ien) chez le client</comment>
+            </column>
+        </property>
+        <property name="periode" type="string">
+            <column name="periode" length="10" not-null="true">
+                <comment>C&#146;est la partie du jour o&#249; l&#146;intervenant est arriv&#233; chez le client pour traiter la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="travaux" type="string">
+            <column name="travaux" not-null="true">
+                <comment>Les travaux r&#233;alis&#233;s ce jour - l&#224;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

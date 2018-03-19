@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.crm1.beans.ListeMatriel" table="liste_matriel" catalog="crm" optimistic-lock="version">
+        <id name="idListe" type="java.lang.Integer">
+            <column name="Id_liste" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="reclamation" class="com.crm1.beans.Reclamation" fetch="select">
+            <column name="Id_rec" not-null="true" />
+        </many-to-one>
+        <property name="numSerie" type="string">
+            <column name="Num_serie" length="20" not-null="true">
+                <comment>Num&#233;ro de s&#233;rie des mat&#233;riels r&#233;clam&#233;s</comment>
+            </column>
+        </property>
+        <property name="typeMatRec" type="string">
+            <column name="Type_mat_rec" length="20" not-null="true">
+                <comment>Type d e mat&#233;riels r&#233;clam&#233;s</comment>
+            </column>
+        </property>
+        <property name="marqueMatRec" type="string">
+            <column name="Marque_mat_rec" length="30" not-null="true">
+                <comment>Marque de mat&#233;riels r&#233;clam&#233;s</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

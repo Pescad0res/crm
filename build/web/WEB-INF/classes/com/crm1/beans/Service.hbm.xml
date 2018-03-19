@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.crm1.beans.Service" table="service" catalog="crm" optimistic-lock="version">
+        <id name="idServ" type="java.lang.Integer">
+            <column name="Id_serv" />
+            <generator class="identity" />
+        </id>
+        <property name="designServ" type="string">
+            <column name="design_serv" length="30" not-null="true">
+                <comment>nom et description du service</comment>
+            </column>
+        </property>
+        <set name="selectServices" table="select_service" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_serv" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.SelectService" />
+        </set>
+    </class>
+</hibernate-mapping>

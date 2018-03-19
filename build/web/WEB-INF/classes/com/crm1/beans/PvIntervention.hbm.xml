@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.crm1.beans.PvIntervention" table="pv_intervention" catalog="crm" optimistic-lock="version">
+        <id name="idPv" type="java.lang.Integer">
+            <column name="Id_pv" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="reclamation" class="com.crm1.beans.Reclamation" fetch="select">
+            <column name="Id_rec" not-null="true" />
+        </many-to-one>
+        <property name="observGen" type="string">
+            <column name="Observ_gen" not-null="true">
+                <comment>Observation g&#233;n&#233;rale</comment>
+            </column>
+        </property>
+        <set name="controles" table="controle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_pv" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.Controle" />
+        </set>
+        <set name="ficheSuivis" table="fiche_suivi" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_pv" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.FicheSuivi" />
+        </set>
+        <set name="selectServices" table="select_service" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_pv" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.SelectService" />
+        </set>
+    </class>
+</hibernate-mapping>

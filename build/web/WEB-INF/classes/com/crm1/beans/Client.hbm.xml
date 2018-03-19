@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.crm1.beans.Client" table="client" catalog="crm" optimistic-lock="version">
+        <id name="idCli" type="java.lang.Integer">
+            <column name="Id_cli" />
+            <generator class="identity" />
+        </id>
+        <property name="matFisc" type="string">
+            <column name="mat_fisc" length="12" not-null="true" unique="true">
+                <comment>Immatricule fiscal du client</comment>
+            </column>
+        </property>
+        <property name="nomCli" type="string">
+            <column name="nom_cli" length="50" not-null="true">
+                <comment>Nom du client</comment>
+            </column>
+        </property>
+        <property name="loginCli" type="string">
+            <column name="`login _cli`" length="30" not-null="true">
+                <comment>Login du client</comment>
+            </column>
+        </property>
+        <property name="pwdCli" type="string">
+            <column name="pwd_cli" length="30" not-null="true">
+                <comment>Mot de passe du client</comment>
+            </column>
+        </property>
+        <property name="nomRep" type="string">
+            <column name="nom_rep" length="20" not-null="true">
+                <comment>Nom du repr&#233;sentant du client</comment>
+            </column>
+        </property>
+        <property name="prenomRep" type="string">
+            <column name="prenom_rep" length="20" not-null="true">
+                <comment>Pr&#233; n om du repr&#233;sentant du client</comment>
+            </column>
+        </property>
+        <set name="contacts" table="contact" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.Contact" />
+        </set>
+        <set name="adresses" table="adresse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.Adresse" />
+        </set>
+        <set name="reclamations" table="reclamation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.Reclamation" />
+        </set>
+        <set name="selectActivites" table="select_activite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.SelectActivite" />
+        </set>
+        <set name="contrats" table="contrat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.beans.Contrat" />
+        </set>
+    </class>
+</hibernate-mapping>
