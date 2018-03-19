@@ -23,6 +23,7 @@ public class TestClient {
         
        //ses.createQuery("SELECT matFisc from Client matFisc").list();   
        //TEST pull
+       //chaima
        
        ClientDAO dao =new ClientDAOImpl();
        
