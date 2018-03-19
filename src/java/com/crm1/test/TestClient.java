@@ -15,13 +15,14 @@ import org.hibernate.Session;
 
 /**
  *
- * @author REV DAMAGE
+ * @author REV DAMAGE 
  */
 public class TestClient {
     static Session ses = HibernateUtil.getSession();
     public static void main(String[] args) {
         
-       //ses.createQuery("SELECT matFisc from Client matFisc").list();
+       //ses.createQuery("SELECT matFisc from Client matFisc").list();   
+       //TEST pull
        
        ClientDAO dao =new ClientDAOImpl();
        
