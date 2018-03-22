@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.Ligne" optimistic-lock="version" table="ligne">
+    <id name="idLigne" type="int">
+      <column name="Id_Ligne"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.crm1.entity.BonCommande" fetch="select" name="bonCommande">
+      <column name="Id_cmd" not-null="true"/>
+    </many-to-one>
+    <property name="libelle" type="string">
+      <column length="30" name="libelle" not-null="true"/>
+    </property>
+    <property name="quantite" type="int">
+      <column name="quantite" not-null="true"/>
+    </property>
+    <property name="puHt" type="big_decimal">
+      <column name="PU_HT" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="remise" type="big_decimal">
+      <column name="remise" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="ptht" type="big_decimal">
+      <column name="PTHT" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="tva" type="big_decimal">
+      <column name="TVA" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="puTtc" type="big_decimal">
+      <column name="PU_TTC" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="idRec" type="int">
+      <column name="Id_rec" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

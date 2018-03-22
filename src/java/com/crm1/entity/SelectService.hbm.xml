@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.SelectService" optimistic-lock="version" table="select_service">
+    <composite-id class="com.crm1.entity.SelectServiceId" name="id">
+      <key-property name="idPv" type="int">
+        <column name="Id_pv"/>
+      </key-property>
+      <key-property name="idServ" type="int">
+        <column name="id_serv"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.crm1.entity.PvIntervention" fetch="select" insert="false" name="pvIntervention" update="false">
+      <column name="Id_pv" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.crm1.entity.Service" fetch="select" insert="false" name="service" update="false">
+      <column name="id_serv" not-null="true"/>
+    </many-to-one>
+    <property name="autre" type="string">
+      <column length="50" name="autre" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

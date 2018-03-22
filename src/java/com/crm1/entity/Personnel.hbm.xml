@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.Personnel" optimistic-lock="version" table="personnel">
+    <id name="idPers" type="java.lang.Integer">
+      <column name="Id_pers"/>
+      <generator class="identity"/>
+    </id>
+    <property name="cnrps" type="string">
+      <column length="12" name="cnrps" not-null="true" unique="true">
+        <comment>Caisse nationale de retraite et de prévoyance sociale</comment>
+      </column>
+    </property>
+    <property name="cin" type="string">
+      <column length="8" name="cin" not-null="true" unique="true">
+        <comment>Numéro de la carte dident ité nationale du personnel</comment>
+      </column>
+    </property>
+    <property name="nomPers" type="int">
+      <column name="nom_pers" not-null="true">
+        <comment>Nom du personnel</comment>
+      </column>
+    </property>
+    <property name="prenomPers" type="int">
+      <column name="prenom_pers" not-null="true">
+        <comment>Prénom du personnel</comment>
+      </column>
+    </property>
+    <property name="loginPers" type="int">
+      <column name="Login_pers" not-null="true">
+        <comment>Login du personnel</comment>
+      </column>
+    </property>
+    <property name="pwdPers" type="int">
+      <column name="Pwd_pers" not-null="true">
+        <comment>Mot de passe du personnel</comment>
+      </column>
+    </property>
+    <property name="dateNais" type="date">
+      <column length="10" name="date_nais" not-null="true">
+        <comment>Date de naissance du personnel</comment>
+      </column>
+    </property>
+    <property name="sexe" type="string">
+      <column length="9" name="sexe" not-null="true">
+        <comment>Le sexe du personnel</comment>
+      </column>
+    </property>
+    <property name="etatCivil" type="string">
+      <column length="12" name="etat_civil" not-null="true">
+        <comment>Etat civil du personnel</comment>
+      </column>
+    </property>
+    <property name="nat" type="date">
+      <column length="10" name="nat" not-null="true">
+        <comment>Nationalité du personnel</comment>
+      </column>
+    </property>
+    <property name="dateEmbauche" type="int">
+      <column name="date_embauche" not-null="true">
+        <comment>Date dem bauche du personnel</comment>
+      </column>
+    </property>
+    <property name="tel" type="string">
+      <column length="20" name="tel" not-null="true" unique="true">
+        <comment>Téléphone du personnel</comment>
+      </column>
+    </property>
+    <property name="email" type="string">
+      <column length="40" name="email" not-null="true"/>
+    </property>
+    <property name="superieur" type="string">
+      <column length="12" name="superieur" not-null="true"/>
+    </property>
+    <property name="grade" type="string">
+      <column length="30" name="grade" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="affectations" table="affectation">
+      <key>
+        <column name="technicien" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.Affectation"/>
+    </set>
+  </class>
+</hibernate-mapping>

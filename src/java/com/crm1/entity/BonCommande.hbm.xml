@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.BonCommande" optimistic-lock="version" table="bon_commande">
+    <id name="idCmd" type="int">
+      <column name="Id_cmd"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="dateCreaC" type="date">
+      <column length="10" name="date_crea_c" not-null="true"/>
+    </property>
+    <property name="observ" type="string">
+      <column name="observ" not-null="true"/>
+    </property>
+    <property name="TTh" type="big_decimal">
+      <column name="T_TH" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="TRemise" type="big_decimal">
+      <column name="T_Remise" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="TTva" type="big_decimal">
+      <column name="T_TVA" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="ttc" type="big_decimal">
+      <column name="TTC" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="timbre" type="big_decimal">
+      <column name="Timbre" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="netPayer" type="big_decimal">
+      <column name="net_payer" not-null="true" precision="8" scale="3"/>
+    </property>
+    <property name="modePaie" type="string">
+      <column length="30" name="mode_paie" not-null="true"/>
+    </property>
+    <property name="delaiPaie" type="int">
+      <column name="delai_paie" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="lignes" table="ligne">
+      <key>
+        <column name="Id_cmd" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.Ligne"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="factures" table="facture">
+      <key>
+        <column name="Id_cmd" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.Facture"/>
+    </set>
+  </class>
+</hibernate-mapping>

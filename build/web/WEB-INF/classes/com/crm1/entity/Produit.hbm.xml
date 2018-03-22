@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.Produit" optimistic-lock="version" table="produit">
+    <id name="idP" type="java.lang.Integer">
+      <column name="Id_p"/>
+      <generator class="identity"/>
+    </id>
+    <property name="idProd" type="string">
+      <column length="12" name="Id_prod" not-null="true">
+        <comment>Code du produit</comment>
+      </column>
+    </property>
+    <property name="libProd" type="string">
+      <column length="30" name="Lib_prod" not-null="true">
+        <comment>nom du produit</comment>
+      </column>
+    </property>
+    <property name="typeDuProduit" type="string">
+      <column length="11" name="`Type du produit`" not-null="true">
+        <comment>Type du produit</comment>
+      </column>
+    </property>
+    <property name="descProd" type="string">
+      <column length="50" name="Desc_prod" not-null="true">
+        <comment>Description du produit</comment>
+      </column>
+    </property>
+    <property name="versionProd" type="string">
+      <column length="20" name="Version_prod" not-null="true">
+        <comment>Version du produit</comment>
+      </column>
+    </property>
+    <property name="dateCreaProd" type="date">
+      <column length="10" name="Date_crea_prod" not-null="true">
+        <comment>Date de création du produit</comment>
+      </column>
+    </property>
+    <property name="chefProd" type="string">
+      <column length="12" name="Chef_prod" not-null="true">
+        <comment>Identifiant du Chef de produit responsable</comment>
+      </column>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="reclamations" table="reclamation">
+      <key>
+        <column name="Id_p" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.Reclamation"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="affectations" table="affectation">
+      <key>
+        <column name="Chef_produit" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.Affectation"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="contratLogiciels" table="contrat_logiciel">
+      <key>
+        <column name="Id_p" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.ContratLogiciel"/>
+    </set>
+  </class>
+</hibernate-mapping>

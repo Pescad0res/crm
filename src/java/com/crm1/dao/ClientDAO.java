@@ -5,7 +5,7 @@
  */
 package com.crm1.dao;
 
-import com.crm1.beans.Client;
+import com.crm1.entity.Client;
 import java.util.List;
 
 /**

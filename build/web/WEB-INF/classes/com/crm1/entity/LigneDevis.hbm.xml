@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.LigneDevis" optimistic-lock="version" table="ligne_devis">
+    <id name="idLigne" type="java.lang.Integer">
+      <column name="Id_ligne"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.crm1.entity.Devis" fetch="select" name="devis">
+      <column name="Id_devis" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.crm1.entity.Reclamation" fetch="select" name="reclamation">
+      <column name="Id_rec" not-null="true"/>
+    </many-to-one>
+    <property name="libelle" type="string">
+      <column length="30" name="Libelle" not-null="true">
+        <comment>Le libelle dans une ligne</comment>
+      </column>
+    </property>
+    <property name="quantite" type="int">
+      <column name="quantite" not-null="true">
+        <comment>Quantité ligne</comment>
+      </column>
+    </property>
+    <property name="puHt" type="big_decimal">
+      <column name="pu_ht" not-null="true" precision="8" scale="3">
+        <comment>Prix unitaire hors taxe</comment>
+      </column>
+    </property>
+    <property name="remise" type="big_decimal">
+      <column name="remise" not-null="true" precision="8" scale="3">
+        <comment>Remise pour chaque article</comment>
+      </column>
+    </property>
+    <property name="ptHt" type="big_decimal">
+      <column name="Pt_ht" not-null="true" precision="8" scale="3">
+        <comment>Prix total hors taxe</comment>
+      </column>
+    </property>
+    <property name="tva" type="big_decimal">
+      <column name="tva" not-null="true" precision="8" scale="3">
+        <comment>Taxe sur la valeur ajoutée pour chaque article</comment>
+      </column>
+    </property>
+    <property name="puTtc" type="big_decimal">
+      <column name="Pu_ttc" not-null="true" precision="8" scale="3">
+        <comment>Prix unitaire avec toute taxe comprise</comment>
+      </column>
+    </property>
+  </class>
+</hibernate-mapping>

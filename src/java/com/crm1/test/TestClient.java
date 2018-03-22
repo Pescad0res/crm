@@ -6,7 +6,7 @@
 package com.crm1.test;
 
 
-import com.crm1.beans.Client;
+import com.crm1.entity.Client;
 import com.crm1.dao.ClientDAO;
 //import com.crm1.dao.ClientDAOFactory;
 import com.crm1.dao.ClientDAOImpl;
@@ -28,13 +28,13 @@ public class TestClient {
        ClientDAO dao =new ClientDAOImpl();
        
        Client c = new Client ();
-       c.setNomCli("new client");
-       c.setMatFisc("ak47");
-       c.setLoginCli("lognew");
-       c.setPwdCli("password");
-       c.setNomCli("new");
-       c.setNomRep("last");
-       c.setPrenomRep("hope");
+       c.setNomCli("Clientv2");
+       c.setMatFisc("m004578");
+       c.setLoginCli("logv2");
+       c.setPwdCli("pwd2v");
+       c.setNomCli("newv2");
+       c.setNomRep("namev2");
+       c.setPrenomRep("prenv2");
        
        dao.add(c);
        

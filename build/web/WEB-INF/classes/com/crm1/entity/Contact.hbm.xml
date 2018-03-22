@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.Contact" optimistic-lock="version" table="contact">
+    <id name="idContact" type="java.lang.Integer">
+      <column name="id_contact"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.crm1.entity.Client" fetch="select" name="client">
+      <column name="Id_cli" not-null="true"/>
+    </many-to-one>
+    <property name="tel" type="string">
+      <column length="20" name="tel" not-null="true" unique="true">
+        <comment>Téléphone du client</comment>
+      </column>
+    </property>
+    <property name="email" type="string">
+      <column length="40" name="email" not-null="true">
+        <comment>Email du client</comment>
+      </column>
+    </property>
+    <property name="fax" type="string">
+      <column length="20" name="fax" not-null="true">
+        <comment>Fax du client</comment>
+      </column>
+    </property>
+  </class>
+</hibernate-mapping>

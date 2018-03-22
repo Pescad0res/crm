@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.ContratLogiciel" optimistic-lock="version" table="contrat_logiciel">
+    <composite-id class="com.crm1.entity.ContratLogicielId" name="id">
+      <key-property name="idP" type="int">
+        <column name="Id_p"/>
+      </key-property>
+      <key-property name="idC" type="int">
+        <column name="Id_c"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.crm1.entity.Contrat" fetch="select" name="contrat">
+      <column name="id_cfk" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.crm1.entity.Produit" fetch="select" insert="false" name="produit" update="false">
+      <column name="Id_p" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

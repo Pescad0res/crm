@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.Affectation" optimistic-lock="version" table="affectation">
+    <id name="idRec" type="int">
+      <column name="Id_rec"/>
+      <generator class="foreign">
+        <param name="property">reclamation</param>
+      </generator>
+    </id>
+    <many-to-one class="com.crm1.entity.Affectation" fetch="select" name="affectationByIntervLog">
+      <column name="interv_log" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.crm1.entity.Affectation" fetch="select" name="affectationByRespTech">
+      <column name="resp_tech" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.crm1.entity.Personnel" fetch="select" name="personnel">
+      <column name="technicien" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.crm1.entity.Produit" fetch="select" name="produit">
+      <column name="Chef_produit" not-null="true"/>
+    </many-to-one>
+    <one-to-one class="com.crm1.entity.Reclamation" constrained="true" name="reclamation"/>
+    <property name="dexExpert" type="string">
+      <column name="dex_expert" not-null="true"/>
+    </property>
+    <property name="dateDebut" type="date">
+      <column length="10" name="date_debut" not-null="true"/>
+    </property>
+    <property name="dateFin" type="date">
+      <column length="10" name="date_fin" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="affectationsForIntervLog" table="affectation">
+      <key>
+        <column name="interv_log" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.Affectation"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="affectationsForRespTech" table="affectation">
+      <key>
+        <column name="resp_tech" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.Affectation"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.FicheSuivi" optimistic-lock="version" table="fiche_suivi">
+    <id name="idFiche" type="java.lang.Integer">
+      <column name="Id_fiche"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.crm1.entity.PvIntervention" fetch="select" name="pvIntervention">
+      <column name="id_pv" not-null="true"/>
+    </many-to-one>
+    <property name="dateInterv" type="date">
+      <column length="10" name="Date_interv" not-null="true">
+        <comment>Date dintervention</comment>
+      </column>
+    </property>
+    <property name="typeJour" type="string">
+      <column length="6" name="Type_jour" not-null="true">
+        <comment>T ype jour dintervention</comment>
+      </column>
+    </property>
+    <property name="heureArrivee" type="time">
+      <column length="8" name="Heure_arrivee" not-null="true">
+        <comment>Heure darrivée de lintervenant (intervenant logiciel ou technicien) chez le clien</comment>
+      </column>
+    </property>
+    <property name="heureDepart" type="time">
+      <column length="8" name="Heure_depart" not-null="true">
+        <comment>Heure de départ de lintervenant (intervenant logiciel ou technic ien) chez le client</comment>
+      </column>
+    </property>
+    <property name="periode" type="string">
+      <column length="10" name="periode" not-null="true">
+        <comment>Cest la partie du jour où lintervenant est arrivé chez le client pour traiter la réclamation</comment>
+      </column>
+    </property>
+    <property name="travaux" type="string">
+      <column name="travaux" not-null="true">
+        <comment>Les travaux réalisés ce jour - là</comment>
+      </column>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.Controle" optimistic-lock="version" table="controle">
+    <id name="idControle" type="java.lang.Integer">
+      <column name="Id_controle"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.crm1.entity.PvIntervention" fetch="select" name="pvIntervention">
+      <column name="Id_pv" not-null="true"/>
+    </many-to-one>
+    <property name="demande" type="string">
+      <column length="100" name="demande" not-null="true">
+        <comment>Demande du client</comment>
+      </column>
+    </property>
+    <property name="conformite" type="string">
+      <column length="100" name="Conformite" not-null="true">
+        <comment>Conformité du travail réalisé avec les demandes du client</comment>
+      </column>
+    </property>
+    <property name="obserSpec" type="string">
+      <column length="100" name="Obser_spec" not-null="true">
+        <comment>Observation spécifique</comment>
+      </column>
+    </property>
+  </class>
+</hibernate-mapping>

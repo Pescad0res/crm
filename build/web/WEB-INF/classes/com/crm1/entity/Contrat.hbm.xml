@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="crm" name="com.crm1.entity.Contrat" optimistic-lock="version" table="contrat">
+    <id name="idC" type="java.lang.Integer">
+      <column name="Id_c"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.crm1.entity.Client" fetch="select" name="client">
+      <column name="Id_cli" not-null="true"/>
+    </many-to-one>
+    <property name="idContrat" type="string">
+      <column length="12" name="Id_contrat" not-null="true">
+        <comment>Code du contrat du client</comment>
+      </column>
+    </property>
+    <property name="dateContrat" type="date">
+      <column length="10" name="Date_contrat" not-null="true">
+        <comment>Date du contrat</comment>
+      </column>
+    </property>
+    <property name="refManuelle" type="string">
+      <column length="20" name="Ref_manuelle" not-null="true">
+        <comment>Référence manuelle du contrat</comment>
+      </column>
+    </property>
+    <property name="dateSign" type="date">
+      <column length="10" name="Date_sign" not-null="true">
+        <comment>Date de la sign ature du contrat</comment>
+      </column>
+    </property>
+    <property name="dateEffet" type="int">
+      <column name="Date_effet" not-null="true">
+        <comment>Date de début de validité du contrat</comment>
+      </column>
+    </property>
+    <property name="duree" type="int">
+      <column name="duree" not-null="true" precision="8" scale="0">
+        <comment>Durée du contrat</comment>
+      </column>
+    </property>
+    <property name="dateFin" type="date">
+      <column length="10" name="Date_fin" not-null="true">
+        <comment>Date de fin de validité du contrat</comment>
+      </column>
+    </property>
+    <property name="nbInterPrev" type="int">
+      <column name="Nb_inter_prev" not-null="true">
+        <comment>Nombre dinterventions préventives</comment>
+      </column>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="contratLogiciels" table="contrat_logiciel">
+      <key>
+        <column name="id_cfk" not-null="true"/>
+      </key>
+      <one-to-many class="com.crm1.entity.ContratLogiciel"/>
+    </set>
+    <one-to-one class="com.crm1.entity.ContratTechnique" name="contratTechnique"/>
+  </class>
+</hibernate-mapping>
