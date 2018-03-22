@@ -37,6 +37,9 @@ public class TestClient {
        c.setPrenomRep("hope");
        
        dao.add(c);
+       
        System.out.println("test add Client Done !! .... ");
+       ses.close();
+       System.out.println("Session killed !! .... ");
     }
-}
+ }

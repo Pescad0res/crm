@@ -17,7 +17,7 @@ import org.hibernate.cfg.Configuration;
  */
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory;
+    private static  SessionFactory sessionFactory;
     
     static {
         try {
@@ -40,5 +40,16 @@ public class HibernateUtil {
     public static Session getSession(){
         return sessionFactory.openSession();
     
+    }
+    public static Session GetCurrentSession(){
+        return sessionFactory.getCurrentSession();
+    
+    }
+    
+    public static void close(){
+        if (sessionFactory != null){
+            sessionFactory.close();
+        }
+        sessionFactory = null;
     }
 }
