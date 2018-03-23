@@ -9,7 +9,8 @@
         <h:form>
             
             <h:outputText value="Welcome !"></h:outputText>
-            <h:inputText value="#{ClientBean.loginCli}"></h:inputText>
+            <h:inputText value="#{CliBean.loginCli}"></h:inputText>
+            <h:commandButton value="Submit" actionListener="#{CliBean.saveData}"></h:commandButton>
             
             
         </h:form>

@@ -7,20 +7,25 @@ package com.crm1.presentation;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.event.ActionEvent;
 
 /**
  *
  * @author REV DAMAGE
  */
 
-@ManagedBean
+@ManagedBean(name="CliBean")
 @RequestScoped
 public class ClientBean {
     private Integer idCli;
      private String matFisc;
      private String nomCli;
-     private String loginCli = "LoginTest";
+     private String loginCli;
      private String pwdCli;
+     
+     public void saveData(ActionEvent e){
+         System.out.println("Client login :"+loginCli);
+     }
 
     public Integer getIdCli() {
         return idCli;
