@@ -29,11 +29,21 @@ public class getfromdb {
         Client c = new Client ();
         
        ClientDAO dao =new ClientDAOImpl();
-        c=dao.findByidCli(2);
+        //c=dao.findByidCli(2);
         //c=dao.findAll();
-        System.out.println("tfathel :"+c.getLoginCli());
-       //List<Client> liste_client=dao.findAll();
-        //System.out.println(liste_client);
+        //System.out.println("tfathel :"+c.getLoginCli());
+       List<Client> liste_client=dao.findAll();
+        
+        for (int i=0;i<liste_client.size();i++){
+            c =(Client)liste_client.get(i);
+            System.out.print("|"+c.getIdCli());
+            System.out.print("|"+c.getMatFisc());
+            System.out.print("|"+c.getNomRep());
+            System.out.print("|"+c.getLoginCli());
+            System.out.print("|"+c.getNomRep());
+            System.out.print("|"+c.getPrenomRep()+"|");
+            System.out.println(" ");
+        }
         
         ses.close();
         fac.close();
