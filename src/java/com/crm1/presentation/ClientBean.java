@@ -45,7 +45,8 @@ public class ClientBean {
         } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
                }
-        
+        ses.getTransaction().commit();
+        ses.close();
         
         return null;
     }
