@@ -5,9 +5,15 @@
  */
 package com.crm1.presentation;
 
+import com.crm1.dao.HibernateUtil;
+import com.crm1.entity.Client;
+import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.event.ActionEvent;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -15,74 +21,34 @@ import javax.faces.event.ActionEvent;
  */
 
 @ManagedBean(name="CliBean")
-@RequestScoped
+@SessionScoped
 public class ClientBean {
-    private Integer idCli;
-     private String matFisc;
-     private String nomCli;
-     private String loginCli;
-     private String pwdCli;
-     
-     public void saveData(ActionEvent e){
-         System.out.println("Client login :"+loginCli);
-     }
+    Client cli = new Client();
 
-    public Integer getIdCli() {
-        return idCli;
+    public Client getCli() {
+        return cli;
     }
 
-    public void setIdCli(Integer idCli) {
-        this.idCli = idCli;
+    public void setCli(Client cli) {
+        this.cli = cli;
     }
-
-    public String getMatFisc() {
-        return matFisc;
-    }
-
-    public void setMatFisc(String matFisc) {
-        this.matFisc = matFisc;
-    }
-
-    public String getNomCli() {
-        return nomCli;
-    }
-
-    public void setNomCli(String nomCli) {
-        this.nomCli = nomCli;
-    }
-
-    public String getLoginCli() {
-        return loginCli;
-    }
-
-    public void setLoginCli(String loginCli) {
-        this.loginCli = loginCli;
-    }
-
-    public String getPwdCli() {
-        return pwdCli;
-    }
-
-    public void setPwdCli(String pwdCli) {
-        this.pwdCli = pwdCli;
-    }
-
-    public String getNomRep() {
-        return nomRep;
-    }
-
-    public void setNomRep(String nomRep) {
-        this.nomRep = nomRep;
-    }
-
-    public String getPrenomRep() {
-        return prenomRep;
-    }
-
-    public void setPrenomRep(String prenomRep) {
-        this.prenomRep = prenomRep;
-    }
-     private String nomRep;
-     private String prenomRep;
     
-}
+    public String LoginCheck(){
+     Session ses = HibernateUtil.getSession();
+     SessionFactory fac = HibernateUtil.getSessionFactory();
+     ses.getTransaction();
+     
+     
+             List<Client> list = ses.createSQLQuery("select * from client where login_cli='" + cli.getLoginCli() + "' and pwd_cli='" + cli.getPwdCli() + "'").list();
+             if (list.size() > 0) {
+            return "success";
+        } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
+               }
+        
+        
+        return null;
+    }
+    
+    
+                        }

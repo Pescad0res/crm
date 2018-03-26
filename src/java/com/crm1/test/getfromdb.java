@@ -30,8 +30,8 @@ public class getfromdb {
         
        ClientDAO dao =new ClientDAOImpl();
         //c=dao.findByidCli(2);
-        //c=dao.findAll();
         //System.out.println("tfathel :"+c.getLoginCli());
+        
        List<Client> liste_client=dao.findAll();
         
         for (int i=0;i<liste_client.size();i++){

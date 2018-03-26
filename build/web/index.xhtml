@@ -1,19 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Client Login</title>
     </h:head>
     <h:body>
-        <h:form>
+        
+        <f:view>
             
-            <h:outputText value="Welcome !"></h:outputText>
-            <h:inputText value="#{CliBean.loginCli}"></h:inputText>
-            <h:commandButton value="Submit" actionListener="#{CliBean.saveData}"></h:commandButton>
+            <h:form id="login_form">
+                
+                <h:messages id="msgs" />
+                
+                <h:panelGrid columns="2">
+                    
+                    <f:facet name="header">Login here</f:facet>
+                    <h:outputText value="User Name"/>
+                    <h:inputText value="#{CliBean.cli.loginCli}"/>
+                    
+                    <h:outputText value="Password"/>
+                    <h:inputSecret value="#{CliBean.cli.pwdCli}"/>
+                    
+                    <h:outputText value=""/>
+                    <h:commandButton value="Login" action="#{CliBean.LoginCheck()}"/>
+                   
+                </h:panelGrid>
+                
+                <h:link outcome="register" value="Register Page"/>
+                
+            </h:form>
             
             
-        </h:form>
+        </f:view>
         
     </h:body>
 </html>
