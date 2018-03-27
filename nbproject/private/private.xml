@@ -6,8 +6,12 @@
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/config/hibernate.cfg.xml</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/entity/Client.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/ClientBean.java</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/index.xhtml</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/dao/HibernateUtil.java</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/sessionUtil.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/success.xhtml</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/index.html</file>
         </group>
     </open-files>
 </project-private>

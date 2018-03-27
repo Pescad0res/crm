@@ -12,6 +12,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -23,6 +24,9 @@ import org.hibernate.SessionFactory;
 @ManagedBean(name="CliBean")
 @SessionScoped
 public class ClientBean {
+    
+    private String logcli;
+    
     Client cli = new Client();
 
     public Client getCli() {
@@ -33,7 +37,10 @@ public class ClientBean {
         this.cli = cli;
     }
     
+    
+    
     public String LoginCheck(){
+     
      Session ses = HibernateUtil.getSession();
      SessionFactory fac = HibernateUtil.getSessionFactory();
      ses.getTransaction();
@@ -41,15 +48,35 @@ public class ClientBean {
      
              List<Client> list = ses.createSQLQuery("select * from client where login_cli='" + cli.getLoginCli() + "' and pwd_cli='" + cli.getPwdCli() + "'").list();
              if (list.size() > 0) {
-            return "success";
+                 //servlet session part
+                 
+                 logcli = cli.getLoginCli();
+                 
+                 HttpSession hs = sessionUtil.getSession();
+                 hs.setAttribute("logcli",logcli);
+                 //servlet session part
+            return "/success.xhtml?faces-redirect=true";
         } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
+                
                }
-        ses.getTransaction().commit();
+        try {
+            ses.getTransaction().commit();
+        } catch (Exception e) {
+        }
         ses.close();
-        
         return null;
-    }
+        }
+    public String afflogin(){
+        return logcli;
+         }
+    
+    public String doLogout(){
+        HttpSession hs = sessionUtil.getSession();
+        hs.invalidate();
+        return "/index.xhtml";
+         }
+    
     
     
                         }
