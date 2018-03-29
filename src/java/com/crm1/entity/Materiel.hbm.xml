@@ -1,39 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Materiel" optimistic-lock="version" table="materiel">
-    <id name="idM" type="java.lang.Integer">
-      <column name="Id_m"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="com.crm1.entity.ContratTechnique" fetch="select" name="contratTechnique">
-      <column name="Id_c" not-null="true"/>
-    </many-to-one>
-    <property name="numSerie" type="string">
-      <column length="20" name="Num_serie" not-null="true">
-        <comment>Numéro de série du matériel</comment>
-      </column>
-    </property>
-    <property name="typeMat" type="string">
-      <column length="30" name="Type_mat" not-null="true">
-        <comment>Type du matériel déclaré</comment>
-      </column>
-    </property>
-    <property name="marque" type="string">
-      <column length="30" name="marque" not-null="true">
-        <comment>Marque du matériel déclaré</comment>
-      </column>
-    </property>
-    <property name="versionMat" type="string">
-      <column length="20" name="Version_mat" not-null="true">
-        <comment>Version du matériel déclaré</comment>
-      </column>
-    </property>
-    <property name="dateInst" type="date">
-      <column length="10" name="Date_inst" not-null="true">
-        <comment>Date dinstallatio n du matériel</comment>
-      </column>
-    </property>
-  </class>
+    <class name="com.crm1.entity.Materiel" table="materiel" catalog="crm" optimistic-lock="version">
+        <id name="idM" type="java.lang.Integer">
+            <column name="Id_m" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="contratTechnique" class="com.crm1.entity.ContratTechnique" fetch="select">
+            <column name="Id_c" not-null="true" />
+        </many-to-one>
+        <property name="numSerie" type="string">
+            <column name="Num_serie" length="20" not-null="true">
+                <comment>Num&#233;ro de s&#233;rie du mat&#233;riel</comment>
+            </column>
+        </property>
+        <property name="typeMat" type="string">
+            <column name="Type_mat" length="30" not-null="true">
+                <comment>Type du mat&#233;riel d&#233;clar&#233;</comment>
+            </column>
+        </property>
+        <property name="marque" type="string">
+            <column name="marque" length="30" not-null="true">
+                <comment>Marque du mat&#233;riel d&#233;clar&#233;</comment>
+            </column>
+        </property>
+        <property name="versionMat" type="string">
+            <column name="Version_mat" length="20" not-null="true">
+                <comment>Version du mat&#233;riel d&#233;clar&#233;</comment>
+            </column>
+        </property>
+        <property name="dateInst" type="date">
+            <column name="Date_inst" length="10" not-null="true">
+                <comment>Date d&#146;installatio n du mat&#233;riel</comment>
+            </column>
+        </property>
+    </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Mar 17, 2018 1:58:45 PM by Hibernate Tools 4.3.1
+// Generated Mar 29, 2018 4:23:37 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -41,15 +41,6 @@ public class Client  implements java.io.Serializable {
     public Client() {
     }
 
-	
-    public Client(String matFisc, String nomCli, String loginCli, String pwdCli, String nomRep, String prenomRep) {
-        this.matFisc = matFisc;
-        this.nomCli = nomCli;
-        this.loginCli = loginCli;
-        this.pwdCli = pwdCli;
-        this.nomRep = nomRep;
-        this.prenomRep = prenomRep;
-    }
     public Client(String matFisc, String nomCli, String loginCli, String pwdCli, String nomRep, String prenomRep, Set<Contact> contacts, Set<Adresse> adresses, Set<Reclamation> reclamations, Set<SelectActivite> selectActivites, Set<Contrat> contrats) {
        this.matFisc = matFisc;
        this.nomCli = nomCli;
@@ -77,7 +68,7 @@ public class Client  implements java.io.Serializable {
     }
 
     
-    @Column(name="mat_fisc", unique=true, nullable=false, length=12)
+    @Column(name="mat_fisc", unique=true, length=12)
     public String getMatFisc() {
         return this.matFisc;
     }
@@ -87,7 +78,7 @@ public class Client  implements java.io.Serializable {
     }
 
     
-    @Column(name="nom_cli", nullable=false, length=50)
+    @Column(name="nom_cli", length=50)
     public String getNomCli() {
         return this.nomCli;
     }
@@ -97,7 +88,7 @@ public class Client  implements java.io.Serializable {
     }
 
     
-    @Column(name="login _cli", nullable=false, length=30)
+    @Column(name="login_cli", length=30)
     public String getLoginCli() {
         return this.loginCli;
     }
@@ -107,7 +98,7 @@ public class Client  implements java.io.Serializable {
     }
 
     
-    @Column(name="pwd_cli", nullable=false, length=30)
+    @Column(name="pwd_cli", length=30)
     public String getPwdCli() {
         return this.pwdCli;
     }
@@ -117,7 +108,7 @@ public class Client  implements java.io.Serializable {
     }
 
     
-    @Column(name="nom_rep", nullable=false, length=20)
+    @Column(name="nom_rep", length=20)
     public String getNomRep() {
         return this.nomRep;
     }
@@ -127,7 +118,7 @@ public class Client  implements java.io.Serializable {
     }
 
     
-    @Column(name="prenom_rep", nullable=false, length=20)
+    @Column(name="prenom_rep", length=20)
     public String getPrenomRep() {
         return this.prenomRep;
     }

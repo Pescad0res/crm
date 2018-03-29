@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Service" optimistic-lock="version" table="service">
-    <id name="idServ" type="java.lang.Integer">
-      <column name="Id_serv"/>
-      <generator class="identity"/>
-    </id>
-    <property name="designServ" type="string">
-      <column length="30" name="design_serv" not-null="true">
-        <comment>nom et description du service</comment>
-      </column>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="selectServices" table="select_service">
-      <key>
-        <column name="id_serv" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.SelectService"/>
-    </set>
-  </class>
+    <class name="com.crm1.entity.Service" table="service" catalog="crm" optimistic-lock="version">
+        <id name="idServ" type="java.lang.Integer">
+            <column name="Id_serv" />
+            <generator class="identity" />
+        </id>
+        <property name="designServ" type="string">
+            <column name="design_serv" length="30" not-null="true">
+                <comment>nom et description du service</comment>
+            </column>
+        </property>
+        <set name="selectServices" table="select_service" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_serv" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.SelectService" />
+        </set>
+    </class>
 </hibernate-mapping>

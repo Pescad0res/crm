@@ -5,10 +5,10 @@
  */
 package com.crm1.dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.
@@ -17,15 +17,13 @@ import org.hibernate.cfg.Configuration;
  */
 public class HibernateUtil {
 
-    private static  SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
     
     static {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file.
             sessionFactory = new Configuration().configure("/com/crm1/config/hibernate.cfg.xml").buildSessionFactory();
-            System.out.println("Config Load Done !! .... ");
-            System.out.println("Build Session Done !! .... ");
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
@@ -33,7 +31,7 @@ public class HibernateUtil {
         }
     }
     
-    public static SessionFactory getSessionFactory() {
+     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
     

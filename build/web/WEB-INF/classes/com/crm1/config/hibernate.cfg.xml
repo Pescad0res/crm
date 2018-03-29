@@ -40,7 +40,6 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-    
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -49,29 +48,29 @@ Contributor(s):
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="use_sql_comments">true</property>
-    <mapping resource="com/crm1/entity/Contact.hbm.xml"/>
-    <mapping resource="com/crm1/entity/ContratTechnique.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Client.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Ligne.hbm.xml"/>
+    <mapping resource="com/crm1/entity/LigneDevis.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Personnel.hbm.xml"/>
+    <mapping resource="com/crm1/entity/PvIntervention.hbm.xml"/>
+    <mapping resource="com/crm1/entity/SelectActivite.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Devis.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Affectation.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Activite.hbm.xml"/>
     <mapping resource="com/crm1/entity/ListeMatriel.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Produit.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Materiel.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Client.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Facture.hbm.xml"/>
+    <mapping resource="com/crm1/entity/ContratTechnique.hbm.xml"/>
+    <mapping resource="com/crm1/entity/SelectService.hbm.xml"/>
     <mapping resource="com/crm1/entity/Contrat.hbm.xml"/>
     <mapping resource="com/crm1/entity/Service.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Reclamation.hbm.xml"/>
-    <mapping resource="com/crm1/entity/LigneDevis.hbm.xml"/>
-    <mapping resource="com/crm1/entity/PvIntervention.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Adresse.hbm.xml"/>
     <mapping resource="com/crm1/entity/ContratLogiciel.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Materiel.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Controle.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Activite.hbm.xml"/>
-    <mapping resource="com/crm1/entity/SelectActivite.hbm.xml"/>
-    <mapping resource="com/crm1/entity/SelectService.hbm.xml"/>
-    <mapping resource="com/crm1/entity/BonCommande.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Ligne.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Personnel.hbm.xml"/>
     <mapping resource="com/crm1/entity/FicheSuivi.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Devis.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Facture.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Affectation.hbm.xml"/>
-    <mapping resource="com/crm1/entity/Produit.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Contact.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Reclamation.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Adresse.hbm.xml"/>
+    <mapping resource="com/crm1/entity/BonCommande.hbm.xml"/>
+    <mapping resource="com/crm1/entity/Controle.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,29 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.ListeMatriel" optimistic-lock="version" table="liste_matriel">
-    <id name="idListe" type="java.lang.Integer">
-      <column name="Id_liste"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="com.crm1.entity.Reclamation" fetch="select" name="reclamation">
-      <column name="Id_rec" not-null="true"/>
-    </many-to-one>
-    <property name="numSerie" type="string">
-      <column length="20" name="Num_serie" not-null="true">
-        <comment>Numéro de série des matériels réclamés</comment>
-      </column>
-    </property>
-    <property name="typeMatRec" type="string">
-      <column length="20" name="Type_mat_rec" not-null="true">
-        <comment>Type d e matériels réclamés</comment>
-      </column>
-    </property>
-    <property name="marqueMatRec" type="string">
-      <column length="30" name="Marque_mat_rec" not-null="true">
-        <comment>Marque de matériels réclamés</comment>
-      </column>
-    </property>
-  </class>
+    <class name="com.crm1.entity.ListeMatriel" table="liste_matriel" catalog="crm" optimistic-lock="version">
+        <id name="idListe" type="java.lang.Integer">
+            <column name="Id_liste" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="reclamation" class="com.crm1.entity.Reclamation" fetch="select">
+            <column name="Id_rec" not-null="true" />
+        </many-to-one>
+        <property name="numSerie" type="string">
+            <column name="Num_serie" length="20" not-null="true">
+                <comment>Num&#233;ro de s&#233;rie des mat&#233;riels r&#233;clam&#233;s</comment>
+            </column>
+        </property>
+        <property name="typeMatRec" type="string">
+            <column name="Type_mat_rec" length="20" not-null="true">
+                <comment>Type d e mat&#233;riels r&#233;clam&#233;s</comment>
+            </column>
+        </property>
+        <property name="marqueMatRec" type="string">
+            <column name="Marque_mat_rec" length="30" not-null="true">
+                <comment>Marque de mat&#233;riels r&#233;clam&#233;s</comment>
+            </column>
+        </property>
+    </class>
 </hibernate-mapping>

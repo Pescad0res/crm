@@ -29,15 +29,15 @@ public class TestClient {
        //chaima
        
        ClientDAO dao =new ClientDAOImpl();
-       
+             
        Client c = new Client ();
-       c.setNomCli("Clientv4");
-       c.setMatFisc("m004580");
-       c.setLoginCli("logv4");
-       c.setPwdCli("pwd4v");
-       c.setNomCli("newv4");
-       c.setNomRep("namev4");
-       c.setPrenomRep("prenv4");
+       c.setNomCli("Clientv5");
+       c.setMatFisc("m004585");
+       c.setLoginCli("logv5");
+       c.setPwdCli("pwd4v1");
+       c.setNomCli("newv41");
+       c.setNomRep("namev41");
+       c.setPrenomRep("prenv41");
        
        dao.add(c);
        

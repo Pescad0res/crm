@@ -1,61 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Contrat" optimistic-lock="version" table="contrat">
-    <id name="idC" type="java.lang.Integer">
-      <column name="Id_c"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="com.crm1.entity.Client" fetch="select" name="client">
-      <column name="Id_cli" not-null="true"/>
-    </many-to-one>
-    <property name="idContrat" type="string">
-      <column length="12" name="Id_contrat" not-null="true">
-        <comment>Code du contrat du client</comment>
-      </column>
-    </property>
-    <property name="dateContrat" type="date">
-      <column length="10" name="Date_contrat" not-null="true">
-        <comment>Date du contrat</comment>
-      </column>
-    </property>
-    <property name="refManuelle" type="string">
-      <column length="20" name="Ref_manuelle" not-null="true">
-        <comment>Référence manuelle du contrat</comment>
-      </column>
-    </property>
-    <property name="dateSign" type="date">
-      <column length="10" name="Date_sign" not-null="true">
-        <comment>Date de la sign ature du contrat</comment>
-      </column>
-    </property>
-    <property name="dateEffet" type="int">
-      <column name="Date_effet" not-null="true">
-        <comment>Date de début de validité du contrat</comment>
-      </column>
-    </property>
-    <property name="duree" type="int">
-      <column name="duree" not-null="true" precision="8" scale="0">
-        <comment>Durée du contrat</comment>
-      </column>
-    </property>
-    <property name="dateFin" type="date">
-      <column length="10" name="Date_fin" not-null="true">
-        <comment>Date de fin de validité du contrat</comment>
-      </column>
-    </property>
-    <property name="nbInterPrev" type="int">
-      <column name="Nb_inter_prev" not-null="true">
-        <comment>Nombre dinterventions préventives</comment>
-      </column>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="contratLogiciels" table="contrat_logiciel">
-      <key>
-        <column name="id_cfk" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.ContratLogiciel"/>
-    </set>
-    <one-to-one class="com.crm1.entity.ContratTechnique" name="contratTechnique"/>
-  </class>
+    <class name="com.crm1.entity.Contrat" table="contrat" catalog="crm" optimistic-lock="version">
+        <id name="idC" type="java.lang.Integer">
+            <column name="Id_c" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="client" class="com.crm1.entity.Client" fetch="select">
+            <column name="Id_cli" not-null="true" />
+        </many-to-one>
+        <property name="idContrat" type="string">
+            <column name="Id_contrat" length="12" not-null="true">
+                <comment>Code du contrat du client</comment>
+            </column>
+        </property>
+        <property name="dateContrat" type="date">
+            <column name="Date_contrat" length="10" not-null="true">
+                <comment>Date du contrat</comment>
+            </column>
+        </property>
+        <property name="refManuelle" type="string">
+            <column name="Ref_manuelle" length="20" not-null="true">
+                <comment>R&#233;f&#233;rence manuelle du contrat</comment>
+            </column>
+        </property>
+        <property name="dateSign" type="date">
+            <column name="Date_sign" length="10" not-null="true">
+                <comment>Date de la sign ature du contrat</comment>
+            </column>
+        </property>
+        <property name="dateEffet" type="int">
+            <column name="Date_effet" not-null="true">
+                <comment>Date de d&#233;but de validit&#233; du contrat</comment>
+            </column>
+        </property>
+        <property name="duree" type="int">
+            <column name="duree" precision="8" scale="0" not-null="true">
+                <comment>Dur&#233;e du contrat</comment>
+            </column>
+        </property>
+        <property name="dateFin" type="date">
+            <column name="Date_fin" length="10" not-null="true">
+                <comment>Date de fin de validit&#233; du contrat</comment>
+            </column>
+        </property>
+        <property name="nbInterPrev" type="int">
+            <column name="Nb_inter_prev" not-null="true">
+                <comment>Nombre d&#146;interventions pr&#233;ventives</comment>
+            </column>
+        </property>
+        <set name="contratLogiciels" table="contrat_logiciel" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cfk" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.ContratLogiciel" />
+        </set>
+        <one-to-one name="contratTechnique" class="com.crm1.entity.ContratTechnique"></one-to-one>
+    </class>
 </hibernate-mapping>

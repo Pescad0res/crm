@@ -1,24 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.SelectActivite" optimistic-lock="version" table="select_activite">
-    <composite-id class="com.crm1.entity.SelectActiviteId" name="id">
-      <key-property name="idCli" type="int">
-        <column name="id_cli"/>
-      </key-property>
-      <key-property name="idAct" type="int">
-        <column name="id_act"/>
-      </key-property>
-    </composite-id>
-    <many-to-one class="com.crm1.entity.Activite" fetch="select" insert="false" name="activite" update="false">
-      <column name="id_cli" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="com.crm1.entity.Client" fetch="select" insert="false" name="client" update="false">
-      <column name="id_cli" not-null="true"/>
-    </many-to-one>
-    <property name="dexAct" type="string">
-      <column length="50" name="dex_act" not-null="true"/>
-    </property>
-  </class>
+    <class name="com.crm1.entity.SelectActivite" table="select_activite" catalog="crm" optimistic-lock="version">
+        <composite-id name="id" class="com.crm1.entity.SelectActiviteId">
+            <key-property name="idCli" type="int">
+                <column name="id_cli" />
+            </key-property>
+            <key-property name="idAct" type="int">
+                <column name="id_act" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="activite" class="com.crm1.entity.Activite" update="false" insert="false" fetch="select">
+            <column name="id_cli" not-null="true" />
+        </many-to-one>
+        <many-to-one name="client" class="com.crm1.entity.Client" update="false" insert="false" fetch="select">
+            <column name="id_cli" not-null="true" />
+        </many-to-one>
+        <property name="dexAct" type="string">
+            <column name="dex_act" length="50" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

@@ -1,34 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Adresse" optimistic-lock="version" table="adresse">
-    <id name="idAdr" type="java.lang.Integer">
-      <column name="id_adr"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="com.crm1.entity.Client" fetch="select" name="client">
-      <column name="Id_cli" not-null="true"/>
-    </many-to-one>
-    <property name="rue" type="string">
-      <column length="50" name="rue" not-null="true">
-        <comment>Rue où se situe le client</comment>
-      </column>
-    </property>
-    <property name="ville" type="int">
-      <column name="ville" not-null="true">
-        <comment>Ville où se situe le client</comment>
-      </column>
-    </property>
-    <property name="codePost" type="int">
-      <column name="code_post" not-null="true">
-        <comment>Code p ostale de la ville où se situe le client</comment>
-      </column>
-    </property>
-    <property name="etatAdr" type="string">
-      <column length="8" name="etat_adr">
-        <comment>Etat de ladresse</comment>
-      </column>
-    </property>
-  </class>
+    <class name="com.crm1.entity.Adresse" table="adresse" catalog="crm" optimistic-lock="version">
+        <id name="idAdr" type="java.lang.Integer">
+            <column name="id_adr" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="client" class="com.crm1.entity.Client" fetch="select">
+            <column name="Id_cli" not-null="true" />
+        </many-to-one>
+        <property name="rue" type="string">
+            <column name="rue" length="50" not-null="true">
+                <comment>Rue o&#249; se situe le client</comment>
+            </column>
+        </property>
+        <property name="ville" type="int">
+            <column name="ville" not-null="true">
+                <comment>Ville o&#249; se situe le client</comment>
+            </column>
+        </property>
+        <property name="codePost" type="int">
+            <column name="code_post" not-null="true">
+                <comment>Code p ostale de la ville o&#249; se situe le client</comment>
+            </column>
+        </property>
+        <property name="etatAdr" type="string">
+            <column name="etat_adr" length="8">
+                <comment>Etat de l&#146;adresse</comment>
+            </column>
+        </property>
+    </class>
 </hibernate-mapping>

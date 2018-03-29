@@ -1,71 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Client" optimistic-lock="version" table="client">
-    <id name="idCli" type="java.lang.Integer">
-      <column name="Id_cli"/>
-      <generator class="identity"/>
-    </id>
-    <property name="matFisc" type="string">
-      <column length="12" name="mat_fisc" not-null="true" unique="true">
-        <comment>Immatricule fiscal du client</comment>
-      </column>
-    </property>
-    <property name="nomCli" type="string">
-      <column length="50" name="nom_cli" not-null="true">
-        <comment>Nom du client</comment>
-      </column>
-    </property>
-    <property name="loginCli" type="string">
-      <column length="30" name="`login _cli`" not-null="true">
-        <comment>Login du client</comment>
-      </column>
-    </property>
-    <property name="pwdCli" type="string">
-      <column length="30" name="pwd_cli" not-null="true">
-        <comment>Mot de passe du client</comment>
-      </column>
-    </property>
-    <property name="nomRep" type="string">
-      <column length="20" name="nom_rep" not-null="true">
-        <comment>Nom du représentant du client</comment>
-      </column>
-    </property>
-    <property name="prenomRep" type="string">
-      <column length="20" name="prenom_rep" not-null="true">
-        <comment>Pré n om du représentant du client</comment>
-      </column>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="contacts" table="contact">
-      <key>
-        <column name="Id_cli" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.Contact"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="adresses" table="adresse">
-      <key>
-        <column name="Id_cli" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.Adresse"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="reclamations" table="reclamation">
-      <key>
-        <column name="Id_cli" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.Reclamation"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="selectActivites" table="select_activite">
-      <key>
-        <column name="id_cli" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.SelectActivite"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="contrats" table="contrat">
-      <key>
-        <column name="Id_cli" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.Contrat"/>
-    </set>
-  </class>
+    <class name="com.crm1.entity.Client" table="client" catalog="crm" optimistic-lock="version">
+        <id name="idCli" type="java.lang.Integer">
+            <column name="Id_cli" />
+            <generator class="identity" />
+        </id>
+        <property name="matFisc" type="string">
+            <column name="mat_fisc" length="12" unique="true">
+                <comment>Immatricule fiscal du client</comment>
+            </column>
+        </property>
+        <property name="nomCli" type="string">
+            <column name="nom_cli" length="50">
+                <comment>Nom du client</comment>
+            </column>
+        </property>
+        <property name="loginCli" type="string">
+            <column name="login_cli" length="30">
+                <comment>Login du client</comment>
+            </column>
+        </property>
+        <property name="pwdCli" type="string">
+            <column name="pwd_cli" length="30">
+                <comment>Mot de passe du client</comment>
+            </column>
+        </property>
+        <property name="nomRep" type="string">
+            <column name="nom_rep" length="20">
+                <comment>Nom du repr&#233;sentant du client</comment>
+            </column>
+        </property>
+        <property name="prenomRep" type="string">
+            <column name="prenom_rep" length="20">
+                <comment>Pr&#233; n om du repr&#233;sentant du client</comment>
+            </column>
+        </property>
+        <set name="contacts" table="contact" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.Contact" />
+        </set>
+        <set name="adresses" table="adresse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.Adresse" />
+        </set>
+        <set name="reclamations" table="reclamation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.Reclamation" />
+        </set>
+        <set name="selectActivites" table="select_activite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.SelectActivite" />
+        </set>
+        <set name="contrats" table="contrat" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.Contrat" />
+        </set>
+    </class>
 </hibernate-mapping>

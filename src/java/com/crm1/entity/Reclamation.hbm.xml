@@ -1,96 +1,97 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Reclamation" optimistic-lock="version" table="reclamation">
-    <id name="idRec" type="java.lang.Integer">
-      <column name="Id_rec"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="com.crm1.entity.Client" fetch="select" name="client">
-      <column name="Id_cli" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="com.crm1.entity.Produit" fetch="select" name="produit">
-      <column name="Id_p" not-null="true"/>
-    </many-to-one>
-    <property name="dateCreRec" type="date">
-      <column length="10" name="Date_cre_rec" not-null="true">
-        <comment>date création de la réclamation</comment>
-      </column>
-    </property>
-    <property name="typeRec" type="string">
-      <column length="21" name="Type_rec" not-null="true">
-        <comment>Type de la réclamation</comment>
-      </column>
-    </property>
-    <property name="preventive" type="boolean">
-      <column name="Preventive" not-null="true">
-        <comment>La réclamation est - elle préventive ? o/n</comment>
-      </column>
-    </property>
-    <property name="descCli" type="string">
-      <column length="8" name="Desc_cli" not-null="true">
-        <comment>Descript ion du client</comment>
-      </column>
-    </property>
-    <property name="situation" type="int">
-      <column name="Situation" not-null="true">
-        <comment>La situation actuelle de la réclamation</comment>
-      </column>
-    </property>
-    <property name="recEstim" type="boolean">
-      <column name="Rec_estim" not-null="true">
-        <comment>C ette réclamation va être estimée ? o/n</comment>
-      </column>
-    </property>
-    <property name="persEstim" type="string">
-      <column length="12" name="Pers_estim" not-null="true">
-        <comment>Le personnel qui va estimer la réclamation</comment>
-      </column>
-    </property>
-    <property name="estimation" type="int">
-      <column name="estimation" not-null="true">
-        <comment>Estimation en jours pour traiter la réclamation</comment>
-      </column>
-    </property>
-    <property name="degUrgence" type="string">
-      <column length="12" name="Deg_urgence" not-null="true">
-        <comment>Degré durgence de la réclamation</comment>
-      </column>
-    </property>
-    <property name="descExpert" type="string">
-      <column name="Desc_expert" not-null="true">
-        <comment>La description de lexpert (responsable technique ou chef de produit)</comment>
-      </column>
-    </property>
-    <property name="dateDebut" type="date">
-      <column length="10" name="Date_debut" not-null="true">
-        <comment>Date début du traitement de la réclamation</comment>
-      </column>
-    </property>
-    <property name="dateFin" type="date">
-      <column length="10" name="Date_fin" not-null="true">
-        <comment>Date fin du traitement de la réclamation</comment>
-      </column>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="pvInterventions" table="pv_intervention">
-      <key>
-        <column name="Id_rec" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.PvIntervention"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="listeMatriels" table="liste_matriel">
-      <key>
-        <column name="Id_rec" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.ListeMatriel"/>
-    </set>
-    <one-to-one class="com.crm1.entity.Affectation" name="affectation"/>
-    <set fetch="select" inverse="true" lazy="true" name="ligneDevises" table="ligne_devis">
-      <key>
-        <column name="Id_rec" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.LigneDevis"/>
-    </set>
-  </class>
+    <class name="com.crm1.entity.Reclamation" table="reclamation" catalog="crm" optimistic-lock="version">
+        <id name="idRec" type="java.lang.Integer">
+            <column name="Id_rec" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="client" class="com.crm1.entity.Client" fetch="select">
+            <column name="Id_cli" not-null="true" />
+        </many-to-one>
+        <many-to-one name="produit" class="com.crm1.entity.Produit" fetch="select">
+            <column name="Id_p" not-null="true" />
+        </many-to-one>
+        <property name="dateCreRec" type="date">
+            <column name="Date_cre_rec" length="10" not-null="true">
+                <comment>date cr&#233;ation de la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="typeRec" type="string">
+            <column name="Type_rec" length="21" not-null="true">
+                <comment>Type de la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="preventive" type="boolean">
+            <column name="Preventive" not-null="true">
+                <comment>La r&#233;clamation est - elle pr&#233;ventive ? o/n</comment>
+            </column>
+        </property>
+        <property name="descCli" type="string">
+            <column name="Desc_cli" length="8" not-null="true">
+                <comment>Descript ion du client</comment>
+            </column>
+        </property>
+        <property name="situation" type="int">
+            <column name="Situation" not-null="true">
+                <comment>La situation actuelle de la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="recEstim" type="boolean">
+            <column name="Rec_estim" not-null="true">
+                <comment>C ette r&#233;clamation va &#234;tre estim&#233;e ? o/n</comment>
+            </column>
+        </property>
+        <property name="persEstim" type="string">
+            <column name="Pers_estim" length="12" not-null="true">
+                <comment>Le personnel qui va estimer la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="estimation" type="int">
+            <column name="estimation" not-null="true">
+                <comment>Estimation en jours pour traiter la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="degUrgence" type="string">
+            <column name="Deg_urgence" length="12" not-null="true">
+                <comment>Degr&#233; d&#146;urgence de la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="descExpert" type="string">
+            <column name="Desc_expert" not-null="true">
+                <comment>La description de l&#146;expert (responsable technique ou chef de produit)</comment>
+            </column>
+        </property>
+        <property name="dateDebut" type="date">
+            <column name="Date_debut" length="10" not-null="true">
+                <comment>Date d&#233;but du traitement de la r&#233;clamation</comment>
+            </column>
+        </property>
+        <property name="dateFin" type="date">
+            <column name="Date_fin" length="10" not-null="true">
+                <comment>Date fin du traitement de la r&#233;clamation</comment>
+            </column>
+        </property>
+        <set name="pvInterventions" table="pv_intervention" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_rec" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.PvIntervention" />
+        </set>
+        <set name="listeMatriels" table="liste_matriel" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_rec" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.ListeMatriel" />
+        </set>
+        <one-to-one name="affectation" class="com.crm1.entity.Affectation"></one-to-one>
+        <set name="ligneDevises" table="ligne_devis" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_rec" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.LigneDevis" />
+        </set>
+    </class>
 </hibernate-mapping>

@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.ContratTechnique" optimistic-lock="version" table="contrat_technique">
-    <id name="idC" type="int">
-      <column name="Id_c"/>
-      <generator class="foreign">
-        <param name="property">contrat</param>
-      </generator>
-    </id>
-    <one-to-one class="com.crm1.entity.Contrat" constrained="true" name="contrat"/>
-    <set fetch="select" inverse="true" lazy="true" name="materiels" table="materiel">
-      <key>
-        <column name="Id_c" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.Materiel"/>
-    </set>
-  </class>
+    <class name="com.crm1.entity.ContratTechnique" table="contrat_technique" catalog="crm" optimistic-lock="version">
+        <id name="idC" type="int">
+            <column name="Id_c" />
+            <generator class="foreign">
+                <param name="property">contrat</param>
+            </generator>
+        </id>
+        <one-to-one name="contrat" class="com.crm1.entity.Contrat" constrained="true"></one-to-one>
+        <set name="materiels" table="materiel" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_c" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.Materiel" />
+        </set>
+    </class>
 </hibernate-mapping>

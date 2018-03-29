@@ -1,32 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Activite" optimistic-lock="version" table="activite">
-    <id name="idAct" type="java.lang.Integer">
-      <column name="id_act"/>
-      <generator class="identity"/>
-    </id>
-    <property name="typeAct" type="string">
-      <column length="13" name="type_act" not-null="true">
-        <comment>Type dactivité</comment>
-      </column>
-    </property>
-    <property name="domaineAct" type="string">
-      <column length="30" name="domaine_act" not-null="true">
-        <comment>Domaine dactivité</comment>
-      </column>
-    </property>
-    <property name="descAct" type="string">
-      <column length="30" name="desc_act" not-null="true">
-        <comment>Description de lactivité</comment>
-      </column>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="selectActivites" table="select_activite">
-      <key>
-        <column name="id_cli" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.SelectActivite"/>
-    </set>
-  </class>
+    <class name="com.crm1.entity.Activite" table="activite" catalog="crm" optimistic-lock="version">
+        <id name="idAct" type="java.lang.Integer">
+            <column name="id_act" />
+            <generator class="identity" />
+        </id>
+        <property name="typeAct" type="string">
+            <column name="type_act" length="13" not-null="true">
+                <comment>Type d&#146;activit&#233;</comment>
+            </column>
+        </property>
+        <property name="domaineAct" type="string">
+            <column name="domaine_act" length="30" not-null="true">
+                <comment>Domaine d&#146;activit&#233;</comment>
+            </column>
+        </property>
+        <property name="descAct" type="string">
+            <column name="desc_act" length="30" not-null="true">
+                <comment>Description de l&#146;activit&#233;</comment>
+            </column>
+        </property>
+        <set name="selectActivites" table="select_activite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cli" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.SelectActivite" />
+        </set>
+    </class>
 </hibernate-mapping>

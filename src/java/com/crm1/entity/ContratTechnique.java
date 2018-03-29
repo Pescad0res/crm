@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Mar 17, 2018 1:58:45 PM by Hibernate Tools 4.3.1
+// Generated Mar 29, 2018 4:23:37 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Mar 17, 2018 1:58:45 PM by Hibernate Tools 4.3.1
+// Generated Mar 29, 2018 4:23:37 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -31,10 +31,10 @@ public class Personnel  implements java.io.Serializable {
      private Integer idPers;
      private String cnrps;
      private String cin;
-     private int nomPers;
-     private int prenomPers;
-     private int loginPers;
-     private int pwdPers;
+     private String nomPers;
+     private String prenomPers;
+     private String loginPers;
+     private String pwdPers;
      private Date dateNais;
      private String sexe;
      private String etatCivil;
@@ -50,7 +50,7 @@ public class Personnel  implements java.io.Serializable {
     }
 
 	
-    public Personnel(String cnrps, String cin, int nomPers, int prenomPers, int loginPers, int pwdPers, Date dateNais, String sexe, String etatCivil, Date nat, int dateEmbauche, String tel, String email, String superieur, String grade) {
+    public Personnel(String cnrps, String cin, String nomPers, String prenomPers, String loginPers, String pwdPers, Date dateNais, String sexe, String etatCivil, Date nat, int dateEmbauche, String tel, String email, String superieur, String grade) {
         this.cnrps = cnrps;
         this.cin = cin;
         this.nomPers = nomPers;
@@ -67,7 +67,7 @@ public class Personnel  implements java.io.Serializable {
         this.superieur = superieur;
         this.grade = grade;
     }
-    public Personnel(String cnrps, String cin, int nomPers, int prenomPers, int loginPers, int pwdPers, Date dateNais, String sexe, String etatCivil, Date nat, int dateEmbauche, String tel, String email, String superieur, String grade, Set<Affectation> affectations) {
+    public Personnel(String cnrps, String cin, String nomPers, String prenomPers, String loginPers, String pwdPers, Date dateNais, String sexe, String etatCivil, Date nat, int dateEmbauche, String tel, String email, String superieur, String grade, Set<Affectation> affectations) {
        this.cnrps = cnrps;
        this.cin = cin;
        this.nomPers = nomPers;
@@ -119,42 +119,42 @@ public class Personnel  implements java.io.Serializable {
     }
 
     
-    @Column(name="nom_pers", nullable=false)
-    public int getNomPers() {
+    @Column(name="nom_pers", nullable=false, length=20)
+    public String getNomPers() {
         return this.nomPers;
     }
     
-    public void setNomPers(int nomPers) {
+    public void setNomPers(String nomPers) {
         this.nomPers = nomPers;
     }
 
     
-    @Column(name="prenom_pers", nullable=false)
-    public int getPrenomPers() {
+    @Column(name="prenom_pers", nullable=false, length=20)
+    public String getPrenomPers() {
         return this.prenomPers;
     }
     
-    public void setPrenomPers(int prenomPers) {
+    public void setPrenomPers(String prenomPers) {
         this.prenomPers = prenomPers;
     }
 
     
-    @Column(name="Login_pers", nullable=false)
-    public int getLoginPers() {
+    @Column(name="Login_pers", nullable=false, length=30)
+    public String getLoginPers() {
         return this.loginPers;
     }
     
-    public void setLoginPers(int loginPers) {
+    public void setLoginPers(String loginPers) {
         this.loginPers = loginPers;
     }
 
     
-    @Column(name="Pwd_pers", nullable=false)
-    public int getPwdPers() {
+    @Column(name="Pwd_pers", nullable=false, length=30)
+    public String getPwdPers() {
         return this.pwdPers;
     }
     
-    public void setPwdPers(int pwdPers) {
+    public void setPwdPers(String pwdPers) {
         this.pwdPers = pwdPers;
     }
 

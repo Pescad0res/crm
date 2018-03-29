@@ -1,57 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 17, 2018 1:58:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2018 4:23:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="crm" name="com.crm1.entity.Devis" optimistic-lock="version" table="devis">
-    <id name="idDevis" type="java.lang.Integer">
-      <column name="Id_devis"/>
-      <generator class="identity"/>
-    </id>
-    <property name="dateCreaD" type="date">
-      <column length="10" name="Date_crea_d" not-null="true">
-        <comment>Date de création du devis</comment>
-      </column>
-    </property>
-    <property name="observ" type="string">
-      <column name="Observ" not-null="true">
-        <comment>Un commentaire sur le devis, le bon de commande, la facture</comment>
-      </column>
-    </property>
-    <property name="THt" type="big_decimal">
-      <column name="T_ht" not-null="true" precision="8" scale="3">
-        <comment>Total hors taxe</comment>
-      </column>
-    </property>
-    <property name="TRemise" type="big_decimal">
-      <column name="T_remise" not-null="true" precision="8" scale="3">
-        <comment>Tot al remise</comment>
-      </column>
-    </property>
-    <property name="TTva" type="big_decimal">
-      <column name="T_tva" not-null="true" precision="8" scale="3">
-        <comment>Total tva</comment>
-      </column>
-    </property>
-    <property name="ttc" type="big_decimal">
-      <column name="Ttc" not-null="true" precision="8" scale="3">
-        <comment>Toute taxe comprise</comment>
-      </column>
-    </property>
-    <property name="timbre" type="big_decimal">
-      <column name="Timbre" not-null="true" precision="8" scale="3">
-        <comment>Le timbre</comment>
-      </column>
-    </property>
-    <property name="netPayer" type="big_decimal">
-      <column name="Net_payer" not-null="true" precision="8" scale="3">
-        <comment>Le prix net à payer</comment>
-      </column>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="ligneDevises" table="ligne_devis">
-      <key>
-        <column name="Id_devis" not-null="true"/>
-      </key>
-      <one-to-many class="com.crm1.entity.LigneDevis"/>
-    </set>
-  </class>
+    <class name="com.crm1.entity.Devis" table="devis" catalog="crm" optimistic-lock="version">
+        <id name="idDevis" type="java.lang.Integer">
+            <column name="Id_devis" />
+            <generator class="identity" />
+        </id>
+        <property name="dateCreaD" type="date">
+            <column name="Date_crea_d" length="10" not-null="true">
+                <comment>Date de cr&#233;ation du devis</comment>
+            </column>
+        </property>
+        <property name="observ" type="string">
+            <column name="Observ" not-null="true">
+                <comment>Un commentaire sur le devis, le bon de commande, la facture</comment>
+            </column>
+        </property>
+        <property name="THt" type="big_decimal">
+            <column name="T_ht" precision="8" scale="3" not-null="true">
+                <comment>Total hors taxe</comment>
+            </column>
+        </property>
+        <property name="TRemise" type="big_decimal">
+            <column name="T_remise" precision="8" scale="3" not-null="true">
+                <comment>Tot al remise</comment>
+            </column>
+        </property>
+        <property name="TTva" type="big_decimal">
+            <column name="T_tva" precision="8" scale="3" not-null="true">
+                <comment>Total tva</comment>
+            </column>
+        </property>
+        <property name="ttc" type="big_decimal">
+            <column name="Ttc" precision="8" scale="3" not-null="true">
+                <comment>Toute taxe comprise</comment>
+            </column>
+        </property>
+        <property name="timbre" type="big_decimal">
+            <column name="Timbre" precision="8" scale="3" not-null="true">
+                <comment>Le timbre</comment>
+            </column>
+        </property>
+        <property name="netPayer" type="big_decimal">
+            <column name="Net_payer" precision="8" scale="3" not-null="true">
+                <comment>Le prix net &#224; payer</comment>
+            </column>
+        </property>
+        <set name="ligneDevises" table="ligne_devis" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_devis" not-null="true" />
+            </key>
+            <one-to-many class="com.crm1.entity.LigneDevis" />
+        </set>
+    </class>
 </hibernate-mapping>
