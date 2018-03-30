@@ -25,6 +25,8 @@ import org.hibernate.SessionFactory;
 @SessionScoped
 public class ClientBean {
     
+    
+    
     private String logcli;
     
     Client cli = new Client();
@@ -55,9 +57,19 @@ public class ClientBean {
                  HttpSession hs = sessionUtil.getSession();
                  hs.setAttribute("logcli",logcli);
                  //servlet session part
+                 //BootFaces
+                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
+                 FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+                 //BootFaces
+                 
             return "/success.xhtml?faces-redirect=true";
         } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
+                //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
+                
+                //BootFaces
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "client not found !");
+                FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
+                //BootFaces
                 
                }
         try {

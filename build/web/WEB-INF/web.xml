@@ -15,10 +15,14 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            45
         </session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    <error-page>
+    <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+    <location>/exception/sessionexpired.xhtml</location>
+</error-page>
 </web-app>

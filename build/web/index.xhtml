@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Client Login</title>
     </h:head>
@@ -10,26 +11,50 @@
         
         <f:view>
             
-            <h:form id="login_form">
-                
-                <font color="red"><h:messages id="msgs" /></font>
-                
-                <h:panelGrid columns="2">
-                    
-                    <f:facet name="header">Login here</f:facet>
-                    <h:outputText value="User Name"/>
-                    <h:inputText value="#{CliBean.cli.loginCli}"/>
-                    
-                    <h:outputText value="Password"/>
-                    <h:inputSecret value="#{CliBean.cli.pwdCli}"/>
-                    
-                    <h:outputText value=""/>
-                    <h:commandButton value="Login" action="#{CliBean.LoginCheck()}"/>
-                   
-                </h:panelGrid>
-                
-                
-            </h:form>
+            <h:form id="loginForm">
+  <b:container layout="fluid">
+    <b:panel title="Authentification" look="primary">
+      <b:row>
+        <b:column medium-screen="2">
+          <h:outputText value="Nom d'utilisateur" for="username" />
+        </b:column>
+        <b:column medium-screen="4">
+          <b:inputText placeholder="Nom d'utilisateur" id="username" value="#{CliBean.cli.loginCli}"
+                       ajax="true" autocomplete="false" update="@(.message)">
+            <f:facet name="prepend">
+              <b:icon name="user" />
+            </f:facet>
+          </b:inputText>
+        </b:column>
+        <b:column medium-screen="6" style-class="message">
+          <b:message for="username" />
+        </b:column>
+      </b:row>
+      <b:row>
+        <b:column medium-screen="2">
+          <h:outputText value="Mot de passe" />
+        </b:column>
+        <b:column medium-screen="4">
+          <b:inputSecret placeholder="Mot de passe" id="password" value="#{CliBean.cli.pwdCli}"
+                         ajax="true" autocomplete="false" update="@(.message)">
+            <f:facet name="prepend">
+              <b:iconAwesome name="key" />
+            </f:facet>
+          </b:inputSecret>
+        </b:column>
+        <b:column medium-screen="6" styleClass="message">
+          <b:message for="password"/>
+        </b:column>
+      </b:row>
+      <b:row>
+        <b:column span="2" offset="2">
+            <b:commandButton value="login" action="#{CliBean.LoginCheck()}" update="@form" look="primary"
+                           style="width:100%" />
+        </b:column>
+      </b:row>
+    </b:panel>
+  </b:container>
+</h:form>
             
             
         </f:view>

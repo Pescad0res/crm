@@ -19,6 +19,7 @@ public class PersonnelDAOImpl  implements PersonnelDAO{
 Session ses = HibernateUtil.getSession();
     @Override
     public void add(Personnel p) {
+        
         ses.beginTransaction();
         ses.save(p);
         ses.getTransaction().commit();    
