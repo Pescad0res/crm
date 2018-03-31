@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Mar 29, 2018 4:23:37 PM by Hibernate Tools 4.3.1
+// Generated Mar 30, 2018 5:12:53 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -36,7 +36,7 @@ public class Reclamation  implements java.io.Serializable {
      private String typeRec;
      private boolean preventive;
      private String descCli;
-     private int situation;
+     private String situation;
      private boolean recEstim;
      private String persEstim;
      private int estimation;
@@ -53,7 +53,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
 	
-    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, int situation, boolean recEstim, String persEstim, int estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin) {
+    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, int estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin) {
         this.client = client;
         this.produit = produit;
         this.dateCreRec = dateCreRec;
@@ -69,7 +69,7 @@ public class Reclamation  implements java.io.Serializable {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
     }
-    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, int situation, boolean recEstim, String persEstim, int estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation, Set<LigneDevis> ligneDevises) {
+    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, int estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation, Set<LigneDevis> ligneDevises) {
        this.client = client;
        this.produit = produit;
        this.dateCreRec = dateCreRec;
@@ -163,12 +163,12 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     
-    @Column(name="Situation", nullable=false)
-    public int getSituation() {
+    @Column(name="Situation", nullable=false, length=8)
+    public String getSituation() {
         return this.situation;
     }
     
-    public void setSituation(int situation) {
+    public void setSituation(String situation) {
         this.situation = situation;
     }
 

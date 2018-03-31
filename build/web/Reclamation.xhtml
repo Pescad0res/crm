@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Client:" for="client" />
+                    <h:selectOneMenu id="client" value="#{recBean.rec.client}" converter="#{clientConverter}" title="Client" required="true" requiredMessage="The Client field is required.">
+                        <!-- TODO: fixed -->
+                        <f:selectItems value="#{CliBean.lister()}" var="C" itemLabel="#{C.loginCli}" itemValue="#{C.idCli}" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Produit:" for="produit" />
+                    <h:selectOneMenu id="produit" value="#{recBean.rec.produit}" title="Produit" required="true" requiredMessage="The Produit field is required.">
+                        <!-- TODO: fixed -->
+                        <f:selectItems value="#{proBean.lister()}" var="P" itemLabel="#{P.libProd}" itemValue="#{P.libProd}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="DateCreRec:" for="dateCreRec" />
+                    <h:inputText id="dateCreRec" value="#{recBean.rec.dateCreRec}" title="DateCreRec" required="true" requiredMessage="The DateCreRec field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="TypeRec:" for="typeRec" />
+                    <h:inputText id="typeRec" value="#{recBean.rec.typeRec}" title="TypeRec" required="true" requiredMessage="The TypeRec field is required."/>
+                    <h:outputLabel value="DescCli:" for="descCli" />
+                    <h:inputText id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
+                    <h:outputLabel value="Situation:" for="situation" />
+                    <h:inputText id="situation" value="#{recBean.rec.situation}" title="Situation" required="true" requiredMessage="The Situation field is required."/>
+                    <h:outputLabel value="PersEstim:" for="persEstim" />
+                    <h:inputText id="persEstim" value="#{recBean.rec.persEstim}" title="PersEstim" required="true" requiredMessage="The PersEstim field is required."/>
+                    <h:outputLabel value="Estimation:" for="estimation" />
+                    <h:inputText id="estimation" value="#{recBean.rec.estimation}" title="Estimation" required="true" requiredMessage="The Estimation field is required."/>
+                    <h:outputLabel value="DegUrgence:" for="degUrgence" />
+                    <h:inputText id="degUrgence" value="#{recBean.rec.degUrgence}" title="DegUrgence" required="true" requiredMessage="The DegUrgence field is required."/>
+                    <h:outputLabel value="DescExpert:" for="descExpert" />
+                    <h:inputText id="descExpert" value="#{recBean.rec.descExpert}" title="DescExpert" required="true" requiredMessage="The DescExpert field is required."/>
+                    <h:outputLabel value="DateDebut:" for="dateDebut" />
+                    <h:inputText id="dateDebut" value="#{recBean.rec.dateDebut}" title="DateDebut" required="true" requiredMessage="The DateDebut field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="DateFin:" for="dateFin" />
+                    <h:inputText id="dateFin" value="#{recBean.rec.dateFin}" title="DateFin" required="true" requiredMessage="The DateFin field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    
+                    <h:commandButton value="Add" action="#{recBean.ajouter()}"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

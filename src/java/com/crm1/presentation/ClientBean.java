@@ -5,6 +5,8 @@
  */
 package com.crm1.presentation;
 
+import com.crm1.dao.ClientDAO;
+import com.crm1.dao.ClientDAOImpl;
 import com.crm1.dao.HibernateUtil;
 import com.crm1.entity.Client;
 import java.util.List;
@@ -24,12 +26,13 @@ import org.hibernate.SessionFactory;
 @ManagedBean(name="CliBean")
 @SessionScoped
 public class ClientBean {
-    
+   ClientDAO dao = new ClientDAOImpl();
+   Client cli = new Client();
     
     
     private String logcli;
     
-    Client cli = new Client();
+    
 
     public Client getCli() {
         return cli;
@@ -39,7 +42,14 @@ public class ClientBean {
         this.cli = cli;
     }
     
+    public List<Client> lister(){
+        return dao.findAll();
+    }
     
+ @Override
+ public String toString() {
+    return String.valueOf(cli.getIdCli());
+}
     
     public String LoginCheck(){
      
