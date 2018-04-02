@@ -50,5 +50,10 @@ public class ProduitDAOImpl implements ProduitDAO {
     public Produit findByidP(Integer idP) {
         return (Produit) ses.get(Produit.class,idP);
     }
+
+    @Override
+    public Produit searchForCode(Integer code) {
+        return (Produit) this.ses.get(Produit.class, code);
+    }
     
 }

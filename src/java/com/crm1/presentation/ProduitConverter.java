@@ -5,9 +5,8 @@
  */
 package com.crm1.presentation;
 
-
-import com.crm1.entity.Client;
-import com.crm1.metier.ClientServicesImpl;
+import com.crm1.entity.Produit;
+import com.crm1.metier.ProduitServicesImpl;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -24,15 +23,14 @@ import javax.faces.convert.FacesConverter;
 
 @ManagedBean
 @RequestScoped
-@FacesConverter(forClass=Client.class)
-public class ClientConverter implements Converter{
-    
-    
+@FacesConverter(forClass=Produit.class)
+public class ProduitConverter implements Converter{
+
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String codeString) {
     if (codeString == null && codeString.trim().length() > 0) {
         Integer code = Integer.valueOf(codeString);
-        ClientServicesImpl clientServicesImpl = new ClientServicesImpl();
+        ProduitServicesImpl clientServicesImpl = new ProduitServicesImpl();
         return clientServicesImpl.searchForCode(code);
     }
 
@@ -40,18 +38,18 @@ return null;
 }
 
     @Override
-    public String getAsString(FacesContext context, UIComponent component, Object clientObject) {
-    if (clientObject == null) {
+    public String getAsString(FacesContext context, UIComponent component, Object produitObject) {
+    if (produitObject == null) {
         return "";
     }
 
-    if (clientObject instanceof Client) {
-        Client client = (Client) clientObject;
-        return client.getIdCli().toString();
+    if (produitObject instanceof Produit) {
+        Produit produit = (Produit) produitObject;
+        return produit.getIdP().toString();
         
         //return String.valueOf(((Client) clientObject).getIdCli());
     } else {
-        throw new ConverterException(new FacesMessage(clientObject + " is not a valid Client"));
+        throw new ConverterException(new FacesMessage(produitObject + " is not a valid Product"));
     }
     }
 }

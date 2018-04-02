@@ -42,5 +42,9 @@ public class ProduitServicesImpl implements ProduitServices{
     public Produit findByidP(Integer idP) {
         return dao.findByidP(idP);
     }
+
+    public Object searchForCode(Integer codeString) {
+        return this.dao.searchForCode(codeString);
+    }
     
 }

@@ -19,4 +19,5 @@ public interface ProduitDAO {
     public List<Produit> findAll();
     public Produit findByidP(Integer idP);
     
+    public Produit searchForCode(Integer codeString);
 }

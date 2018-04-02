@@ -20,4 +20,5 @@ public interface ClientServices {
     public List<Client> findAll();
     public Client findByidCli(Integer idCli);
     
+    
 }
