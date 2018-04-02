@@ -43,5 +43,9 @@ public class ClientServicesImpl implements ClientServices {
     public Client findByidCli(Integer idCli) {
         return dao.findByidCli(idCli); 
     }
+
+    public Client searchForCode(Integer codeString) {
+        return this.dao.searchForCode(codeString);
+    }
     
 }

@@ -18,5 +18,7 @@ public interface ClientDAO {
     public Client delete(Integer idCli);
     public List<Client> findAll();
     public Client findByidCli(Integer idCli);
+
+    public Client searchForCode(Integer codeString);
     
 }

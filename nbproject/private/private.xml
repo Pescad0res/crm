@@ -5,11 +5,14 @@
         <group>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/Reclamation.xhtml</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/PersonnelBean.java</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/entity/Client.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/dao/ReclamationDAO.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/ClientBean.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/Personnel.xhtml</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/test/getfromdb.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/metier/ClientServicesImpl.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/entity/Reclamation.java</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/metier/ClientServices.java</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/ClientConverter.java</file>
         </group>
     </open-files>

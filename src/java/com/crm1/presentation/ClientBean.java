@@ -27,7 +27,7 @@ import org.hibernate.SessionFactory;
 @SessionScoped
 public class ClientBean {
    ClientDAO dao = new ClientDAOImpl();
-   Client cli = new Client();
+   public Client cli = new Client();
     
     
     private String logcli;
@@ -47,7 +47,7 @@ public class ClientBean {
     }
     
  @Override
- public String toString() {
+public String toString() {
     return String.valueOf(cli.getIdCli());
 }
     

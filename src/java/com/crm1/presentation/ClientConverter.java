@@ -8,6 +8,7 @@ package com.crm1.presentation;
 import com.crm1.dao.ClientDAO;
 import com.crm1.entity.Client;
 import com.crm1.metier.ClientServices;
+import com.crm1.metier.ClientServicesImpl;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -24,35 +25,34 @@ import javax.faces.convert.FacesConverter;
 
 @ManagedBean
 @RequestScoped
-@FacesConverter(value ="ClientConverter")
+@FacesConverter(forClass=Client.class)
 public class ClientConverter implements Converter{
     
-    private ClientDAO clientDAO;
-
+    
     @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
-    if (submittedValue == null || submittedValue.isEmpty()) {
-        return null;
+    public Object getAsObject(FacesContext context, UIComponent component, String codeString) {
+    if (codeString == null && codeString.trim().length() > 0) {
+        Integer code = Integer.valueOf(codeString);
+        ClientServicesImpl clientServicesImpl = new ClientServicesImpl();
+        return clientServicesImpl.searchForCode(code);
     }
 
-    try {
-        return clientDAO.findByidCli(Integer.valueOf(submittedValue));
-    } catch (NumberFormatException e) {
-        throw new ConverterException(new FacesMessage(submittedValue + " is not a valid Client ID"), e);
-    }
+return null;
 }
 
     @Override
-    public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
-    if (modelValue == null) {
+    public String getAsString(FacesContext context, UIComponent component, Object clientObject) {
+    if (clientObject == null) {
         return "";
     }
 
-    if (modelValue instanceof ClientBean) {
-        return String.valueOf(((ClientBean) modelValue).cli.getIdCli());
+    if (clientObject instanceof Client) {
+        Client client = (Client) clientObject;
+        return client.getIdCli().toString();
+        
+        //return String.valueOf(((Client) clientObject).getIdCli());
     } else {
-        throw new ConverterException(new FacesMessage(modelValue + " is not a valid Client"));
+        throw new ConverterException(new FacesMessage(clientObject + " is not a valid Client"));
     }
     }
-    
 }

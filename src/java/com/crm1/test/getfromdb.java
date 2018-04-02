@@ -9,6 +9,7 @@ import com.crm1.dao.ClientDAO;
 import com.crm1.dao.ClientDAOImpl;
 import com.crm1.dao.HibernateUtil;
 import com.crm1.entity.Client;
+import com.crm1.presentation.ClientBean;
 import static com.crm1.test.TestClient.fac;
 import static com.crm1.test.TestClient.ses;
 import java.util.List;
@@ -26,9 +27,8 @@ public class getfromdb {
     static Session ses = HibernateUtil.getSession();
     static SessionFactory fac = HibernateUtil.getSessionFactory();
     public static void main(String[] args) {
-        Client c = new Client ();
-        
-       ClientDAO dao =new ClientDAOImpl();
+        Client c = new Client ();        
+        ClientDAO dao =new ClientDAOImpl();
         //c=dao.findByidCli(2);
         //System.out.println("tfathel :"+c.getLoginCli());
         
@@ -42,7 +42,7 @@ public class getfromdb {
             System.out.print("|"+c.getLoginCli());
             System.out.print("|"+c.getNomRep());
             System.out.print("|"+c.getPrenomRep()+"|");
-            System.out.println(" ");
+            System.out.println(" ");           
         }
         
         ses.close();

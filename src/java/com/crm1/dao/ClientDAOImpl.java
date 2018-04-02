@@ -55,6 +55,11 @@ public class ClientDAOImpl implements ClientDAO {
     public Client findByidCli(Integer idCli) {
         return (Client) ses.get(Client.class,idCli);
     }
+
+    @Override
+    public Client searchForCode(Integer code) {
+        return (Client) this.ses.get(Client.class, code);
+    }
     
     
 }//class
