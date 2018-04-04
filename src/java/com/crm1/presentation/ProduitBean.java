@@ -8,17 +8,21 @@ package com.crm1.presentation;
 import com.crm1.dao.ProduitDAO;
 import com.crm1.dao.ProduitDAOImpl;
 import com.crm1.entity.Produit;
+import com.crm1.metier.ProduitServicesImpl;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
+import javax.faces.model.SelectItem;
 
 /**
  *
  * @author REV DAMAGE
  */
 @ManagedBean(name="proBean")
-@SessionScoped
+@RequestScoped
 public class ProduitBean {
+    private List<SelectItem> clientSelect;
     ProduitDAO dao = new ProduitDAOImpl();
     Produit pro = new Produit();
 
@@ -30,7 +34,25 @@ public class ProduitBean {
         this.pro = pro;
     }
     
-    public List<Produit> lister(){
-        return dao.findAll();
+            public List<SelectItem> getProduitSelect() {
+            if (clientSelect == null){
+                
+                clientSelect = new ArrayList<SelectItem>();
+                
+                ProduitServicesImpl clientServicesImpl = new ProduitServicesImpl();
+                List<Produit> listClients = clientServicesImpl.findAll();
+                if(listClients != null && !listClients.isEmpty()){
+                    SelectItem item;
+                    for (Produit clientlist : listClients) {
+                        item = new SelectItem(clientlist , clientlist.getLibProd());
+                        clientSelect.add(item);
+                        
+                    }
+                    
+                }
+  
+            }
+        return clientSelect;
     }
+
 }

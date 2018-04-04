@@ -6,7 +6,6 @@
 package com.crm1.dao;
 
 import com.crm1.entity.Client;
-import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Session;
 

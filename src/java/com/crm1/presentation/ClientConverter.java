@@ -47,7 +47,9 @@ return null;
 
     if (clientObject instanceof Client) {
         Client client = (Client) clientObject;
+        
         return client.getIdCli().toString();
+        //return client.getIdCli() != null ? String.valueOf(client.getIdCli()) : null;
         
         //return String.valueOf(((Client) clientObject).getIdCli());
     } else {

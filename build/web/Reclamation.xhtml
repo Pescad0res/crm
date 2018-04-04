@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Reclamation</title>
     </h:head>
     <h:body>
         <f:view>
@@ -14,15 +14,15 @@
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Client:" for="client" />
-                    <h:selectOneMenu id="client" value="#{recBean.rec.client}" converter="#{clientConverter}" title="Client" required="true" requiredMessage="Please select a Client">
+                    <h:selectOneMenu id="client" value="#{CliBean.clientSelect}" converter="#{clientConverter}"  >
                         <!-- TODO: fixed -->
-                        <f:selectItem itemLabel="Selectionner un Client .." itemValue="#{null}" />
-                        <f:selectItems value="#{CliBean.lister()}" var="C" itemLabel="#{C.nomCli}" itemValue="#{C}" />
+                        
+                        <f:selectItems value="#{CliBean.clientSelect}"  itemValue="#{CliBean}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="Produit:" for="produit" />
-                    <h:selectOneMenu id="produit" value="#{recBean.rec.produit}" converter="#{produitConverter}" title="Produit" required="true" requiredMessage="Please select a Product">
+                    <h:selectOneMenu id="produit" value="#{recBean.rec.produit}" converter="#{produitConverter}"  >
                         <!-- TODO: fixed -->
-                        <f:selectItems value="#{proBean.lister()}" var="P" itemLabel="#{P.libProd}" itemValue="#{P}"/>
+                        <f:selectItems value="#{proBean.produitSelect}"  itemValue="#{proBean}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="DateCreRec:" for="dateCreRec" />
                     <h:inputText id="dateCreRec" value="#{recBean.rec.dateCreRec}" title="DateCreRec" required="true" requiredMessage="The DateCreRec field is required.">

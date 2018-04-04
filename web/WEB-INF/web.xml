@@ -25,4 +25,8 @@
     <exception-type>javax.faces.application.ViewExpiredException</exception-type>
     <location>/exception/sessionexpired.xhtml</location>
 </error-page>
+<servlet>
+    <servlet-name>redirect</servlet-name>
+    <jsp-file>/Reclamation.xhtml</jsp-file>
+</servlet>
 </web-app>

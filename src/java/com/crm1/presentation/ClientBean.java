@@ -9,11 +9,14 @@ import com.crm1.dao.ClientDAO;
 import com.crm1.dao.ClientDAOImpl;
 import com.crm1.dao.HibernateUtil;
 import com.crm1.entity.Client;
+import com.crm1.metier.ClientServicesImpl;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,12 +27,17 @@ import org.hibernate.SessionFactory;
  */
 
 @ManagedBean(name="CliBean")
-@SessionScoped
+@RequestScoped
 public class ClientBean {
+    
+   public Client selectedClient;
+   private List<SelectItem> clientSelect;
+    
    ClientDAO dao = new ClientDAOImpl();
    public Client cli = new Client();
-    
-    
+
+   
+  
     private String logcli;
     
     
@@ -41,15 +49,21 @@ public class ClientBean {
     public void setCli(Client cli) {
         this.cli = cli;
     }
-    
-    public List<Client> lister(){
-        return dao.findAll();
+
+    public Client getSelectedClient() {
+        return selectedClient;
+    }
+
+    public void setSelectedClient(Client selectedClient) {
+        this.selectedClient = selectedClient;
     }
     
- @Override
-public String toString() {
-    return String.valueOf(cli.getIdCli());
-}
+    
+    
+    /*public List<Client> lister(){
+        return dao.findAll();
+    }*/
+    
     
     public String LoginCheck(){
      
@@ -99,6 +113,27 @@ public String toString() {
         return "/index.xhtml";
          }
     
+    
+        public List<SelectItem> getClientSelect() {
+            if (clientSelect == null){
+                
+                clientSelect = new ArrayList<SelectItem>();
+                
+                ClientServicesImpl clientServicesImpl = new ClientServicesImpl();
+                List<Client> listClients = clientServicesImpl.findAll();
+                if(listClients != null && !listClients.isEmpty()){
+                    SelectItem item;
+                    for (Client clientlist : listClients) {
+                        item = new SelectItem(clientlist , clientlist.getNomCli());
+                        clientSelect.add(item);
+                        
+                    }
+                    
+                }
+  
+            }
+        return clientSelect;
+    }
     
     
                         }
