@@ -30,8 +30,7 @@ import org.hibernate.SessionFactory;
 @RequestScoped
 public class ClientBean {
     
-   public Client selectedClient;
-   private List<SelectItem> clientSelect;
+ 
     
    ClientDAO dao = new ClientDAOImpl();
    public Client cli = new Client();
@@ -50,13 +49,7 @@ public class ClientBean {
         this.cli = cli;
     }
 
-    public Client getSelectedClient() {
-        return selectedClient;
-    }
 
-    public void setSelectedClient(Client selectedClient) {
-        this.selectedClient = selectedClient;
-    }
     
     
     
@@ -112,28 +105,5 @@ public class ClientBean {
         hs.invalidate();
         return "/index.xhtml";
          }
-    
-    
-        public List<SelectItem> getClientSelect() {
-            if (clientSelect == null){
-                
-                clientSelect = new ArrayList<SelectItem>();
-                
-                ClientServicesImpl clientServicesImpl = new ClientServicesImpl();
-                List<Client> listClients = clientServicesImpl.findAll();
-                if(listClients != null && !listClients.isEmpty()){
-                    SelectItem item;
-                    for (Client clientlist : listClients) {
-                        item = new SelectItem(clientlist , clientlist.getNomCli());
-                        clientSelect.add(item);
-                        
-                    }
-                    
-                }
-  
-            }
-        return clientSelect;
-    }
-    
-    
+        
                         }

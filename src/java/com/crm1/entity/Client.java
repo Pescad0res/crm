@@ -59,7 +59,7 @@ public class Client  implements java.io.Serializable {
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="Id_cli", unique=true, nullable=false)
+    @Column(name="Id_cli", unique=true , nullable=false)
     public Integer getIdCli() {
         return this.idCli;
     }

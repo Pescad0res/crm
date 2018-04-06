@@ -2,27 +2,62 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Reclamation</title>
     </h:head>
     <h:body>
+        <b:navBar brand="Reclamations" brandHref="#" >
+  <b:navbarLinks>
+    <b:navLink value="Demandes d'interventions" href="#"></b:navLink>
+    <b:navLink value="Contras" href="#"></b:navLink>
+    <b:navLink value="La liste de nos produit" href="#"></b:navLink>
+  </b:navbarLinks>
+</b:navBar>
+        
+        <h:form>
+            <b:dataTable value="#{recBean.lister()}"
+               var="item"
+               excel="true"
+               csv="true"
+               pdf="true"
+               columnVisibility="true"
+               print="true"
+               >
+                <b:dataTableColumn value="#{item.degUrgence}" />
+                <b:dataTableColumn value="#{item.descCli}" />
+                <b:dataTableColumn value="#{item.descExpert}" />
+                <b:dataTableColumn value="#{item.persEstim}"  />
+                <b:dataTableColumn value="#{item.situation}" />
+                <b:dataTableColumn value="#{item.typeRec}"  />
+                <b:dataTableColumn value="#{item.estimation}" />
+                <b:dataTableColumn value="#{item.dateCreRec}" />
+                <b:dataTableColumn value="#{item.dateFin}" />
+                <b:dataTableColumn value="#{item.recEstim}" />
+  </b:dataTable>
+</h:form>
+
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="Reclamation"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Client:" for="client" />
-                    <h:selectOneMenu id="client" value="#{CliBean.clientSelect}" converter="#{clientConverter}"  >
+                    
+
+                    <h:selectOneMenu id="client" value="#{recBean.idclient1}" >
                         <!-- TODO: fixed -->
                         
-                        <f:selectItems value="#{CliBean.clientSelect}"  itemValue="#{CliBean}"/>
+                        <f:selectItems value="#{recBean.clientSelect}"  />
+                
                     </h:selectOneMenu>
                     <h:outputLabel value="Produit:" for="produit" />
-                    <h:selectOneMenu id="produit" value="#{recBean.rec.produit}" converter="#{produitConverter}"  >
+                    <h:selectOneMenu id="produit" value="#{recBean.idproduit}" >
                         <!-- TODO: fixed -->
-                        <f:selectItems value="#{proBean.produitSelect}"  itemValue="#{proBean}"/>
+                        <f:selectItems value="#{recBean.produitSelect}" />
+                        <f:ajax event="change" listener="#{recBean.getinfos()}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="DateCreRec:" for="dateCreRec" />
                     <h:inputText id="dateCreRec" value="#{recBean.rec.dateCreRec}" title="DateCreRec" required="true" requiredMessage="The DateCreRec field is required.">

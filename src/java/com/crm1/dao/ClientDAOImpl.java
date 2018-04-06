@@ -47,7 +47,7 @@ public class ClientDAOImpl implements ClientDAO {
 
     @Override
     public  List<Client> findAll() {
-        return ses.createQuery("select obj from Client obj").list(); 
+        return ses.createQuery("select obj from Client obj").list();
     }
 
     @Override

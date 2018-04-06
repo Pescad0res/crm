@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @ManagedBean(name="proBean")
 @RequestScoped
 public class ProduitBean {
-    private List<SelectItem> clientSelect;
+  
     ProduitDAO dao = new ProduitDAOImpl();
     Produit pro = new Produit();
 
@@ -34,25 +34,6 @@ public class ProduitBean {
         this.pro = pro;
     }
     
-            public List<SelectItem> getProduitSelect() {
-            if (clientSelect == null){
-                
-                clientSelect = new ArrayList<SelectItem>();
-                
-                ProduitServicesImpl clientServicesImpl = new ProduitServicesImpl();
-                List<Produit> listClients = clientServicesImpl.findAll();
-                if(listClients != null && !listClients.isEmpty()){
-                    SelectItem item;
-                    for (Produit clientlist : listClients) {
-                        item = new SelectItem(clientlist , clientlist.getLibProd());
-                        clientSelect.add(item);
-                        
-                    }
-                    
-                }
-  
-            }
-        return clientSelect;
-    }
+ 
 
 }
