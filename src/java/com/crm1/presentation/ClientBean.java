@@ -37,7 +37,7 @@ public class ClientBean {
 
    
   
-    private String logcli;
+    public String logcli;
     
     
 
@@ -48,6 +48,8 @@ public class ClientBean {
     public void setCli(Client cli) {
         this.cli = cli;
     }
+
+    
 
 
     
@@ -70,6 +72,7 @@ public class ClientBean {
                  //servlet session part
                  
                  logcli = cli.getLoginCli();
+                
                  
                  HttpSession hs = sessionUtil.getSession();
                  hs.setAttribute("logcli",logcli);
@@ -79,7 +82,7 @@ public class ClientBean {
                  FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
                  //BootFaces
                  
-            return "/success.xhtml?faces-redirect=true";
+            return "/ReclamationAll.xhtml?faces-redirect=true";
         } else {
                 //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
                 
@@ -96,10 +99,7 @@ public class ClientBean {
         ses.close();
         return null;
         }
-    public String afflogin(){
-        return logcli;
-         }
-    
+       
     public String doLogout(){
         HttpSession hs = sessionUtil.getSession();
         hs.invalidate();

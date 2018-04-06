@@ -7,14 +7,11 @@
     </h:head>
     <h:body>
         <h:form>
-            Welcome ... #{CliBean.afflogin()}
+            Welcome 
+            <h:outputText value="#{sessionScope['logcli'] }" />
             
             <h:commandButton value="Logout" action="#{CliBean.doLogout()}"></h:commandButton> 
-            
-            
-            
-            
-            
+ 
         </h:form>      
     </h:body>
 </html>

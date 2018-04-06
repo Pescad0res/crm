@@ -68,6 +68,22 @@ public ReclamationBean() {
         this.rec = rec;
     }
     
+        public Integer getIdclient1() {
+        return idclient1;
+    }
+
+    public void setIdclient1(Integer idclient1) {
+        this.idclient1 = idclient1;
+    }
+
+    public Integer getIdproduit() {
+        return idproduit;
+    }
+
+    public void setIdproduit(Integer idproduit) {
+        this.idproduit = idproduit;
+    }
+    
             public List<SelectItem> getClientSelect() {
             if (clientSelect == null){
                 
@@ -156,26 +172,28 @@ rec.setProduit(daoprod.findByidP(idproduit));
         
     }
 
-    public Integer getIdclient1() {
-        return idclient1;
-    }
-
-    public void setIdclient1(Integer idclient1) {
-        this.idclient1 = idclient1;
-    }
-
-    public Integer getIdproduit() {
-        return idproduit;
-    }
-
-    public void setIdproduit(Integer idproduit) {
-        this.idproduit = idproduit;
-    }
+public String modif()
+{
+    rec.setClient(daoclient.findByidCli(idclient1));
+    rec.setProduit(daoprod.findByidP(idproduit));
+    dao.edit(rec);
+    return ("ReclamationAll.xhtml"); 
+}
 
   
+    public String rechercher(Integer code)
+    {
+ 
+        
+        rec = dao.findByidRec(code);
+        return ("Reclamation.xhtml");
+    }
     
+    public void supprimer (Integer code)
+    { 
+        dao.delete(code);   
+    }
     
-    
-    
+
     
 }

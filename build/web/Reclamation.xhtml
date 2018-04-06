@@ -8,89 +8,67 @@
         <title>Reclamation</title>
     </h:head>
     <h:body>
-        <b:navBar brand="Reclamations" brandHref="#" >
+        <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
   <b:navbarLinks>
     <b:navLink value="Demandes d'interventions" href="#"></b:navLink>
     <b:navLink value="Contras" href="#"></b:navLink>
     <b:navLink value="La liste de nos produit" href="#"></b:navLink>
   </b:navbarLinks>
 </b:navBar>
-        
-        <h:form>
-            <b:dataTable value="#{recBean.lister()}"
-               var="item"
-               excel="true"
-               csv="true"
-               pdf="true"
-               columnVisibility="true"
-               print="true"
-               >
-                <b:dataTableColumn value="#{item.degUrgence}" />
-                <b:dataTableColumn value="#{item.descCli}" />
-                <b:dataTableColumn value="#{item.descExpert}" />
-                <b:dataTableColumn value="#{item.persEstim}"  />
-                <b:dataTableColumn value="#{item.situation}" />
-                <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.estimation}" />
-                <b:dataTableColumn value="#{item.dateCreRec}" />
-                <b:dataTableColumn value="#{item.dateFin}" />
-                <b:dataTableColumn value="#{item.recEstim}" />
-  </b:dataTable>
-</h:form>
+
 
         <f:view>
 
 
             <h:form>
                 <h1><h:outputText value="Reclamation"/></h1>
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" cellpadding="2">
                     <h:outputLabel value="Client:" for="client" />
                     
 
-                    <h:selectOneMenu id="client" value="#{recBean.idclient1}" >
+                    <b:selectOneMenu id="client" value="#{recBean.idclient1}" >
                         <!-- TODO: fixed -->
                         
                         <f:selectItems value="#{recBean.clientSelect}"  />
                 
-                    </h:selectOneMenu>
+                    </b:selectOneMenu>
                     <h:outputLabel value="Produit:" for="produit" />
-                    <h:selectOneMenu id="produit" value="#{recBean.idproduit}" >
+                    <b:selectOneMenu id="produit" value="#{recBean.idproduit}" >
                         <!-- TODO: fixed -->
                         <f:selectItems value="#{recBean.produitSelect}" />
                         <f:ajax event="change" listener="#{recBean.getinfos()}"/>
-                    </h:selectOneMenu>
+                    </b:selectOneMenu>
+
                     <h:outputLabel value="DateCreRec:" for="dateCreRec" />
-                    <h:inputText id="dateCreRec" value="#{recBean.rec.dateCreRec}" title="DateCreRec" required="true" requiredMessage="The DateCreRec field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                        <b:datepicker id="dateCreRec" mode="toggle-icon" showWeek="true" firstDay="1" value="#{recBean.rec.dateCreRec}" required="true" />
+               
                     <h:outputLabel value="TypeRec:" for="typeRec" />
-                    <h:inputText id="typeRec" value="#{recBean.rec.typeRec}" title="TypeRec" required="true" requiredMessage="The TypeRec field is required."/>
+                    <b:inputText id="typeRec" value="#{recBean.rec.typeRec}" title="TypeRec" required="true" requiredMessage="The TypeRec field is required."/>
                     <h:outputLabel value="DescCli:" for="descCli" />
-                    <h:inputText id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
+                    <b:inputText id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
                     <h:outputLabel value="Situation:" for="situation" />
-                    <h:inputText id="situation" value="#{recBean.rec.situation}" title="Situation" required="true" requiredMessage="The Situation field is required."/>
-                    <h:outputLabel value="PersEstim:" for="persEstim" />
-                    <h:inputText id="persEstim" value="#{recBean.rec.persEstim}" title="PersEstim" required="true" requiredMessage="The PersEstim field is required."/>
+                    <b:inputText id="situation" value="#{recBean.rec.situation}" title="Situation" required="true" requiredMessage="The Situation field is required."/>
+                    <h:outputLabel value="Perssonnel :" for="persEstim" />
+                    <b:inputText id="persEstim" value="#{recBean.rec.persEstim}" title="PersEstim" required="true" requiredMessage="The PersEstim field is required."/>
                     <h:outputLabel value="Estimation:" for="estimation" />
-                    <h:inputText id="estimation" value="#{recBean.rec.estimation}" title="Estimation" required="true" requiredMessage="The Estimation field is required."/>
+                    <b:inputText id="estimation" value="#{recBean.rec.estimation}" title="Estimation" required="true" requiredMessage="The Estimation field is required."/>
                     <h:outputLabel value="DegUrgence:" for="degUrgence" />
-                    <h:inputText id="degUrgence" value="#{recBean.rec.degUrgence}" title="DegUrgence" required="true" requiredMessage="The DegUrgence field is required."/>
+                    <b:inputText id="degUrgence" value="#{recBean.rec.degUrgence}" title="DegUrgence" required="true" requiredMessage="The DegUrgence field is required."/>
                     <h:outputLabel value="DescExpert:" for="descExpert" />
-                    <h:inputText id="descExpert" value="#{recBean.rec.descExpert}" title="DescExpert" required="true" requiredMessage="The DescExpert field is required."/>
+                    <b:inputText id="descExpert" value="#{recBean.rec.descExpert}" title="DescExpert" required="true" requiredMessage="The DescExpert field is required."/>
                     <h:outputLabel value="DateDebut:" for="dateDebut" />
-                    <h:inputText id="dateDebut" value="#{recBean.rec.dateDebut}" title="DateDebut" required="true" requiredMessage="The DateDebut field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="DateFin:" for="dateFin" />
-                    <h:inputText id="dateFin" value="#{recBean.rec.dateFin}" title="DateFin" required="true" requiredMessage="The DateFin field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
+                    <b:datepicker id="dateDebut" mode="toggle-icon" showWeek="true" firstDay="1" value="#{recBean.rec.dateDebut}" required="true" />
                     
-                    <h:commandButton value="Add" action="#{recBean.ajouter()}"/>
+                    <h:outputLabel value="DateFin:" for="dateFin" />
+                    <b:datepicker id="dateFin" mode="toggle-icon" showWeek="true" firstDay="1" value="#{recBean.rec.dateFin}" required="true" />
+                    <b:form horizontal="true">
+                    <b:commandButton value="Add" action="#{recBean.ajouter()}"/> 
+                    <b:commandButton value="Enregister" action="#{recBean.modif()}"/>  
+                    <b:commandButton value="retourner a la liste " action="ReclamationAll.xhtml"/> 
+                    </b:form>
                 </h:panelGrid>
             </h:form>
         </f:view>
 
     </h:body>
 </html>
-
