@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,6 +39,35 @@ public class ReclamationBean {
     
     private Integer idclient1;
     private Integer idproduit;
+    private String type;
+     private String Situation;
+     private String degreurgence;
+
+    public String getDegreurgence() {
+        return degreurgence;
+    }
+
+    public void setDegreurgence(String degreurgence) {
+        this.degreurgence = degreurgence;
+    }
+
+    public String getSituation() {
+        return Situation;
+    }
+
+    public void setSituation(String Situation) {
+        this.Situation = Situation;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+   
   
     Reclamation rec = new Reclamation();
     
@@ -165,6 +195,10 @@ public void getinfos(){
 //loadclient(idclient1);
 rec.setClient(daoclient.findByidCli(idclient1));
 rec.setProduit(daoprod.findByidP(idproduit));
+rec.setTypeRec(type);
+rec.setSituation(Situation);
+rec.setDegUrgence(degreurgence);
+
         //rec.setClient(daoclient.findByidCli(2));
        //rec.setProduit(daoprod.findByidP(1));
         dao.add(rec);

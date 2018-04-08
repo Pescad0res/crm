@@ -42,18 +42,44 @@
                     <h:outputLabel value="DateCreRec:" for="dateCreRec" />
                         <b:datepicker id="dateCreRec" mode="toggle-icon" showWeek="true" firstDay="1" value="#{recBean.rec.dateCreRec}" required="true" />
                
-                    <h:outputLabel value="TypeRec:" for="typeRec" />
-                    <b:inputText id="typeRec" value="#{recBean.rec.typeRec}" title="TypeRec" required="true" requiredMessage="The TypeRec field is required."/>
+                    <h:outputLabel value="TypeRec:" for="type"/>                        
+                        <h:selectOneRadio  id ="type" value="#{recBean.type}">
+                            <f:selectItem itemValue="éclamation logiciel'" itemLabel="Reclamation Logiciel"></f:selectItem>
+                            
+                            
+                            <f:selectItem  itemValue="réclamation technique" itemLabel="Reclamation technique"></f:selectItem>
+                                
+                        </h:selectOneRadio>
                     <h:outputLabel value="DescCli:" for="descCli" />
                     <b:inputText id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
-                    <h:outputLabel value="Situation:" for="situation" />
-                    <b:inputText id="situation" value="#{recBean.rec.situation}" title="Situation" required="true" requiredMessage="The Situation field is required."/>
+                    <h:outputLabel value="Situation:" for="Situation" />
+                    
+
+                    <b:selectOneMenu id="Situation" value="#{recBean.situation}" >
+                        <f:selectItem itemValue="" itemLabel=""></f:selectItem>
+                        <f:selectItem itemValue="1" itemLabel="crée"></f:selectItem>
+                        <f:selectItem itemValue="2" itemLabel="acceptée"></f:selectItem>
+                        <f:selectItem itemValue="3" itemLabel="affectée"></f:selectItem>
+                        <f:selectItem itemValue="4" itemLabel="archivée"></f:selectItem>
+
+                          
+                
+                    </b:selectOneMenu>
                     <h:outputLabel value="Perssonnel :" for="persEstim" />
                     <b:inputText id="persEstim" value="#{recBean.rec.persEstim}" title="PersEstim" required="true" requiredMessage="The PersEstim field is required."/>
                     <h:outputLabel value="Estimation:" for="estimation" />
                     <b:inputText id="estimation" value="#{recBean.rec.estimation}" title="Estimation" required="true" requiredMessage="The Estimation field is required."/>
-                    <h:outputLabel value="DegUrgence:" for="degUrgence" />
-                    <b:inputText id="degUrgence" value="#{recBean.rec.degUrgence}" title="DegUrgence" required="true" requiredMessage="The DegUrgence field is required."/>
+                    
+                     <h:outputLabel value="DegUrgence:" for="degUrgence" />
+                    
+
+                     <b:selectOneMenu id="degUrgence" value="#{recBean.degreurgence}" >
+                        <f:selectItem itemValue="" itemLabel=""></f:selectItem>
+                        <f:selectItem itemValue="1" itemLabel="Urgent"></f:selectItem>
+                        <f:selectItem itemValue="2" itemLabel="Trés uregent"></f:selectItem>
+                        <f:selectItem itemValue="3" itemLabel="Pas urgent"></f:selectItem>
+                       
+                    </b:selectOneMenu>
                     <h:outputLabel value="DescExpert:" for="descExpert" />
                     <b:inputText id="descExpert" value="#{recBean.rec.descExpert}" title="DescExpert" required="true" requiredMessage="The DescExpert field is required."/>
                     <h:outputLabel value="DateDebut:" for="dateDebut" />
