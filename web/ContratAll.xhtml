@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Reclamation</title>
+        <title>Contrat</title>
     </h:head>
     <h:body>
         <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
@@ -24,8 +24,8 @@
 </b:navBar>
         
         <h:form>
-            <b:commandButton value="Ajouter une reclamation" icon="cloud" action="Reclamation.xhtml"  ></b:commandButton>
-            <b:dataTable value="#{recBean.lister()}"
+          
+            <b:dataTable value="#{conBean.lister()}"
                var="item"
                excel="true"
                csv="true"
@@ -33,26 +33,17 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idRec}"/>
-                <b:dataTableColumn value="#{item.degUrgence}" />
-                <b:dataTableColumn value="#{item.descCli}" />
-                <b:dataTableColumn value="#{item.descExpert}" />
-                <b:dataTableColumn value="#{item.persEstim}"  />
-                <b:dataTableColumn value="#{item.situation}" />
-                <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.estimation}" />
-                <b:dataTableColumn value="#{item.dateCreRec}" />
+                <b:dataTableColumn value="#{item.idC}"/>
+                <b:dataTableColumn value="#{item.idContrat}" />
+                <b:dataTableColumn value="#{conBean.con.client.idCli}" />
+                <b:dataTableColumn value="#{item.dateContrat}" />
+                <b:dataTableColumn value="#{item.refManuelle}" />
+                <b:dataTableColumn value="#{item.dateSign}" />
+                <b:dataTableColumn value="#{item.dateEffet}" />
+                <b:dataTableColumn value="#{item.duree}" />
                 <b:dataTableColumn value="#{item.dateFin}" />
-                <b:dataTableColumn value="#{item.recEstim}" />
-    <h:column>
-                
-        <b:commandButton value="Modifier" icon="edit" action="#{recBean.rechercher(item.idRec)}" />
-                
-              
-            </h:column>
-            <h:column>
-                <b:commandButton value="Supprimer" icon="trash" action="#{recBean.supprimer(item.idRec)}"/>
-</h:column>
+                <b:dataTableColumn value="#{item.nbInterPrev}" />
+
   </b:dataTable>
 </h:form>
 

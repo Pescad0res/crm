@@ -34,6 +34,8 @@ public class ProduitBean {
         this.pro = pro;
     }
     
- 
+     public List <Produit> lister(){
+        return dao.findAll();
+    }
 
 }

@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Reclamation</title>
+        <title>Intervention</title>
     </h:head>
     <h:body>
         <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
@@ -24,8 +24,8 @@
 </b:navBar>
         
         <h:form>
-            <b:commandButton value="Ajouter une reclamation" icon="cloud" action="Reclamation.xhtml"  ></b:commandButton>
-            <b:dataTable value="#{recBean.lister()}"
+          
+            <b:dataTable value="#{interBean.lister()}"
                var="item"
                excel="true"
                csv="true"
@@ -33,26 +33,10 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idRec}"/>
-                <b:dataTableColumn value="#{item.degUrgence}" />
-                <b:dataTableColumn value="#{item.descCli}" />
-                <b:dataTableColumn value="#{item.descExpert}" />
-                <b:dataTableColumn value="#{item.persEstim}"  />
-                <b:dataTableColumn value="#{item.situation}" />
-                <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.estimation}" />
-                <b:dataTableColumn value="#{item.dateCreRec}" />
-                <b:dataTableColumn value="#{item.dateFin}" />
-                <b:dataTableColumn value="#{item.recEstim}" />
-    <h:column>
-                
-        <b:commandButton value="Modifier" icon="edit" action="#{recBean.rechercher(item.idRec)}" />
-                
-              
-            </h:column>
-            <h:column>
-                <b:commandButton value="Supprimer" icon="trash" action="#{recBean.supprimer(item.idRec)}"/>
-</h:column>
+                <b:dataTableColumn value="#{item.idPv}"/>
+                <b:dataTableColumn value="#{item.observGen}" />
+                <b:dataTableColumn value="#{item.reclamation.idRec}"/>
+             
   </b:dataTable>
 </h:form>
 

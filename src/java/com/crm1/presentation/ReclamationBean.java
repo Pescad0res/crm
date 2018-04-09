@@ -208,8 +208,10 @@ rec.setDegUrgence(degreurgence);
 
 public String modif()
 {
-    rec.setClient(daoclient.findByidCli(idclient1));
-    rec.setProduit(daoprod.findByidP(idproduit));
+    //rec.setClient(daoclient.findByidCli(idclient1));
+    //rec.setProduit(daoprod.findByidP(idproduit));
+    rec.setClient(daoclient.findByidCli(1));
+    rec.setProduit(daoprod.findByidP(1));
     dao.edit(rec);
     return ("ReclamationAll.xhtml"); 
 }
