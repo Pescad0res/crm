@@ -9,14 +9,11 @@ import com.crm1.dao.ClientDAO;
 import com.crm1.dao.ClientDAOImpl;
 import com.crm1.dao.HibernateUtil;
 import com.crm1.entity.Client;
-import com.crm1.metier.ClientServicesImpl;
-import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,11 +46,7 @@ public class ClientBean {
         this.cli = cli;
     }
 
-    
 
-
-    
-    
     
     /*public List<Client> lister(){
         return dao.findAll();
@@ -87,7 +80,7 @@ public class ClientBean {
                 //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
                 
                 //BootFaces
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "client not found !");
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Client n'existe pas !");
                 FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
                 //BootFaces
                 
@@ -105,5 +98,4 @@ public class ClientBean {
         hs.invalidate();
         return "/index.xhtml";
          }
-        
                         }

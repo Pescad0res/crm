@@ -1,110 +1,63 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Personnel</title>
-        <link rel="stylesheet" href="./resources/css/bootstrap.css" />
-        <script src="./resources/js/jquery-3.3.1.min.js"></script>
-        <script src="./resources/js/bootstrap.js"></script>
+        <title>Personnel Login</title>
     </h:head>
     <h:body>
-        <div class="container">
-            <div class="pannel panel-primary>">
-                <div class="panel-heading">Ajouter Personnel</div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="clos-sm-8">
+        
         <f:view>
-             
-            <h:form>
-                
-                
-                
-                   
-                    <h:outputLabel value="Cnrps:" for="cnrps" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="cnrps" value="#{PerBean.per.cnrps}" title="Cnrps" required="true" requiredMessage="The Cnrps field is required."/>
-                    </div>
-                    
-                    <h:outputLabel value="Cin:" for="cin" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="cin" value="#{PerBean.per.cin}" title="Cin" required="true" requiredMessage="The Cin field is required."/>
-                    </div>
-                    <h:outputLabel value="NomPers:" for="nomPers" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="nomPers" value="#{PerBean.per.nomPers}" title="NomPers" required="true" requiredMessage="The NomPers field is required."/>
-                    </div>
-                    <h:outputLabel value="PrenomPers:" for="prenomPers" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="prenomPers" value="#{PerBean.per.prenomPers}" title="PrenomPers" required="true" requiredMessage="The PrenomPers field is required."/>
-                    </div>
-                    <h:outputLabel value="LoginPers:" for="loginPers" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="loginPers" value="#{PerBean.per.loginPers}" title="LoginPers" required="true" requiredMessage="The LoginPers field is required."/>
-                    </div>
-                    <h:outputLabel value="PwdPers:" for="pwdPers" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="pwdPers" value="#{PerBean.per.pwdPers}" title="PwdPers" required="true" requiredMessage="The PwdPers field is required."/>
-                    </div>
-                    <h:outputLabel value="DateNais:" for="dateNais" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="dateNais" value="#{PerBean.per.dateNais}" title="DateNais" required="true" requiredMessage="The DateNais field is required.">
-                        
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                        </div>
-                    <h:outputLabel value="Sexe:" for="sexe" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="sexe" value="#{PerBean.per.sexe}" title="Sexe" required="true" requiredMessage="The Sexe field is required."/>
-                    </div>
-                    <h:outputLabel value="EtatCivil:" for="etatCivil" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="etatCivil" value="#{PerBean.per.etatCivil}" title="EtatCivil" required="true" requiredMessage="The EtatCivil field is required."/>
-                    </div>
-                    <h:outputLabel value="Nat:" for="nat" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="nat" value="#{PerBean.per.nat}" title="Nat" required="true" requiredMessage="The Nat field is required.">
-                        
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                        </div>
-                    <h:outputLabel value="DateEmbauche:" for="dateEmbauche" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="dateEmbauche" value="#{PerBean.per.dateEmbauche}" title="DateEmbauche" required="true" requiredMessage="The DateEmbauche field is required."/>
-                    </div>
-                    <h:outputLabel value="Tel:" for="tel" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="tel" value="#{PerBean.per.tel}" title="Tel" required="true" requiredMessage="The Tel field is required."/>
-                    </div>
-                    <h:outputLabel value="Email:" for="email" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="email" value="#{PerBean.per.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
-                    </div>
-                    <h:outputLabel value="Superieur:" for="superieur" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="superieur" value="#{PerBean.per.superieur}" title="Superieur" required="true" requiredMessage="The Superieur field is required."/>
-                    </div>
-                    <h:outputLabel value="Grade:" for="grade" styleClass="control-label col-sm-2"/>
-                    <div class="col-sm-10">
-                    <h:inputText id="grade" value="#{PerBean.per.grade}" title="Grade" required="true" requiredMessage="The Grade field is required."/>
-                </div>
-                    <div class="form-group"></div>
-                    <div class="col-sm-offset-2 col-sm-8">
-                        <h:commandButton value="Add" action="#{PerBean.ajouter()}" class="btn btn-danger glyphicon-plus"/>
-                        <font color="red"><h:messages id="msgs" /></font>
-                    </div>
-                    
-                    
-            </h:form>
+            
+            <h:form id="loginForm">
+  <b:container >
+    <b:panel title="Authentification" look="primary">
+      <b:row>
+        <b:column medium-screen="2">
+          <h:outputText value="Nom d'utilisateur" />
+        </b:column>
+        <b:column medium-screen="4">
+            <b:inputText placeholder="Nom d'utilisateur" id="username" value="#{PerBean.per.loginPers}"
+                        autocomplete="false" update="@(.message)">
+            <f:facet name="prepend">
+              <b:icon name="user" />
+            </f:facet>
+          </b:inputText>
+        </b:column>
+        <b:column medium-screen="6" style-class="message">
+          <b:message for="username" />
+        </b:column>
+      </b:row>
+      <b:row>
+        <b:column medium-screen="2">
+          <h:outputText value="Mot de passe" />
+        </b:column>
+        <b:column medium-screen="4">
+            <b:inputSecret placeholder="Mot de passe" id="password" value="#{PerBean.per.pwdPers}"
+                          autocomplete="false" update="@(.message)">
+            <f:facet name="prepend">
+              <b:iconAwesome name="key" />
+            </f:facet>
+          </b:inputSecret>
+        </b:column>
+        <b:column medium-screen="6" styleClass="message">
+          <b:message for="password"/>
+        </b:column>
+      </b:row>
+      <b:row>
+        <b:column span="2" offset="2">
+            <b:commandButton value="login" action="#{PerBean.LoginCheck()}" update="@form" look="primary"
+                           style="width:100%" />
+        </b:column>
+      </b:row>
+    </b:panel>
+  </b:container>
+</h:form>
+            
+            
         </f:view>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         
     </h:body>
 </html>
-
