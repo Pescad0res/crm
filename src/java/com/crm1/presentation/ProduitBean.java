@@ -8,12 +8,9 @@ package com.crm1.presentation;
 import com.crm1.dao.ProduitDAO;
 import com.crm1.dao.ProduitDAOImpl;
 import com.crm1.entity.Produit;
-import com.crm1.metier.ProduitServicesImpl;
-import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.model.SelectItem;
 
 /**
  *
@@ -37,5 +34,6 @@ public class ProduitBean {
      public List <Produit> lister(){
         return dao.findAll();
     }
+     
 
 }

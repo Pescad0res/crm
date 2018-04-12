@@ -1,12 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="IdProd:" for="idProd" />
+                    <h:inputText id="idProd" value="#{dirBean.pro.idProd}" title="IdProd" required="true" requiredMessage="The IdProd field is required."/>
+                    <h:outputLabel value="LibProd:" for="libProd" />
+                    <h:inputText id="libProd" value="#{dirBean.pro.libProd}" title="LibProd" required="true" requiredMessage="The LibProd field is required."/>
+                    <h:outputLabel value="TypeDuProduit:" for="typeDuProduit" />
+                    <h:inputText id="typeDuProduit" value="#{dirBean.pro.typeDuProduit}" title="TypeDuProduit" required="true" requiredMessage="The TypeDuProduit field is required."/>
+                    <h:outputLabel value="DescProd:" for="descProd" />
+                    <h:inputText id="descProd" value="#{dirBean.pro.descProd}" title="DescProd" required="true" requiredMessage="The DescProd field is required."/>
+                    <h:outputLabel value="VersionProd:" for="versionProd" />
+                    <h:inputText id="versionProd" value="#{dirBean.pro.versionProd}" title="VersionProd" required="true" requiredMessage="The VersionProd field is required."/>
+                    <h:outputLabel value="DateCreaProd:" for="dateCreaProd" />
+                    <h:inputText id="dateCreaProd" value="#{dirBean.pro.dateCreaProd}" title="DateCreaProd" required="true" requiredMessage="The DateCreaProd field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="ChefProd:" for="chefProd" />
+                    <h:inputText id="chefProd" value="#{dirBean.pro.chefProd}" title="ChefProd" required="true" requiredMessage="The ChefProd field is required."/>
+                    <b:form horizontal="true">
+                    <b:commandButton value="Add" action="#{dirBean.ajouter()}"/> 
+                    <b:commandButton value="Enregister" action="#{dirBean.modif()}"/>  
+                    <b:commandButton value="retourner a la liste " action="directeurProduitAll.xhtml"/> 
+                    </b:form>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
     </h:body>
 </html>
 

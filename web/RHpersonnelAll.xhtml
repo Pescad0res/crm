@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Personnel</title>
+    </h:head>
+    <h:body>
+        <b:navBar brand="Personnel" brandHref="RhpersonnelAll.xhtml" >
+  <b:navbarLinks>
+    
+   
+           <h:form>
+            Welcome 
+            <h:outputText value="#{sessionScope['logper'] }" />
+            
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+ 
+        </h:form>  
+  </b:navbarLinks>
+</b:navBar>
+        
+        <h:form>
+            <b:commandButton value="Ajouter un Personnel" icon="cloud" action="rh.xhtml"  ></b:commandButton>
+            <b:dataTable value="#{rhBean.lister()}"
+               var="item"
+               excel="true"
+               csv="true"
+               pdf="true"
+               columnVisibility="true"
+               print="true"
+               >
+                <b:dataTableColumn value="#{item.idPers}"/>
+                <b:dataTableColumn value="#{item.cnrps}" />
+                <b:dataTableColumn value="#{item.cin}" />
+                <b:dataTableColumn value="#{item.nomPers}" />
+                <b:dataTableColumn value="#{item.prenomPers}"  />
+                <b:dataTableColumn value="#{item.loginPers}" />
+                <b:dataTableColumn value="#{item.pwdPers}"  />
+                <b:dataTableColumn value="#{item.sexe}" />
+                <b:dataTableColumn value="#{item.etatCivil}" />
+                <b:dataTableColumn value="#{item.nat}" />
+                <b:dataTableColumn value="#{item.dateEmbauche}" />
+                <b:dataTableColumn value="#{item.tel}" />
+                <b:dataTableColumn value="#{item.email}" />
+                <b:dataTableColumn value="#{item.superieur}" />
+                <b:dataTableColumn value="#{item.grade}" />
+                  
+    <h:column>
+                
+        <b:commandButton value="Modifier" icon="edit" action="#{rhBean.rechercher(item.idPers)}" />
+                
+              
+            </h:column>
+            <h:column>
+                <b:commandButton value="Supprimer" icon="trash" action="#{rhBean.supprimer(item.idPers)}"/>
+</h:column>
+  </b:dataTable>
+</h:form>
+
+        <f:view>
+
+
+        
+        </f:view>
+
+    </h:body>
+</html>

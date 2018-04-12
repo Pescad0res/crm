@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>interventionn</title>
+    </h:head>
+    <h:body>
+        <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" >
+  <b:navbarLinks>
+    <b:navLink value="archiver/annuler reclamation" href="directeurRec.xhtml"></b:navLink>
+    <b:navLink value="Pv d'interventionn" href="directeurintervention.xhtml"></b:navLink>
+    <b:navLink value="fiche de suivi" href="directeurfiche.xhtml"></b:navLink>
+   
+           <h:form>
+            Welcome 
+            <h:outputText value="#{sessionScope['logper'] }" />
+            
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+ 
+        </h:form>  
+  </b:navbarLinks>
+</b:navBar>
+        
+        <h:form>
+            <b:dataTable value="#{dirBean.listerint()}"
+               var="item"
+               excel="true"
+               csv="true"
+               pdf="true"
+               columnVisibility="true"
+               print="true"
+               >
+               <b:dataTableColumn value="#{item.idPv}"/>
+                <b:dataTableColumn value="#{item.observGen}" />
+                <b:dataTableColumn value="#{item.reclamation.idRec}"/>
+ 
+  </b:dataTable>
+</h:form>
+
+        <f:view>
+
+
+        
+        </f:view>
+
+    </h:body>
+</html>

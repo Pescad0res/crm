@@ -61,7 +61,7 @@ public class PersonnelBean {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
                 FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
              
-            return "/directeur.xhtml?faces-redirect=true";
+            return "/directeurProduitAll.xhtml?faces-redirect=true";
         }else if (list1.size() > 0) {
             logper = per.getLoginPers();
                 HttpSession hs = sessionUtil.getSession();
@@ -79,7 +79,7 @@ public class PersonnelBean {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
                 FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
              
-            return "/intervenant_logiciel.xhtml?faces-redirect=true";
+            return "/IntervLogAll.xhtml?faces-redirect=true";
             
         }
         else if (list3.size() > 0) {
@@ -138,18 +138,11 @@ public class PersonnelBean {
         return null;
         }
     
-    
-    
-    
+    public String doLogout(){
+        HttpSession hs = sessionUtil.getSession();
+        hs.invalidate();
+        return "/Personnel.xhtml";
+         }
 
-    
-    
-    
-    public void ajouter(){
-        
-        dao.add(per);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
-        
-    }
        
 }

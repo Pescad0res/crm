@@ -1,12 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Ressource Humaine</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Ressource Humaine"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdPers:" for="idPers" />
+                    <h:inputText id="idPers" value="#{rhBean.per.idPers}" title="IdPers" required="true" requiredMessage="The IdPers field is required."/>
+                    <h:outputLabel value="Cnrps:" for="cnrps" />
+                    <h:inputText id="cnrps" value="#{rhBean.per.cnrps}" title="Cnrps" required="true" requiredMessage="The Cnrps field is required."/>
+                    <h:outputLabel value="Cin:" for="cin" />
+                    <h:inputText id="cin" value="#{rhBean.per.cin}" title="Cin" required="true" requiredMessage="The Cin field is required."/>
+                    <h:outputLabel value="NomPers:" for="nomPers" />
+                    <h:inputText id="nomPers" value="#{rhBean.per.nomPers}" title="NomPers" required="true" requiredMessage="The NomPers field is required."/>
+                    <h:outputLabel value="PrenomPers:" for="prenomPers" />
+                    <h:inputText id="prenomPers" value="#{rhBean.per.prenomPers}" title="PrenomPers" required="true" requiredMessage="The PrenomPers field is required."/>
+                    <h:outputLabel value="LoginPers:" for="loginPers" />
+                    <h:inputText id="loginPers" value="#{rhBean.per.loginPers}" title="LoginPers" required="true" requiredMessage="The LoginPers field is required."/>
+                    <h:outputLabel value="PwdPers:" for="pwdPers" />
+                    <h:inputText id="pwdPers" value="#{rhBean.per.pwdPers}" title="PwdPers" required="true" requiredMessage="The PwdPers field is required."/>
+                    <h:outputLabel value="DateNais:" for="dateNais" />
+                    <h:inputText id="dateNais" value="#{rhBean.per.dateNais}" title="DateNais" required="true" requiredMessage="The DateNais field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Sexe:" for="sexe" />
+                    <h:inputText id="sexe" value="#{rhBean.per.sexe}" title="Sexe" required="true" requiredMessage="The Sexe field is required."/>
+                    <h:outputLabel value="EtatCivil:" for="etatCivil" />
+                    <h:inputText id="etatCivil" value="#{rhBean.per.etatCivil}" title="EtatCivil" required="true" requiredMessage="The EtatCivil field is required."/>
+                    <h:outputLabel value="Nat:" for="nat" />
+                    <h:inputText id="nat" value="#{rhBean.per.nat}" title="Nat" required="true" requiredMessage="The Nat field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="DateEmbauche:" for="dateEmbauche" />
+                    <h:inputText id="dateEmbauche" value="#{rhBean.per.dateEmbauche}" title="DateEmbauche" required="true" requiredMessage="The DateEmbauche field is required."/>
+                    <h:outputLabel value="Tel:" for="tel" />
+                    <h:inputText id="tel" value="#{rhBean.per.tel}" title="Tel" required="true" requiredMessage="The Tel field is required."/>
+                    <h:outputLabel value="Email:" for="email" />
+                    <h:inputText id="email" value="#{rhBean.per.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                    <h:outputLabel value="Superieur:" for="superieur" />
+                    <h:inputText id="superieur" value="#{rhBean.per.superieur}" title="Superieur" required="true" requiredMessage="The Superieur field is required."/>
+                    <h:outputLabel value="Grade:" for="grade" />
+                    <h:inputText id="grade" value="#{rhBean.per.grade}" title="Grade" required="true" requiredMessage="The Grade field is required."/>
+                    <b:commandButton value="Add" action="#{rhBean.ajouter()}"/> 
+                    <b:commandButton value="Enregister" action="#{rhBean.modif()}"/>  
+                    <b:commandButton value="retourner a la liste " action="RHpersonnelAll.xhtml"/> 
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
     </h:body>
 </html>
 
