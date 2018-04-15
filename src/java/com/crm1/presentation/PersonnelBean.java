@@ -99,7 +99,7 @@ public class PersonnelBean {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
                 FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
              
-            return "/rh.xhtml?faces-redirect=true";
+            return "/RHpersonnelAll.xhtml?faces-redirect=true";
             
         }
         else if (list5.size() > 0) {

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Client</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Ajouter Client"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="MatFisc:" for="matFisc" />
+                    <h:inputText id="matFisc" value="#{rfBean.cli.matFisc}" title="MatFisc" />
+                    <h:outputLabel value="NomCli:" for="nomCli" />
+                    <h:inputText id="nomCli" value="#{rfBean.cli.nomCli}" title="NomCli" />
+                    <h:outputLabel value="LoginCli:" for="loginCli" />
+                    <h:inputText id="loginCli" value="#{rfBean.cli.loginCli}" title="LoginCli" />
+                    <h:outputLabel value="PwdCli:" for="pwdCli" />
+                    <h:inputText id="pwdCli" value="#{rfBean.cli.pwdCli}" title="PwdCli" />
+                    <h:outputLabel value="NomRep:" for="nomRep" />
+                    <h:inputText id="nomRep" value="#{rfBean.cli.nomRep}" title="NomRep" />
+                    <h:outputLabel value="PrenomRep:" for="prenomRep" />
+                    <h:inputText id="prenomRep" value="#{rfBean.cli.prenomRep}" title="PrenomRep" />
+                    <b:form horizontal="true">
+                        <b:commandButton value="Add" action="#{rfBean.ajoutercli()}"/> 
+                        <b:commandButton value="Enregister" action="#{rfBean.modifcli()}"/>  
+                    <b:commandButton value="retourner a la liste " action="rfcliAll.xhtml"/> 
+                    </b:form>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

@@ -18,6 +18,6 @@ public interface ContratDAO {
     public Contrat edit(Contrat con);
     public Contrat delete(Integer idC);
     public List<Contrat> findAll();
-    public Contrat findByidCli(Integer idC);
+    public Contrat findByidC(Integer idC);
     
 }

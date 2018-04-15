@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Contrat</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="IdC:" for="idC" />
+                    <h:inputText id="idC" value="#{rfBean.cont.idC}" title="IdC" required="true" requiredMessage="The IdC field is required."/>
+                    <h:outputLabel value="Client:" for="client" />
+                    <b:selectOneMenu id="client" value="#{rfBean.idclient}" >
+                        <!-- TODO: fixed -->
+                        
+                        <f:selectItems value="#{rfBean.clientSelect}"  />
+                
+                    </b:selectOneMenu>
+                    <h:outputLabel value="IdContrat:" for="idContrat" />
+                    <h:inputText id="idContrat" value="#{rfBean.cont.idContrat}" title="IdContrat" required="true" requiredMessage="The IdContrat field is required."/>
+                    <h:outputLabel value="DateContrat:" for="dateContrat" />
+                    <h:inputText id="dateContrat" value="#{rfBean.cont.dateContrat}" title="DateContrat" required="true" requiredMessage="The DateContrat field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="RefManuelle:" for="refManuelle" />
+                    <h:inputText id="refManuelle" value="#{rfBean.cont.refManuelle}" title="RefManuelle" required="true" requiredMessage="The RefManuelle field is required."/>
+                    <h:outputLabel value="DateSign:" for="dateSign" />
+                    <h:inputText id="dateSign" value="#{rfBean.cont.dateSign}" title="DateSign" required="true" requiredMessage="The DateSign field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="DateEffet:" for="dateEffet" />
+                    <h:inputText id="dateEffet" value="#{rfBean.cont.dateEffet}" title="DateEffet" required="true" requiredMessage="The DateEffet field is required."/>
+                    <h:outputLabel value="Duree:" for="duree" />
+                    <h:inputText id="duree" value="#{rfBean.cont.duree}" title="Duree" required="true" requiredMessage="The Duree field is required."/>
+                    <h:outputLabel value="DateFin:" for="dateFin" />
+                    <h:inputText id="dateFin" value="#{rfBean.cont.dateFin}" title="DateFin" required="true" requiredMessage="The DateFin field is required.">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="NbInterPrev:" for="nbInterPrev" />
+                    <h:inputText id="nbInterPrev" value="#{rfBean.cont.nbInterPrev}" title="NbInterPrev" required="true" requiredMessage="The NbInterPrev field is required."/>
+                    <h:outputLabel value="ContratTechnique:" for="contratTechnique" />
+                    <h:selectOneMenu id="contratTechnique" value="#{rfBean.cont.contratTechnique}" title="ContratTechnique" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <b:form horizontal="true">
+                        <b:commandButton value="Add" action="#{rfBean.ajoutercli()}"/> 
+                        <b:commandButton value="Enregister" action="#{rfBean.modifcli()}"/>  
+                    <b:commandButton value="retourner a la liste " action="rfcliAll.xhtml"/> 
+                    </b:form>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

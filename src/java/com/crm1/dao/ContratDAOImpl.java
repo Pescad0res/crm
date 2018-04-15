@@ -36,7 +36,7 @@ public class ContratDAOImpl implements ContratDAO {
     @Override
     public Contrat delete(Integer idC) {
         ses.beginTransaction();
-        Contrat cont = findByidCli(idC);
+        Contrat cont = findByidC(idC);
         ses.delete(cont);
         ses.getTransaction().commit();
         return null;
@@ -48,7 +48,7 @@ public class ContratDAOImpl implements ContratDAO {
     }
 
     @Override
-    public Contrat findByidCli(Integer idC) {
+    public Contrat findByidC(Integer idC) {
         return (Contrat) ses.get(Contrat.class,idC);
     }
     
