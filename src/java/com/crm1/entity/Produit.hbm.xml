@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 30, 2018 5:12:54 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 18, 2018 5:23:40 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.crm1.entity.Produit" table="produit" catalog="crm" optimistic-lock="version">
         <id name="idP" type="java.lang.Integer">
@@ -45,7 +45,7 @@
         </property>
         <set name="reclamations" table="reclamation" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Id_p" not-null="true" />
+                <column name="Id_p" />
             </key>
             <one-to-many class="com.crm1.entity.Reclamation" />
         </set>

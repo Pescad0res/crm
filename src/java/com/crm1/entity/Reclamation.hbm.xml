@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 30, 2018 5:12:54 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 18, 2018 5:23:40 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.crm1.entity.Reclamation" table="reclamation" catalog="crm" optimistic-lock="version">
         <id name="idRec" type="java.lang.Integer">
@@ -12,15 +12,15 @@
             <column name="Id_cli" not-null="true" />
         </many-to-one>
         <many-to-one name="produit" class="com.crm1.entity.Produit" fetch="select">
-            <column name="Id_p" not-null="true" />
+            <column name="Id_p" />
         </many-to-one>
         <property name="dateCreRec" type="date">
-            <column name="Date_cre_rec" length="10" not-null="true">
+            <column name="Date_cre_rec" length="10">
                 <comment>date cr&#233;ation de la r&#233;clamation</comment>
             </column>
         </property>
         <property name="typeRec" type="string">
-            <column name="Type_rec" length="21" not-null="true">
+            <column name="Type_rec" length="30" not-null="true">
                 <comment>Type de la r&#233;clamation</comment>
             </column>
         </property>
@@ -30,7 +30,7 @@
             </column>
         </property>
         <property name="descCli" type="string">
-            <column name="Desc_cli" length="8" not-null="true">
+            <column name="Desc_cli" length="200" not-null="true">
                 <comment>Descript ion du client</comment>
             </column>
         </property>
@@ -45,12 +45,12 @@
             </column>
         </property>
         <property name="persEstim" type="string">
-            <column name="Pers_estim" length="12" not-null="true">
+            <column name="Pers_estim" length="12">
                 <comment>Le personnel qui va estimer la r&#233;clamation</comment>
             </column>
         </property>
-        <property name="estimation" type="int">
-            <column name="estimation" not-null="true">
+        <property name="estimation" type="java.lang.Integer">
+            <column name="estimation">
                 <comment>Estimation en jours pour traiter la r&#233;clamation</comment>
             </column>
         </property>
@@ -60,17 +60,17 @@
             </column>
         </property>
         <property name="descExpert" type="string">
-            <column name="Desc_expert" not-null="true">
+            <column name="Desc_expert">
                 <comment>La description de l&#146;expert (responsable technique ou chef de produit)</comment>
             </column>
         </property>
         <property name="dateDebut" type="date">
-            <column name="Date_debut" length="10" not-null="true">
+            <column name="Date_debut" length="10">
                 <comment>Date d&#233;but du traitement de la r&#233;clamation</comment>
             </column>
         </property>
         <property name="dateFin" type="date">
-            <column name="Date_fin" length="10" not-null="true">
+            <column name="Date_fin" length="10">
                 <comment>Date fin du traitement de la r&#233;clamation</comment>
             </column>
         </property>

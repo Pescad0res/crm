@@ -1,9 +1,8 @@
 package com.crm1.entity;
-// Generated Mar 30, 2018 5:12:53 PM by Hibernate Tools 4.3.1
+// Generated Apr 18, 2018 5:23:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,7 +58,7 @@ public class Client  implements java.io.Serializable {
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
-    @Column(name="Id_cli", unique=true , nullable=false)
+    @Column(name="Id_cli", unique=true, nullable=false)
     public Integer getIdCli() {
         return this.idCli;
     }
@@ -171,75 +170,6 @@ public class Client  implements java.io.Serializable {
     
     public void setContrats(Set<Contrat> contrats) {
         this.contrats = contrats;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.idCli);
-        hash = 29 * hash + Objects.hashCode(this.matFisc);
-        hash = 29 * hash + Objects.hashCode(this.nomCli);
-        hash = 29 * hash + Objects.hashCode(this.loginCli);
-        hash = 29 * hash + Objects.hashCode(this.pwdCli);
-        hash = 29 * hash + Objects.hashCode(this.nomRep);
-        hash = 29 * hash + Objects.hashCode(this.prenomRep);
-        hash = 29 * hash + Objects.hashCode(this.contacts);
-        hash = 29 * hash + Objects.hashCode(this.adresses);
-        hash = 29 * hash + Objects.hashCode(this.reclamations);
-        hash = 29 * hash + Objects.hashCode(this.selectActivites);
-        hash = 29 * hash + Objects.hashCode(this.contrats);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Client other = (Client) obj;
-        if (!Objects.equals(this.matFisc, other.matFisc)) {
-            return false;
-        }
-        if (!Objects.equals(this.nomCli, other.nomCli)) {
-            return false;
-        }
-        if (!Objects.equals(this.loginCli, other.loginCli)) {
-            return false;
-        }
-        if (!Objects.equals(this.pwdCli, other.pwdCli)) {
-            return false;
-        }
-        if (!Objects.equals(this.nomRep, other.nomRep)) {
-            return false;
-        }
-        if (!Objects.equals(this.prenomRep, other.prenomRep)) {
-            return false;
-        }
-        if (!Objects.equals(this.idCli, other.idCli)) {
-            return false;
-        }
-        if (!Objects.equals(this.contacts, other.contacts)) {
-            return false;
-        }
-        if (!Objects.equals(this.adresses, other.adresses)) {
-            return false;
-        }
-        if (!Objects.equals(this.reclamations, other.reclamations)) {
-            return false;
-        }
-        if (!Objects.equals(this.selectActivites, other.selectActivites)) {
-            return false;
-        }
-        if (!Objects.equals(this.contrats, other.contrats)) {
-            return false;
-        }
-        return true;
     }
 
 

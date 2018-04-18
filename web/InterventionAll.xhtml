@@ -10,7 +10,7 @@
     <h:body>
         <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
   <b:navbarLinks>
-    <b:navLink value="Demandes d'interventions" href="InterventionAll.xhtml"></b:navLink>
+    <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml"></b:navLink>
     <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
     <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>
            <h:form>
@@ -34,9 +34,10 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idPv}"/>
-                <b:dataTableColumn value="#{item.observGen}" />
-                <b:dataTableColumn value="#{item.reclamation.idRec}"/>
+                <b:dataTableColumn label="Description" value="#{item.reclamation.descCli}"/>
+                <b:dataTableColumn  value="#{item.reclamation.situation}"/>
+                <b:dataTableColumn label="Observation générale" value="#{item.observGen}" />
+                <b:dataTableColumn label="Personnel" value="#{item.reclamation.persEstim}"/>
              
   </b:dataTable>
 </h:form>

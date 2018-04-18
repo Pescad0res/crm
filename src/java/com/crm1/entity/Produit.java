@@ -1,10 +1,9 @@
 package com.crm1.entity;
-// Generated Mar 30, 2018 5:12:53 PM by Hibernate Tools 4.3.1
+// Generated Apr 18, 2018 5:23:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -172,71 +171,6 @@ public class Produit  implements java.io.Serializable {
     
     public void setContratLogiciels(Set<ContratLogiciel> contratLogiciels) {
         this.contratLogiciels = contratLogiciels;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.idP);
-        hash = 23 * hash + Objects.hashCode(this.idProd);
-        hash = 23 * hash + Objects.hashCode(this.libProd);
-        hash = 23 * hash + Objects.hashCode(this.typeDuProduit);
-        hash = 23 * hash + Objects.hashCode(this.descProd);
-        hash = 23 * hash + Objects.hashCode(this.versionProd);
-        hash = 23 * hash + Objects.hashCode(this.dateCreaProd);
-        hash = 23 * hash + Objects.hashCode(this.chefProd);
-        hash = 23 * hash + Objects.hashCode(this.reclamations);
-        hash = 23 * hash + Objects.hashCode(this.affectations);
-        hash = 23 * hash + Objects.hashCode(this.contratLogiciels);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Produit other = (Produit) obj;
-        if (!Objects.equals(this.idProd, other.idProd)) {
-            return false;
-        }
-        if (!Objects.equals(this.libProd, other.libProd)) {
-            return false;
-        }
-        if (!Objects.equals(this.typeDuProduit, other.typeDuProduit)) {
-            return false;
-        }
-        if (!Objects.equals(this.descProd, other.descProd)) {
-            return false;
-        }
-        if (!Objects.equals(this.versionProd, other.versionProd)) {
-            return false;
-        }
-        if (!Objects.equals(this.chefProd, other.chefProd)) {
-            return false;
-        }
-        if (!Objects.equals(this.idP, other.idP)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateCreaProd, other.dateCreaProd)) {
-            return false;
-        }
-        if (!Objects.equals(this.reclamations, other.reclamations)) {
-            return false;
-        }
-        if (!Objects.equals(this.affectations, other.affectations)) {
-            return false;
-        }
-        if (!Objects.equals(this.contratLogiciels, other.contratLogiciels)) {
-            return false;
-        }
-        return true;
     }
 
 

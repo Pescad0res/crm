@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Mar 30, 2018 5:12:53 PM by Hibernate Tools 4.3.1
+// Generated Apr 18, 2018 5:23:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -39,7 +39,7 @@ public class Reclamation  implements java.io.Serializable {
      private String situation;
      private boolean recEstim;
      private String persEstim;
-     private int estimation;
+     private Integer estimation;
      private String degUrgence;
      private String descExpert;
      private Date dateDebut;
@@ -53,23 +53,17 @@ public class Reclamation  implements java.io.Serializable {
     }
 
 	
-    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, int estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin) {
+    public Reclamation(Client client, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String degUrgence, String descExpert) {
         this.client = client;
-        this.produit = produit;
-        this.dateCreRec = dateCreRec;
         this.typeRec = typeRec;
         this.preventive = preventive;
         this.descCli = descCli;
         this.situation = situation;
         this.recEstim = recEstim;
-        this.persEstim = persEstim;
-        this.estimation = estimation;
         this.degUrgence = degUrgence;
         this.descExpert = descExpert;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
     }
-    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, int estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation, Set<LigneDevis> ligneDevises) {
+    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, Integer estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation, Set<LigneDevis> ligneDevises) {
        this.client = client;
        this.produit = produit;
        this.dateCreRec = dateCreRec;
@@ -113,7 +107,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="Id_p", nullable=false)
+    @JoinColumn(name="Id_p")
     public Produit getProduit() {
         return this.produit;
     }
@@ -123,7 +117,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name="Date_cre_rec", nullable=false, length=10)
+    @Column(name="Date_cre_rec", length=10)
     public Date getDateCreRec() {
         return this.dateCreRec;
     }
@@ -133,7 +127,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     
-    @Column(name="Type_rec", nullable=false, length=21)
+    @Column(name="Type_rec", nullable=false, length=30)
     public String getTypeRec() {
         return this.typeRec;
     }
@@ -153,7 +147,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     
-    @Column(name="Desc_cli", nullable=false, length=8)
+    @Column(name="Desc_cli", nullable=false, length=200)
     public String getDescCli() {
         return this.descCli;
     }
@@ -183,7 +177,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     
-    @Column(name="Pers_estim", nullable=false, length=12)
+    @Column(name="Pers_estim", length=12)
     public String getPersEstim() {
         return this.persEstim;
     }
@@ -193,12 +187,12 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     
-    @Column(name="estimation", nullable=false)
-    public int getEstimation() {
+    @Column(name="estimation")
+    public Integer getEstimation() {
         return this.estimation;
     }
     
-    public void setEstimation(int estimation) {
+    public void setEstimation(Integer estimation) {
         this.estimation = estimation;
     }
 
@@ -213,7 +207,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     
-    @Column(name="Desc_expert", nullable=false)
+    @Column(name="Desc_expert")
     public String getDescExpert() {
         return this.descExpert;
     }
@@ -223,7 +217,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name="Date_debut", nullable=false, length=10)
+    @Column(name="Date_debut", length=10)
     public Date getDateDebut() {
         return this.dateDebut;
     }
@@ -233,7 +227,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name="Date_fin", nullable=false, length=10)
+    @Column(name="Date_fin", length=10)
     public Date getDateFin() {
         return this.dateFin;
     }

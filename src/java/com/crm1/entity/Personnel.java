@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Mar 30, 2018 5:12:53 PM by Hibernate Tools 4.3.1
+// Generated Apr 18, 2018 5:23:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -23,7 +23,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="personnel"
     ,catalog="crm"
-    , uniqueConstraints = {@UniqueConstraint(columnNames="cin"), @UniqueConstraint(columnNames="cnrps"), @UniqueConstraint(columnNames="tel")} 
+    , uniqueConstraints = {@UniqueConstraint(columnNames="cin"), @UniqueConstraint(columnNames="cnrps")} 
 )
 public class Personnel  implements java.io.Serializable {
 
@@ -209,7 +209,7 @@ public class Personnel  implements java.io.Serializable {
     }
 
     
-    @Column(name="tel", unique=true, nullable=false, length=20)
+    @Column(name="tel", nullable=false, length=20)
     public String getTel() {
         return this.tel;
     }

@@ -32,6 +32,7 @@ public class InterventionBean {
     
     public List <PvIntervention> lister(){
         return dao.findAll();
+        //return dao.findwithcli();
          }
     
 }

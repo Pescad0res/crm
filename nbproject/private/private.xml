@@ -4,12 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/Reclamation.xhtml</file>
-            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/PersonnelBean.java</file>
-            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/ResponsableFinancierBean.java</file>
-            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/ClientBean.java</file>
-            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/rfcont.xhtml</file>
-            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/web/rfcontAll.xhtml</file>
             <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/presentation/ReclamationBean.java</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/entity/Reclamation.hbm.xml</file>
+            <file>file:/C:/Users/REV%20DAMAGE/Documents/NetBeansProjects/crm1/src/java/com/crm1/entity/Reclamation.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,7 +10,7 @@
     <h:body>
         <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
   <b:navbarLinks>
-   <b:navLink value="Demandes d'interventions" href="InterventionAll.xhtml"></b:navLink>
+   <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml"></b:navLink>
     <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
     <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>
   </b:navbarLinks>
@@ -39,8 +39,13 @@
                         <f:ajax event="change" listener="#{recBean.getinfos()}"/>
                     </b:selectOneMenu>
 
-                    <h:outputLabel value="DateCreRec:" for="dateCreRec" />
-                        <b:datepicker id="dateCreRec" mode="toggle-icon" showWeek="true" firstDay="1" value="#{recBean.rec.dateCreRec}" required="true" />
+                    <h:outputLabel value="Date de création:" for="dateCreRec" />
+                    <h:outputText id="dateCreRec" value="#{now}">
+                        
+    <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+    
+</h:outputText>
+                        
                
                     <h:outputLabel value="TypeRec:" for="type"/>                        
                         <h:selectOneRadio  id ="type" value="#{recBean.type}">
@@ -52,23 +57,9 @@
                         </h:selectOneRadio>
                     <h:outputLabel value="DescCli:" for="descCli" />
                     <b:inputText id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
-                    <h:outputLabel value="Situation:" for="Situation" />
                     
-
-                    <b:selectOneMenu id="Situation" value="#{recBean.situation}" >
-                        <f:selectItem itemValue="" itemLabel=""></f:selectItem>
-                        <f:selectItem itemValue="1" itemLabel="crée"></f:selectItem>
-                        <f:selectItem itemValue="2" itemLabel="acceptée"></f:selectItem>
-                        <f:selectItem itemValue="3" itemLabel="affectée"></f:selectItem>
-                        <f:selectItem itemValue="4" itemLabel="archivée"></f:selectItem>
-
-                          
-                
-                    </b:selectOneMenu>
-                    <h:outputLabel value="Perssonnel :" for="persEstim" />
-                    <b:inputText id="persEstim" value="#{recBean.rec.persEstim}" title="PersEstim" required="true" requiredMessage="The PersEstim field is required."/>
-                    <h:outputLabel value="Estimation:" for="estimation" />
-                    <b:inputText id="estimation" value="#{recBean.rec.estimation}" title="Estimation" required="true" requiredMessage="The Estimation field is required."/>
+                    
+                   
                     
                      <h:outputLabel value="DegUrgence:" for="degUrgence" />
                     
@@ -80,16 +71,10 @@
                         <f:selectItem itemValue="3" itemLabel="Pas urgent"></f:selectItem>
                        
                     </b:selectOneMenu>
-                    <h:outputLabel value="DescExpert:" for="descExpert" />
-                    <b:inputText id="descExpert" value="#{recBean.rec.descExpert}" title="DescExpert" required="true" requiredMessage="The DescExpert field is required."/>
-                    <h:outputLabel value="DateDebut:" for="dateDebut" />
-                    <b:datepicker id="dateDebut" mode="toggle-icon" showWeek="true" firstDay="1" value="#{recBean.rec.dateDebut}" required="true" />
+                   
                     
-                    <h:outputLabel value="DateFin:" for="dateFin" />
-                    <b:datepicker id="dateFin" mode="toggle-icon" showWeek="true" firstDay="1" value="#{recBean.rec.dateFin}" required="true" />
                     <b:form horizontal="true">
-                    <b:commandButton value="Add" action="#{recBean.ajouter()}"/> 
-                    <b:commandButton value="Enregister" action="#{recBean.modif()}"/>  
+                    <b:commandButton value="Add" action="#{recBean.ajouter()}"/>   
                     <b:commandButton value="retourner a la liste " action="ReclamationAll.xhtml"/> 
                     </b:form>
                 </h:panelGrid>

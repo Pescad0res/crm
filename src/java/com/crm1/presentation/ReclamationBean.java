@@ -15,6 +15,7 @@ import com.crm1.dao.ReclamationDAOImpl;
 import com.crm1.entity.Client;
 import com.crm1.entity.Produit;
 import com.crm1.entity.Reclamation;
+import com.crm1.metier.ClientServices;
 import com.crm1.metier.ProduitServicesImpl;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class ReclamationBean {
     private String type;
      private String Situation;
      private String degreurgence;
+     
 
     public String getDegreurgence() {
         return degreurgence;
@@ -192,11 +194,12 @@ public void getinfos(){
     
     public void ajouter(){
         
+        
 //loadclient(idclient1);
 rec.setClient(daoclient.findByidCli(idclient1));
 rec.setProduit(daoprod.findByidP(idproduit));
 rec.setTypeRec(type);
-rec.setSituation(Situation);
+rec.setSituation("créé");
 rec.setDegUrgence(degreurgence);
 
         //rec.setClient(daoclient.findByidCli(2));
@@ -207,22 +210,23 @@ rec.setDegUrgence(degreurgence);
     }
 
 public String modif()
-{
-    //rec.setClient(daoclient.findByidCli(idclient1));
-    //rec.setProduit(daoprod.findByidP(idproduit));
-    rec.setClient(daoclient.findByidCli(1));
-    rec.setProduit(daoprod.findByidP(1));
+{ 
+    
+   
+    rec.setClient(daoclient.findByidCli(new Integer(idclient1)));
+    rec.setProduit(daoprod.findByidP(new Integer(idproduit)));
+    rec.setTypeRec(type);
+    rec.setSituation("créé");
+    rec.setDegUrgence(degreurgence);
     dao.edit(rec);
     return ("ReclamationAll.xhtml"); 
 }
 
   
     public String rechercher(Integer code)
-    {
- 
-        
+    {   
         rec = dao.findByidRec(code);
-        return ("Reclamation.xhtml");
+        return ("Reclamationmodif.xhtml");
     }
     
     public void supprimer (Integer code)

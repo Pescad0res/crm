@@ -51,5 +51,5 @@ public class InterventionDAOImpl implements InterventionDAO {
     public PvIntervention findByidCli(Integer idPv) {
         return (PvIntervention) ses.get(PvIntervention.class,idPv);
     }
-    
+        
 }
