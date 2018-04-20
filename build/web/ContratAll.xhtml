@@ -33,16 +33,14 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idC}"/>
-                <b:dataTableColumn value="#{item.idContrat}" />
-                <b:dataTableColumn value="#{conBean.con.client.idCli}" />
+                
+                <b:dataTableColumn label="Code du contact du client " value="#{item.idContrat}" />
+                
                 <b:dataTableColumn value="#{item.dateContrat}" />
-                <b:dataTableColumn value="#{item.refManuelle}" />
-                <b:dataTableColumn value="#{item.dateSign}" />
-                <b:dataTableColumn value="#{item.dateEffet}" />
+                <b:dataTableColumn value="#{item.refManuelle}" />            
                 <b:dataTableColumn value="#{item.duree}" />
                 <b:dataTableColumn value="#{item.dateFin}" />
-                <b:dataTableColumn value="#{item.nbInterPrev}" />
+               
 
   </b:dataTable>
 </h:form>

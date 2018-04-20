@@ -38,13 +38,12 @@
                         <f:selectItems value="#{recBean.produitSelect}" />
                         <f:ajax event="change" listener="#{recBean.getinfos()}"/>
                     </b:selectOneMenu>
+                    <h:outputLabel value="Nom De Reclamation" for="descCli" />
+                    <b:inputText id="nomRec" value="#{recBean.rec.nomRec}" title="Nom De Reclamation" required="true" requiredMessage="The DescCli field is required."/>
 
-                    <h:outputLabel value="Date de création:" for="dateCreRec" />
-                    <h:outputText id="dateCreRec" value="#{now}">
-                        
-    <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
-    
-</h:outputText>
+                   <h:outputLabel value="DateCreRec:" for="dateCreRec" />
+                   <b:dateTimePicker id="dateCreRec" show-date="true" mode="toggle-icon"   required="true" use-current="true" value="#{recBean.rec.dateCreRec}"/>
+                     
                         
                
                     <h:outputLabel value="TypeRec:" for="type"/>                        

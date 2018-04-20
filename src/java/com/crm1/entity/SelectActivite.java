@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Apr 18, 2018 5:23:38 PM by Hibernate Tools 4.3.1
+// Generated Apr 20, 2018 2:07:18 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;

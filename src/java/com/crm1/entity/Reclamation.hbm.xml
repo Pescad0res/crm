@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 18, 2018 5:23:40 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 20, 2018 2:07:20 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.crm1.entity.Reclamation" table="reclamation" catalog="crm" optimistic-lock="version">
         <id name="idRec" type="java.lang.Integer">
@@ -14,6 +14,11 @@
         <many-to-one name="produit" class="com.crm1.entity.Produit" fetch="select">
             <column name="Id_p" />
         </many-to-one>
+        <property name="nomRec" type="string">
+            <column name="NomRec" length="50">
+                <comment>nom de la reclamation</comment>
+            </column>
+        </property>
         <property name="dateCreRec" type="date">
             <column name="Date_cre_rec" length="10">
                 <comment>date cr&#233;ation de la r&#233;clamation</comment>

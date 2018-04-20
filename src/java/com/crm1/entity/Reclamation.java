@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Apr 18, 2018 5:23:38 PM by Hibernate Tools 4.3.1
+// Generated Apr 20, 2018 2:07:18 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -32,6 +32,7 @@ public class Reclamation  implements java.io.Serializable {
      private Integer idRec;
      private Client client;
      private Produit produit;
+     private String nomRec;
      private Date dateCreRec;
      private String typeRec;
      private boolean preventive;
@@ -53,7 +54,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
 	
-    public Reclamation(Client client, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String degUrgence, String descExpert) {
+    public Reclamation(Client client, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String degUrgence) {
         this.client = client;
         this.typeRec = typeRec;
         this.preventive = preventive;
@@ -61,11 +62,11 @@ public class Reclamation  implements java.io.Serializable {
         this.situation = situation;
         this.recEstim = recEstim;
         this.degUrgence = degUrgence;
-        this.descExpert = descExpert;
     }
-    public Reclamation(Client client, Produit produit, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, Integer estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation, Set<LigneDevis> ligneDevises) {
+    public Reclamation(Client client, Produit produit, String nomRec, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, Integer estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation, Set<LigneDevis> ligneDevises) {
        this.client = client;
        this.produit = produit;
+       this.nomRec = nomRec;
        this.dateCreRec = dateCreRec;
        this.typeRec = typeRec;
        this.preventive = preventive;
@@ -114,6 +115,16 @@ public class Reclamation  implements java.io.Serializable {
     
     public void setProduit(Produit produit) {
         this.produit = produit;
+    }
+
+    
+    @Column(name="NomRec", length=50)
+    public String getNomRec() {
+        return this.nomRec;
+    }
+    
+    public void setNomRec(String nomRec) {
+        this.nomRec = nomRec;
     }
 
     @Temporal(TemporalType.DATE)

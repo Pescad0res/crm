@@ -32,18 +32,15 @@
                pdf="true"
                columnVisibility="true"
                print="true"
-               >
-                <b:dataTableColumn value="#{item.idRec}"/>
+               >    
+                <b:dataTableColumn value="#{item.nomRec}" />
                 <b:dataTableColumn value="#{item.degUrgence}" />
                 <b:dataTableColumn value="#{item.descCli}" />
-                <b:dataTableColumn value="#{item.descExpert}" />
-                <b:dataTableColumn value="#{item.persEstim}"  />
                 <b:dataTableColumn value="#{item.situation}" />
                 <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.estimation}" />
                 <b:dataTableColumn value="#{item.dateCreRec}" />
-                <b:dataTableColumn value="#{item.dateFin}" />
-                <b:dataTableColumn value="#{item.recEstim}" />
+          
+              
     <h:column>
                 
         <b:commandButton value="Modifier" icon="edit" action="#{recBean.rechercher(item.idRec)}" />
