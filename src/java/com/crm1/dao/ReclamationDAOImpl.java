@@ -7,6 +7,7 @@ package com.crm1.dao;
 
 import com.crm1.entity.Reclamation;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -43,7 +44,25 @@ public class ReclamationDAOImpl implements ReclamationDAO {
 
     @Override
     public List<Reclamation> findAll() {
-        return ses.createQuery("select obj from Reclamation obj").list();
+        String hql = "FROM Reclamation F WHERE F.typeRec = :rec";
+       Query query = ses.createQuery(hql);
+     query.setParameter("rec","réclamation logiciel");
+     List results = query.list();
+     return results;
+        
+        //return ses.createQuery("select obj from Reclamation obj WHERE Typerec = `réclamation logiciel`").list();
+        
+    }
+    @Override
+    public List<Reclamation> findAlltech() {
+        String hql = "FROM Reclamation F WHERE F.typeRec = :rec";
+       Query query = ses.createQuery(hql);
+     query.setParameter("rec","réclamation technique");
+     List results = query.list();
+     return results;
+        
+        //return ses.createQuery("select obj from Reclamation obj WHERE Typerec = `réclamation logiciel`").list();
+        
     }
 
     @Override

@@ -30,9 +30,10 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idPv}"/>
-                <b:dataTableColumn value="#{item.observGen}" />
-                <b:dataTableColumn value="#{item.reclamation.idRec}"/>
+               <b:dataTableColumn label="Nom Reclamation" value="#{item.reclamation.descCli}"/>
+                <b:dataTableColumn  value="#{item.reclamation.situation}"/>
+                <b:dataTableColumn label="Observation générale" value="#{item.observGen}" />
+                <b:dataTableColumn label="Personnel" value="#{item.reclamation.persEstim}"/>
              
   </b:dataTable>
 </h:form>

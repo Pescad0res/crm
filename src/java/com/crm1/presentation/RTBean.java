@@ -26,7 +26,7 @@ public class RTBean {
     InterventionDAO daoint = new InterventionDAOImpl();
     
          public List <Reclamation> listerrec(){
-        return daorec.findAll();
+        return daorec.findAlltech();
     }
        public List <PvIntervention> listerint(){
         return daoint.findAll();

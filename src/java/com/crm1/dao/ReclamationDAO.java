@@ -17,6 +17,7 @@ public interface ReclamationDAO {
     public Reclamation edit(Reclamation r);
     public Reclamation delete(Integer idRec);
     public List<Reclamation> findAll();
+    public List<Reclamation> findAlltech();
     public Reclamation findByidRec(Integer idRec);
     
 }
