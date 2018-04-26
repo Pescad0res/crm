@@ -30,6 +30,8 @@ public class TechBean {
     PvIntervention inter = new PvIntervention();
     ReclamationDAO daorec = new ReclamationDAOImpl();
     
+    
+    
     private Integer idreclamation;
 
     public Integer getIdreclamation() {
@@ -67,7 +69,7 @@ public class TechBean {
                 if(listReclamations != null && !listReclamations.isEmpty()){
                     SelectItem item;
                     for (Reclamation reclist : listReclamations) {
-                        item = new SelectItem(reclist.getIdRec() );
+                        item = new SelectItem(reclist.getIdRec() ,reclist.getNomRec());
                   
                         reclamationSelect.add(item);
                         
@@ -94,5 +96,20 @@ public class TechBean {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
         
     }
+         public void supprimer (Integer code)
+    { 
+        dao.delete(code);   
+    }
+         public String rechercher(Integer code)
+    {
+        inter = dao.findByidCli(code);
+        return ("techmodif.xhtml");
+    }
     
+             public String modif()
+{
+    inter.setReclamation(daorec.findByidRec(idreclamation));
+    dao.edit(inter);
+    return ("technicien.xhtml"); 
+}
 }

@@ -31,14 +31,12 @@
                pdf="true"
                columnVisibility="true"
                print="true"
-               >
-                <b:dataTableColumn value="#{item.idPers}"/>
+               >              
                 <b:dataTableColumn value="#{item.cnrps}" />
                 <b:dataTableColumn value="#{item.cin}" />
                 <b:dataTableColumn value="#{item.nomPers}" />
                 <b:dataTableColumn value="#{item.prenomPers}"  />
-                <b:dataTableColumn value="#{item.loginPers}" />
-                <b:dataTableColumn value="#{item.pwdPers}"  />
+                <b:dataTableColumn value="#{item.loginPers}" />          
                 <b:dataTableColumn value="#{item.sexe}" />
                 <b:dataTableColumn value="#{item.etatCivil}" />
                 <b:dataTableColumn value="#{item.nat}" />
@@ -48,7 +46,7 @@
                 <b:dataTableColumn value="#{item.superieur}" />
                 <b:dataTableColumn value="#{item.grade}" />
                   
-    <h:column>
+    <h:column  >
                 
         <b:commandButton value="Modifier" icon="edit" action="#{rhBean.rechercher(item.idPers)}" />
                 

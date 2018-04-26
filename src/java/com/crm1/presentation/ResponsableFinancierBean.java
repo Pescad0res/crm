@@ -109,7 +109,7 @@ public class ResponsableFinancierBean {
          public String recherchercli(Integer code)
     {
         cli = daocli.findByidCli(code);
-        return ("rfcli.xhtml");
+        return ("rfclimodif.xhtml");
     }
                public String recherchercont(Integer code)
     {
@@ -130,8 +130,8 @@ public class ResponsableFinancierBean {
     
      public void ajoutercli(){
          
-        daocli.add(cli);
-       cont.setClient(daocli.findByidCli(idclient));
+       daocli.add(cli);
+       //cont.setClient(daocli.findByidCli(idclient));
      
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
         
@@ -144,7 +144,7 @@ public class ResponsableFinancierBean {
 
     public String modifcli()
 {
-    
+    cli.setIdCli(null);
     daocli.edit(cli);
     return ("rfcliAll.xhtml"); 
 }

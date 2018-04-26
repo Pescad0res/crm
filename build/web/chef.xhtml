@@ -24,8 +24,10 @@
 </b:navBar>
         
         <h:form>
+          
             <b:dataTable value="#{chefBean.listerrec()}"
                var="item"
+               class="editableitemTable"
                excel="true"
                csv="true"
                pdf="true"
@@ -39,14 +41,18 @@
                 <b:dataTableColumn value="#{item.persEstim}"  />
                 <b:dataTableColumn value="#{item.situation}" />
                 <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.estimation}" />
                 <b:dataTableColumn value="#{item.dateCreRec}" />
                 <b:dataTableColumn value="#{item.dateFin}" />
-                <b:dataTableColumn value="#{item.recEstim}" />
-    <h:column>   
-         <b:commandButton value="Estimer"  icon-awesome="clock-o" action="#{dirBean.rechercher(item.idP)}" /> 
+             
                 
-              
+                <b:dataTableColumn label="Estimation">
+                    <b:inputText id="estimation" value="#{item.estimation}"  />
+       
+    </b:dataTableColumn>
+    <h:column>   
+        
+        <b:commandButton value="Estimer"  icon-awesome="clock-o"  actionListener="#{chefBean.edit(item.idRec)}" ></b:commandButton>
+
             </h:column>
   </b:dataTable>
 </h:form>

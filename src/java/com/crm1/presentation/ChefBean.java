@@ -22,14 +22,65 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name="chefBean")
 @RequestScoped
 public class ChefBean {
+
     ReclamationDAO daorec =  new ReclamationDAOImpl();
     InterventionDAO daoint = new InterventionDAOImpl();
+    Reclamation rec = new Reclamation();
+    //public boolean edittable=true;
     
+//private String estimation;
+ /*public String getEstimation() {
+        return estimation;
+    }
+
+    public void setEstimation(String estimation) {
+        this.estimation = estimation;
+    }*/
+
+    
+
+
          public List <Reclamation> listerrec(){
         return daorec.findAll();
+        
     }
        public List <PvIntervention> listerint(){
         return daoint.findAll();
     }
-    
+
+    /*public boolean isEdittable() {
+        return edittable;
+    }
+
+    public void setEdittable(boolean edittable) {
+        this.edittable = edittable;
+    }*/
+       public void edit (Integer code)
+    { 
+       
+        //edittable = true;
+        rec = daorec.findByidRec(code);
+        
+       	int estimation2int =Integer.valueOf(rec.getEstimation());
+        rec.setEstimation(estimation2int);
+        rec.setRecEstim(true);
+        daorec.edit(rec);
+       
+    }
+          public void affecter (Integer code)
+    { 
+       
+        //edittable = true;
+        rec = daorec.findByidRec(code);
+
+        rec.setPersEstim(rec.getPersEstim());
+        rec.setSituation("affectée");
+        daorec.edit(rec);
+       
+    }
+   /* public void save ()
+    { 
+     
+        System.out.println("taib  "+ estimation); 
+    }*/
 }

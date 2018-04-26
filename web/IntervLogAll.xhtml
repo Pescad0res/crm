@@ -34,6 +34,15 @@
                 <b:dataTableColumn  value="#{item.reclamation.situation}"/>
                 <b:dataTableColumn label="Observation générale" value="#{item.observGen}" />
                 <b:dataTableColumn label="Personnel" value="#{item.reclamation.persEstim}"/>
+                <h:column  >
+                
+                    <b:commandButton value="modifier une pv d'intervention" icon="edit" action="#{interlogBean.rechercher(item.idPv)}" />
+                
+              
+            </h:column>
+            <h:column>
+                <b:commandButton value="supprimer une pv d'intervention" icon="trash" action="#{interlogBean.supprimer(item.idPv)}"/>
+</h:column>
              
   </b:dataTable>
 </h:form>

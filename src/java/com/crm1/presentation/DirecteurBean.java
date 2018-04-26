@@ -40,6 +40,7 @@ public class DirecteurBean {
     
     Produit pro = new Produit();
     FicheSuivi fich= new FicheSuivi();
+    Reclamation rec = new Reclamation();
 
     public FicheSuivi getFich() {
         return fich;
@@ -71,7 +72,13 @@ public class DirecteurBean {
       public List <FicheSuivi> listerfich(){
         return daofich.findAll();
     }
-     
+        public void archive(Integer code)
+    { 
+ 
+        rec = daorec.findByidRec(code);
+        rec.setSituation("archivée");
+        daorec.edit(rec);
+    }
      
      public String rechercher(Integer code)
     {
@@ -79,9 +86,15 @@ public class DirecteurBean {
         return ("directeur.xhtml");
     }
     
+     public void supprimerrec (Integer code)
+    { 
+        daorec.delete(code);
+        
+    }
     public void supprimer (Integer code)
     { 
-        daopro.delete(code);   
+        daopro.delete(code);
+        
     }
     
     

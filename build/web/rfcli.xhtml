@@ -14,6 +14,8 @@
             <h:form>
                 <h1><h:outputText value="Ajouter Client"/></h1>
                 <h:panelGrid columns="2">
+                     
+                    
                     <h:outputLabel value="MatFisc:" for="matFisc" />
                     <h:inputText id="matFisc" value="#{rfBean.cli.matFisc}" title="MatFisc" />
                     <h:outputLabel value="NomCli:" for="nomCli" />
@@ -21,7 +23,7 @@
                     <h:outputLabel value="LoginCli:" for="loginCli" />
                     <h:inputText id="loginCli" value="#{rfBean.cli.loginCli}" title="LoginCli" />
                     <h:outputLabel value="PwdCli:" for="pwdCli" />
-                    <h:inputText id="pwdCli" value="#{rfBean.cli.pwdCli}" title="PwdCli" />
+                    <h:inputSecret   id="pwdCli" value="#{rfBean.cli.pwdCli}" title="PwdCli" />
                     <h:outputLabel value="NomRep:" for="nomRep" />
                     <h:inputText id="nomRep" value="#{rfBean.cli.nomRep}" title="NomRep" />
                     <h:outputLabel value="PrenomRep:" for="prenomRep" />

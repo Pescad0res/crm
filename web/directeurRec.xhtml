@@ -46,12 +46,12 @@
                 <b:dataTableColumn value="#{item.recEstim}" />
     <h:column>
                 
-        <b:commandButton value="Archiver" icon="book" action="#{dirBean.rechercher(item.idP)}" />
+        <b:commandButton value="Archiver" icon="book" action="#{dirBean.archive(item.idRec)}" ></b:commandButton>
                 
               
             </h:column>
             <h:column>
-                <b:commandButton value="Annuler" icon="trash" action="#{dirBean.supprimer(item.idP)}"/>
+                <b:commandButton value="Annuler" icon="trash" action="#{dirBean.supprimerrec(item.idRec)}"/>
 </h:column>
   </b:dataTable>
 </h:form>

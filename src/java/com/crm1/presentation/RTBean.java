@@ -24,6 +24,7 @@ import javax.faces.bean.RequestScoped;
 public class RTBean {
        ReclamationDAO daorec =  new ReclamationDAOImpl();
     InterventionDAO daoint = new InterventionDAOImpl();
+    Reclamation rec = new Reclamation();
     
          public List <Reclamation> listerrec(){
         return daorec.findAlltech();
@@ -31,5 +32,39 @@ public class RTBean {
        public List <PvIntervention> listerint(){
         return daoint.findAll();
     }
-    
+       public void estime (Integer code)
+    { 
+       
+        //edittable = true;
+        rec = daorec.findByidRec(code);
+        
+       	int estimation2int =Integer.valueOf(rec.getEstimation());
+        rec.setEstimation(estimation2int);
+        rec.setRecEstim(true);
+        daorec.edit(rec);
+       
+    }
+               public void archive(Integer code)
+    { 
+ 
+        rec = daorec.findByidRec(code);
+        rec.setSituation("archivée");
+        daorec.edit(rec);
+    }
+                     public void affecter (Integer code)
+    { 
+       
+        //edittable = true;
+        rec = daorec.findByidRec(code);
+
+        rec.setPersEstim(rec.getPersEstim());
+        rec.setSituation("affectée");
+        daorec.edit(rec);
+       
+    }
+         public void supprimerrec (Integer code)
+    { 
+        daorec.delete(code);
+        
+    }
 }

@@ -119,7 +119,7 @@ public class PersonnelBean {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
                 FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
              
-            return "/responsble_financier.xhtml?faces-redirect=true";
+            return "/rfcliAll?faces-redirect=true";
             
         }
              else {

@@ -36,27 +36,34 @@
                 <b:dataTableColumn value="#{item.degUrgence}" />
                 <b:dataTableColumn value="#{item.descCli}" />
                 <b:dataTableColumn value="#{item.descExpert}" />
-                <b:dataTableColumn value="#{item.persEstim}"  />
+                
                 <b:dataTableColumn value="#{item.situation}" />
                 <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.estimation}" />
+                
                 <b:dataTableColumn value="#{item.dateCreRec}" />
-                <b:dataTableColumn value="#{item.dateFin}" />
+                
                 <b:dataTableColumn value="#{item.recEstim}" />
+                
+                <b:dataTableColumn label="intervenant">
+                     <b:inputText  value="#{item.persEstim}"  />
+      </b:dataTableColumn>
     <h:column>   
-         <b:commandButton value="Ajouter au intervenant"  icon-awesome="plus" action="#{dirBean.rechercher(item.idP)}" />    
+        <b:commandButton value="Ajouter au intervenant"  icon-awesome="plus" action="#{rtBean.affecter(item.idRec)}" />    
             </h:column>
                 <h:column>   
-         <b:commandButton value="Archiver"  icon-awesome="archive" action="#{dirBean.rechercher(item.idP)}" />    
+                    <b:commandButton value="Archiver"  icon-awesome="archive" action="#{rtBean.archive(item.idRec)}" />    
             </h:column>
                 <h:column>   
-         <b:commandButton value="Annuler"  icon-awesome="close" action="#{dirBean.rechercher(item.idP)}" />    
+                    <b:commandButton value="Annuler"  icon-awesome="close" action="#{rtBean.supprimerrec(item.idRec)}" />    
             </h:column>
+                
+                <b:dataTableColumn label="Estimation en jour">
+                    <b:inputText id="estimation" value="#{item.estimation}"  />
+       
+    </b:dataTableColumn>
+                
                 <h:column>   
-         <b:commandButton value="Réajouter"  icon-awesome="reply" action="#{dirBean.rechercher(item.idP)}" />    
-            </h:column>
-                <h:column>   
-         <b:commandButton value="Estimer"  icon-awesome="clock-o" action="#{dirBean.rechercher(item.idP)}" />    
+                    <b:commandButton value="Estimer"  icon-awesome="clock-o" action="#{rtBean.estime(item.idRec)}" />    
             </h:column>
   </b:dataTable>
 </h:form>

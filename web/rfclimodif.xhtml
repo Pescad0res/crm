@@ -12,10 +12,10 @@
 
 
             <h:form>
-                <h1><h:outputText value="Ajouter Client"/></h1>
+                <h1><h:outputText value="Moddifier Client"/></h1>
                 <h:panelGrid columns="2">
-                     
-                    
+                     <h:outputLabel value="idCli:" for="idCli" />
+                    <h:inputText id="idCli" value="#{rfBean.cli.idCli}" />
                     <h:outputLabel value="MatFisc:" for="matFisc" />
                     <h:inputText id="matFisc" value="#{rfBean.cli.matFisc}" title="MatFisc" />
                     <h:outputLabel value="NomCli:" for="nomCli" />
