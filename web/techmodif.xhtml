@@ -14,6 +14,8 @@
             <h:form>
                 <h1><h:outputText value="Intervention"/></h1>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="idPv" for="idPv" />
+                    <b:inputText id="idPv" value="#{techlogBean.inter.idPv}" title="idPv" required="true" requiredMessage="The idPv field is required."/>
                     
                     <h:outputLabel value="Reclamation:" for="reclamation" />
                     <b:selectOneMenu id="client" value="#{techlogBean.idreclamation}" >

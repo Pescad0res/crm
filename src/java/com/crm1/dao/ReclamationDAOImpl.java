@@ -43,6 +43,11 @@ public class ReclamationDAOImpl implements ReclamationDAO {
     }
 
     @Override
+    public List<Reclamation> find() {
+return ses.createQuery("select obj from Reclamation obj").list();    
+    }
+    
+    @Override
     public List<Reclamation> findAll() {
         String hql = "FROM Reclamation F WHERE F.typeRec = :rec";
        Query query = ses.createQuery(hql);

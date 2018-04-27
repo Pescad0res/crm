@@ -23,18 +23,19 @@
             <h:form>
                 <h1><h:outputText value="Reclamation"/></h1>
                 <h:panelGrid columns="2" cellpadding="2">
-                    <h:outputLabel value="Client:" for="client" />
                     
+                    <h:outputLabel value="Client:" for="client" />
 
-                    <b:selectOneMenu id="client" value="#{recBean.idclient1}" >
-                        <!-- TODO: fixed -->
+                    <b:selectOneMenu id="client" value="#{sessionScope['idcli'] }" disabled="#{sessionScope['idcli']==null ? false : true }" >
+                          
+                        <!-- fixed -->
                         
                         <f:selectItems value="#{recBean.clientSelect}"  />
                 
                     </b:selectOneMenu>
                     <h:outputLabel value="Produit:" for="produit" />
                     <b:selectOneMenu id="produit" value="#{recBean.idproduit}" >
-                        <!-- TODO: fixed -->
+                        <!-- fixed -->
                         <f:selectItems value="#{recBean.produitSelect}" />
                         <f:ajax event="change" listener="#{recBean.getinfos()}"/>
                     </b:selectOneMenu>

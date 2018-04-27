@@ -12,7 +12,7 @@ import com.crm1.entity.Client;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
@@ -24,7 +24,8 @@ import org.hibernate.SessionFactory;
  */
 
 @ManagedBean(name="CliBean")
-@RequestScoped
+
+@SessionScoped
 public class ClientBean {
     
  
@@ -35,6 +36,8 @@ public class ClientBean {
    
   
     public String logcli;
+    public int idcli;
+    public String nomcli;
     
     
 
@@ -59,22 +62,39 @@ public class ClientBean {
      SessionFactory fac = HibernateUtil.getSessionFactory();
      ses.getTransaction();
      
+     /*cli=dao.checkLogin(cli.getLoginCli(), cli.getPwdCli());
+     if(cli!=null){
+         System.out.println("Id_Client: "+cli.getIdCli());
+     }
+     else{
+         System.out.println("login or Pwd !!!!");
+     }*/
      
-             List<Client> list = ses.createSQLQuery("select * from client where login_cli='" + cli.getLoginCli() + "' and pwd_cli='" + cli.getPwdCli() + "'").list();
-             if (list.size() > 0) {
+             /*List<Client> list = ses.createSQLQuery("select * from client where login_cli='" + cli.getLoginCli() + "' and pwd_cli='" + cli.getPwdCli() + "'").list();
+             if (list.size() > 0) {*/
+             cli=dao.checkLogin(cli.getLoginCli(), cli.getPwdCli());
+             if(cli!=null){
+         System.out.println("Id_Client: "+cli.getIdCli());
+     
                  //servlet session part
-                 
+                 //cli=list.get(0);
                  logcli = cli.getLoginCli();
+                 System.out.println(cli.getIdCli());
+                 idcli = cli.getIdCli();
+                 nomcli = cli.getNomCli();
                 
                  
                  HttpSession hs = sessionUtil.getSession();
                  hs.setAttribute("logcli",logcli);
+                 hs.setAttribute("idcli", idcli);
+                 hs.setAttribute("nomcli", nomcli);
+                 
                  //servlet session part
                  //BootFaces
                  FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Congratulations! You've successfully logged in.");
                  FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);
                  //BootFaces
-                 
+                 System.out.println("LOG"+logcli);
             return "/ReclamationAll.xhtml?faces-redirect=true";
         } else {
                 //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));

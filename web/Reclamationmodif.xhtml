@@ -23,8 +23,9 @@
             <h:form>
                 <h1><h:outputText value="Reclamation"/></h1>
                 <h:panelGrid columns="2" cellpadding="2">
+                    <h:outputLabel value="idRec" for="idRec" />
+                    <b:inputText id="idRec" value="#{recBean.rec.idRec}" title="Nom De Reclamation" required="true" requiredMessage="The DescCli field is required."/>
                     <h:outputLabel value="Client:" for="client" />
-                    
 
                     <b:selectOneMenu id="client" value="#{recBean.idclient1}" >
                         <!-- TODO: fixed -->

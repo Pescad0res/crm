@@ -31,9 +31,11 @@ import javax.faces.model.SelectItem;
  */
 @ManagedBean(name="recBean")
 @RequestScoped
+
 public class ReclamationBean {
-    
-    
+  
+
+   
     ReclamationDAO dao = new ReclamationDAOImpl();
     ClientDAO daoclient = new ClientDAOImpl();
     ProduitDAO daoprod = new ProduitDAOImpl();
@@ -188,7 +190,7 @@ public void getinfos(){
             
             
     public List <Reclamation> lister(){
-        return dao.findAll();
+        return dao.find();
     }
     
     
@@ -211,14 +213,15 @@ rec.setDegUrgence(degreurgence);
 
 public String modif()
 { 
-    
-   
-    rec.setClient(daoclient.findByidCli(new Integer(idclient1)));
-    rec.setProduit(daoprod.findByidP(new Integer(idproduit)));
-    rec.setTypeRec(type);
-    rec.setSituation("créé");
-    rec.setDegUrgence(degreurgence);
+    if (rec.getClient() != null) 
+    {
+        rec.setClient(daoclient.findByidCli(idclient1));
+        rec.setProduit(daoprod.findByidP(idproduit));
+        rec.setTypeRec(type);
+        rec.setSituation("créé");
+        rec.setDegUrgence(degreurgence);
     dao.edit(rec);
+    }
     return ("ReclamationAll.xhtml"); 
 }
 

@@ -59,6 +59,15 @@ public class ClientDAOImpl implements ClientDAO {
     public Client searchForCode(Integer code) {
         return (Client) this.ses.get(Client.class, code);
     }
+
+    @Override
+    public Client checkLogin(String login, String pwd) {
+        Client client=null;
+        client=(Client) ses.createQuery("select c from Client c where c.loginCli='"+login+"' and c.pwdCli='"+pwd+"'").list().get(0);
+        return client;
+    }
+    
+    
     
     
 }//class

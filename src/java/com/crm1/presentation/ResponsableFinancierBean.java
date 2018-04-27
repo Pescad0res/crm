@@ -144,14 +144,18 @@ public class ResponsableFinancierBean {
 
     public String modifcli()
 {
-    cli.setIdCli(null);
+    if ((cli.getIdCli()!= null) && (cli.getMatFisc()!=null))
+    {
     daocli.edit(cli);
+    }
     return ("rfcliAll.xhtml"); 
 }
         public String modifcont()
 {
-    
+    if ((cont.getIdC()!= null) && (cli.getIdCli() != null))
+    {
     daocont.edit(cont);
+    }
     return ("rfcontAll.xhtml"); 
 }
     

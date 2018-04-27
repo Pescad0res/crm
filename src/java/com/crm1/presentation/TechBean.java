@@ -28,6 +28,7 @@ import javax.faces.model.SelectItem;
 public class TechBean {
     InterventionDAO dao = new InterventionDAOImpl();
     PvIntervention inter = new PvIntervention();
+    Reclamation rec = new Reclamation();
     ReclamationDAO daorec = new ReclamationDAOImpl();
     
     
@@ -65,7 +66,7 @@ public class TechBean {
                 reclamationSelect = new ArrayList<SelectItem>();
                 
                 ReclamationDAO recDAO = new ReclamationDAOImpl();
-                List<Reclamation> listReclamations = recDAO.findAll();
+                List<Reclamation> listReclamations = recDAO.findAlltech();
                 if(listReclamations != null && !listReclamations.isEmpty()){
                     SelectItem item;
                     for (Reclamation reclist : listReclamations) {
@@ -108,8 +109,11 @@ public class TechBean {
     
              public String modif()
 {
-    inter.setReclamation(daorec.findByidRec(idreclamation));
+    if ((inter.getIdPv() != null))
+    {
+        inter.setReclamation(daorec.findByidRec(idreclamation));
     dao.edit(inter);
+    }
     return ("technicien.xhtml"); 
 }
 }

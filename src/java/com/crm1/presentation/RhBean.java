@@ -58,8 +58,12 @@ public String rechercher(Integer code)
 
     public String modif()
 {
+    if (per.getIdPers() != null)
+    {
     
     daoper.edit(per);
+    }
     return ("RHpersonnelAll.xhtml"); 
 }
-}
+    
+}//class

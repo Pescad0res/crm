@@ -14,6 +14,8 @@
             <h:form>
                 <h1><h:outputText value="Intervention"/></h1>
                 <h:panelGrid columns="2">
+                     <h:outputLabel value="idPv" for="idPv" />
+                     <b:inputText id="idPv" value="#{interlogBean.inter.idPv}" title="ObservGen" required="true" requiredMessage="The idPv field is required."/>
                     
                     <h:outputLabel value="Reclamation:" for="reclamation" />
                     <b:selectOneMenu id="client" value="#{interlogBean.idreclamation}" >
@@ -25,7 +27,7 @@
                     <h:outputLabel value="ObservGen:" for="observGen" />
                     <b:inputText id="observGen" value="#{interlogBean.inter.observGen}" title="ObservGen" required="true" requiredMessage="The ObservGen field is required."/>
                     <b:form horizontal="true">
-                        <b:commandButton value="Add" action="#{interlogBean.modif()}"/> 
+                        <b:commandButton value="Enregister" action="#{interlogBean.modif()}"/> 
                         <b:commandButton value="retourner a la liste " action="IntervLogAll.xhtml"/> 
                     
                     </b:form>

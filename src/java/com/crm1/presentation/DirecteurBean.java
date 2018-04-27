@@ -106,9 +106,11 @@ public class DirecteurBean {
     }
 
     public String modif()
-{
-    
+ {
+    if (pro.getIdP() != null)
+    {
     daopro.edit(pro);
+    }
     return ("directeurProduitAll.xhtml"); 
 }
     

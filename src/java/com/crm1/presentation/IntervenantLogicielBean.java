@@ -28,6 +28,7 @@ import javax.faces.model.SelectItem;
 public class IntervenantLogicielBean {
      InterventionDAO dao = new InterventionDAOImpl();
     PvIntervention inter = new PvIntervention();
+    Reclamation rec = new Reclamation();
     ReclamationDAO daorec = new ReclamationDAOImpl();
     
     private Integer idreclamation;
@@ -106,8 +107,11 @@ public class IntervenantLogicielBean {
     
              public String modif()
 {
-    inter.setReclamation(daorec.findByidRec(idreclamation));
+    if(inter.getIdPv() != null)
+    {
+        inter.setReclamation(daorec.findByidRec(idreclamation));
     dao.edit(inter);
+    }
     return ("IntervLogAll.xhtml"); 
 }       
 }
