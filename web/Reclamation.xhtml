@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Reclamation</title>
     </h:head>
@@ -25,8 +26,8 @@
                 <h:panelGrid columns="2" cellpadding="2">
                     
                     <h:outputLabel value="Client:" for="client" />
-
-                    <b:selectOneMenu id="client" value="#{sessionScope['idcli'] }" disabled="#{sessionScope['idcli']==null ? false : true }" >
+                   
+                    <b:selectOneMenu  id="client" value="#{sessionScope.idcli}" disabled="#{sessionScope.idcli==null ? false : true }" >
                           
                         <!-- fixed -->
                         
@@ -37,7 +38,7 @@
                     <b:selectOneMenu id="produit" value="#{recBean.idproduit}" >
                         <!-- fixed -->
                         <f:selectItems value="#{recBean.produitSelect}" />
-                        <f:ajax event="change" listener="#{recBean.getinfos()}"/>
+                       
                     </b:selectOneMenu>
                     <h:outputLabel value="Nom De Reclamation" for="descCli" />
                     <b:inputText id="nomRec" value="#{recBean.rec.nomRec}" title="Nom De Reclamation" required="true" requiredMessage="The DescCli field is required."/>
@@ -56,7 +57,7 @@
                                 
                         </h:selectOneRadio>
                     <h:outputLabel value="DescCli:" for="descCli" />
-                    <b:inputText id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
+                    <b:inputTextarea id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
                     
                     
                    
@@ -75,6 +76,7 @@
                     
                     <b:form horizontal="true">
                     <b:commandButton value="Add" action="#{recBean.ajouter()}"/>   
+                 
                     <b:commandButton value="retourner a la liste " action="ReclamationAll.xhtml"/> 
                     </b:form>
                 </h:panelGrid>

@@ -38,6 +38,15 @@ public class ClientBean {
     public String logcli;
     public int idcli;
     public String nomcli;
+
+    public int getIdcli() {
+        return idcli;
+    }
+
+    public void setIdcli(int idcli) {
+        this.idcli = idcli;
+    }
+    
     
     
 
@@ -47,6 +56,14 @@ public class ClientBean {
 
     public void setCli(Client cli) {
         this.cli = cli;
+    }
+
+    public String getLogcli() {
+        return logcli;
+    }
+
+    public void setLogcli(String logcli) {
+        this.logcli = logcli;
     }
 
 
@@ -70,17 +87,22 @@ public class ClientBean {
          System.out.println("login or Pwd !!!!");
      }*/
      
-             /*List<Client> list = ses.createSQLQuery("select * from client where login_cli='" + cli.getLoginCli() + "' and pwd_cli='" + cli.getPwdCli() + "'").list();
-             if (list.size() > 0) {*/
+             List<Client> list = ses.createSQLQuery("select * from client where login_cli='" + cli.getLoginCli() + "' and pwd_cli='" + cli.getPwdCli() + "'").list();
+             if (list.size() > 0) {
              cli=dao.checkLogin(cli.getLoginCli(), cli.getPwdCli());
-             if(cli!=null){
+             
+            
+             //if(cli!=null){
          System.out.println("Id_Client: "+cli.getIdCli());
      
                  //servlet session part
                  //cli=list.get(0);
                  logcli = cli.getLoginCli();
-                 System.out.println(cli.getIdCli());
+                 
+                 //System.out.println(cli.getIdCli());
                  idcli = cli.getIdCli();
+                 Integer aux = idcli;
+                 cli.setIdCli(aux);
                  nomcli = cli.getNomCli();
                 
                  
@@ -96,9 +118,9 @@ public class ClientBean {
                  //BootFaces
                  System.out.println("LOG"+logcli);
             return "/ReclamationAll.xhtml?faces-redirect=true";
-        } else {
+        } else  {
                 //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "client not found", ""));
-                
+                 System.out.println("oups");
                 //BootFaces
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "", "Client n'existe pas !");
                 FacesContext.getCurrentInstance().addMessage("loginForm:password", msg);

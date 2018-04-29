@@ -15,10 +15,10 @@
     <b:navLink value="fiche de suivi" href="directeurfiche.xhtml"></b:navLink>
    
            <h:form>
-            Welcome 
+               <h1> Bienvenue </h1>
             <h:outputText value="#{sessionScope['logper'] }" />
             
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" ></b:commandButton> 
  
         </h:form>  
   </b:navbarLinks>
@@ -34,31 +34,27 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idP}"/>
-                <b:dataTableColumn value="#{item.idProd}" />
-                <b:dataTableColumn value="#{item.libProd}" />
-                <b:dataTableColumn value="#{item.typeDuProduit}" />
-                <b:dataTableColumn value="#{item.descProd}"  />
-                <b:dataTableColumn value="#{item.versionProd}" />
-                <b:dataTableColumn value="#{item.dateCreaProd}"  />
-                <b:dataTableColumn value="#{item.chefProd}" />
-    <h:column>
+                 <b:dataTableColumn value="#{item.idProd}" label=" Code du produit "/>
+                <b:dataTableColumn value="#{item.libProd}" label=" Libelé Produit"/>
+                <b:dataTableColumn value="#{item.typeDuProduit}" label="Type Du Produit" />
+                <b:dataTableColumn value="#{item.descProd}"  label="Description Produit" />
+                <b:dataTableColumn value="#{item.versionProd}" label="Version Produit" />
+                <b:dataTableColumn value="#{item.dateCreaProd}" label="Date de Creation Produit" />
+                <b:dataTableColumn value="#{item.chefProd}" label="Chef de Produit" />
                 
-        <b:commandButton value="Modifier" icon="edit" action="#{dirBean.rechercher(item.idP)}" />
+                <b:dataTableColumn label="Modifier" >
+                
+        <b:commandButton  icon="edit" action="#{dirBean.rechercher(item.idP)}" />
                 
               
-            </h:column>
-            <h:column>
-                <b:commandButton value="Supprimer" icon="trash" action="#{dirBean.supprimer(item.idP)}"/>
-</h:column>
+           </b:dataTableColumn> 
+                <b:dataTableColumn  label="Supprimer">
+                <b:commandButton  icon="trash" action="#{dirBean.supprimer(item.idP)}"/>
+</b:dataTableColumn>
   </b:dataTable>
 </h:form>
 
-        <f:view>
 
-
-        
-        </f:view>
 
     </h:body>
 </html>

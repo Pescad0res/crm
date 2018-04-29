@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>interventionn</title>
+        <title>intervention</title>
     </h:head>
     <h:body>
         <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" >
@@ -34,21 +34,15 @@
                print="true"
                >
               
-               <b:dataTableColumn value="#{item.dateInterv}" />
-                <b:dataTableColumn value="#{item.typeJour}"/>
-                 <b:dataTableColumn value="#{item.heureArrivee}"/>
-                  <b:dataTableColumn value="#{item.heureDepart}"/>
-                   <b:dataTableColumn value="#{itemh.periode}"/>
-                   <b:dataTableColumn value="#{item.travaux}"/>
- 
+             <b:dataTableColumn value="#{item.dateInterv}" label="Date d'Intervention" />
+                <b:dataTableColumn value="#{item.typeJour}"  label="Type de Jour" />
+                 <b:dataTableColumn value="#{item.heureArrivee}" label="Heure d'Arrivée" />
+                  <b:dataTableColumn value="#{item.heureDepart}" label="Heure de Départ" />
+                   <b:dataTableColumn value="#{itemh.periode}" label="Période" />
+                   <b:dataTableColumn value="#{item.travaux}" label="Travaux" />
   </b:dataTable>
 </h:form>
 
-        <f:view>
-
-
-        
-        </f:view>
 
     </h:body>
 </html>

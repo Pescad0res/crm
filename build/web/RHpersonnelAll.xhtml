@@ -8,7 +8,7 @@
         <title>Personnel</title>
     </h:head>
     <h:body>
-        <b:navBar brand="Personnel" brandHref="RhpersonnelAll.xhtml" >
+        <b:navBar brand="Personnel" brandHref="RHpersonnelAll.xhtml" >
   <b:navbarLinks>
     
    
@@ -31,38 +31,33 @@
                pdf="true"
                columnVisibility="true"
                print="true"
-               >              
-                <b:dataTableColumn value="#{item.cnrps}" />
-                <b:dataTableColumn value="#{item.cin}" />
-                <b:dataTableColumn value="#{item.nomPers}" />
-                <b:dataTableColumn value="#{item.prenomPers}"  />
-                <b:dataTableColumn value="#{item.loginPers}" />          
-                <b:dataTableColumn value="#{item.sexe}" />
-                <b:dataTableColumn value="#{item.etatCivil}" />
-                <b:dataTableColumn value="#{item.nat}" />
-                <b:dataTableColumn value="#{item.dateEmbauche}" />
-                <b:dataTableColumn value="#{item.tel}" />
-                <b:dataTableColumn value="#{item.email}" />
-                <b:dataTableColumn value="#{item.superieur}" />
-                <b:dataTableColumn value="#{item.grade}" />
+               >   
+                 <b:dataTableColumn value="#{item.nomPers}" label=" Nom Personnel" />
+                <b:dataTableColumn value="#{item.prenomPers}" label="Prénom Personnel"  />
+                <b:dataTableColumn value="#{item.cnrps}"   />
+                <b:dataTableColumn value="#{item.cin}"  />
+                <b:dataTableColumn value="#{item.loginPers}"  label="Login Personnel" />
+               
+                <b:dataTableColumn value="#{item.sexe}" label="Sexe" />
+                <b:dataTableColumn value="#{item.etatCivil}" label="Etat Civil"  />
+                <b:dataTableColumn value="#{item.nat}" label="Nationnalité" />
+                <b:dataTableColumn value="#{item.dateEmbauche}" label="Date Embauche"  />
+                <b:dataTableColumn value="#{item.tel}" label="Tel"  />
+                <b:dataTableColumn value="#{item.email}" label="Email"  />
+                <b:dataTableColumn value="#{item.superieur}"  label="Superieur" />
+                <b:dataTableColumn value="#{item.grade}" label="Grade" />
                   
-    <h:column  >
+                <b:dataTableColumn label="Modifier">
                 
-        <b:commandButton value="Modifier" icon="edit" action="#{rhBean.rechercher(item.idPers)}" />
+        <b:commandButton  icon="edit" action="#{rhBean.rechercher(item.idPers)}" />
                 
               
-            </h:column>
-            <h:column>
-                <b:commandButton value="Supprimer" icon="trash" action="#{rhBean.supprimer(item.idPers)}"/>
-</h:column>
+            </b:dataTableColumn>
+             <b:dataTableColumn label="Supprimer">
+                <b:commandButton  icon="trash" action="#{rhBean.supprimer(item.idPers)}"/>
+</b:dataTableColumn>
   </b:dataTable>
 </h:form>
-
-        <f:view>
-
-
-        
-        </f:view>
 
     </h:body>
 </html>

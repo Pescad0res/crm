@@ -15,12 +15,12 @@ import com.crm1.dao.ReclamationDAOImpl;
 import com.crm1.entity.Client;
 import com.crm1.entity.Produit;
 import com.crm1.entity.Reclamation;
-import com.crm1.metier.ClientServices;
 import com.crm1.metier.ProduitServicesImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -33,12 +33,20 @@ import javax.faces.model.SelectItem;
 @RequestScoped
 
 public class ReclamationBean {
-  
+    @ManagedProperty(value="#{CliBean}")
+    private ClientBean clientBean;
 
-   
+    public void setClientBean(ClientBean clientBean) {
+        this.clientBean = clientBean;
+    }
+
+    
+  
+    
     ReclamationDAO dao = new ReclamationDAOImpl();
     ClientDAO daoclient = new ClientDAOImpl();
     ProduitDAO daoprod = new ProduitDAOImpl();
+    Client cli = new Client();
     
     private Integer idclient1;
     private Integer idproduit;
@@ -80,7 +88,7 @@ public class ReclamationBean {
   
   
     
-private Client cli;
+
 public ReclamationBean() {
     cli = new Client();
 }
@@ -165,26 +173,26 @@ public ReclamationBean() {
             
             
             
-            public void loadclient(Integer idclient1){
+      /*    public void loadclient(Integer idclient1){
                  ClientDAO daoo = new ClientDAOImpl();
                  daoo.findByidCli(idclient1);   
                  
-            }
+            }    */
             
-            public void loadproduit(Integer idproduit){
+         /*   public void loadproduit(Integer idproduit){
                 ProduitDAO da = new ProduitDAOImpl();
                 da.findByidP(idproduit);
                 
-            }
+            }    */
             
             
     
-public void getinfos(){
+   /*   public void getinfos(){
     //System.out.println("AAAAAAAAAAAAAAAAAA"+idclient1);
     loadclient(idclient1);
     loadproduit(idproduit);
     
-}
+}     */
 
             
             
@@ -193,10 +201,22 @@ public void getinfos(){
         return dao.find();
     }
     
+    /*public void someAction(){
+         
+        Client cli = (Client) FacesContext.getCurrentInstance()
+            .getExternalContext().getSessionMap().get("cli");
+        // ...
+    
+        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, " "+clientBean.cli.getIdCli(), ""));
+    }*/
     
     public void ajouter(){
-        
-        
+        Client cli = (Client) FacesContext.getCurrentInstance()
+            .getExternalContext().getSessionMap().get("cli");
+      	
+      idclient1 =  clientBean.cli.getIdCli();
+        System.out.println("taib"+idclient1);
 //loadclient(idclient1);
 rec.setClient(daoclient.findByidCli(idclient1));
 rec.setProduit(daoprod.findByidP(idproduit));
@@ -207,7 +227,8 @@ rec.setDegUrgence(degreurgence);
         //rec.setClient(daoclient.findByidCli(2));
        //rec.setProduit(daoprod.findByidP(1));
         dao.add(rec);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ADDED !", ""));
+        
         
     }
 
@@ -215,6 +236,7 @@ public String modif()
 { 
     if (rec.getClient() != null) 
     {
+       
         rec.setClient(daoclient.findByidCli(idclient1));
         rec.setProduit(daoprod.findByidP(idproduit));
         rec.setTypeRec(type);
