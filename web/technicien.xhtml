@@ -34,17 +34,22 @@
                 <b:dataTableColumn  value="#{item.reclamation.situation}"/>
                 
                 <b:dataTableColumn label="Personnel" value="#{item.reclamation.persEstim}"/>
-                <b:dataTableColumn label="Observation générale" value="#{item.observGen}" />
+                <b:dataTableColumn label="Observation générale" value="#{item.observGen}"  />
                 
-             <h:column  >
+                 <b:dataTableColumn  label="Modifier">
                 
-                 <b:commandButton value="modifier une pv d'intervention" icon="edit" action="#{techlogBean.rechercher(item.idPv)}" />
+        <b:commandButton  icon="edit" action="#{techlogBean.rechercher(item.idPv)}" />
                 
               
-            </h:column>
-            <h:column>
-                <b:commandButton value="supprimer une pv d'intervention" icon="trash" action="#{techlogBean.supprimer(item.idPv)}"/>
-</h:column>
+           </b:dataTableColumn>
+             
+          <b:dataTableColumn  label="Supprimer">
+                
+        <b:commandButton  icon="edit" action="#{techlogBean.supprimer(item.idPv)}" />
+                
+              
+           </b:dataTableColumn>
+            
   </b:dataTable>
 </h:form>
 

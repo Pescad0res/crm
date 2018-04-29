@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 20, 2018 2:07:20 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 29, 2018 3:43:03 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.crm1.entity.Personnel" table="personnel" catalog="crm" optimistic-lock="version">
         <id name="idPers" type="java.lang.Integer">
@@ -53,13 +53,13 @@
                 <comment>Etat civil du personnel</comment>
             </column>
         </property>
-        <property name="nat" type="date">
-            <column name="nat" length="10" not-null="true">
+        <property name="nat" type="string">
+            <column name="nat" length="5" not-null="true">
                 <comment>Nationalit&#233; du personnel</comment>
             </column>
         </property>
-        <property name="dateEmbauche" type="int">
-            <column name="date_embauche" not-null="true">
+        <property name="dateEmbauche" type="date">
+            <column name="date_embauche" length="10" not-null="true">
                 <comment>Date d&#146;em bauche du personnel</comment>
             </column>
         </property>

@@ -32,20 +32,20 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idRec}"/>
-                <b:dataTableColumn value="#{item.degUrgence}" />
-                <b:dataTableColumn value="#{item.descCli}" />
-                <b:dataTableColumn value="#{item.descExpert}" />
+                 <b:dataTableColumn value="#{item.nomRec}" label="Nom Réclamation"/>
+                <b:dataTableColumn value="#{item.degUrgence}" label="Degrée d'urgence"/>
+                <b:dataTableColumn value="#{item.descCli}"  label="Description Client"/>
+                <b:dataTableColumn value="#{item.descExpert}"  label="Description Expert"/>
                 
                 <b:dataTableColumn value="#{item.situation}" />
-                <b:dataTableColumn value="#{item.typeRec}"  />
+                <b:dataTableColumn value="#{item.typeRec}" label="Type Réclamation" />
                 
-                <b:dataTableColumn value="#{item.dateCreRec}" />
+                <b:dataTableColumn value="#{item.dateCreRec}"  label="Date de Creation Réclamation"/>
                 
-                <b:dataTableColumn value="#{item.recEstim}" />
+                <b:dataTableColumn value="#{item.recEstim}" label="Réclamation Estimé" />
                 
                 <b:dataTableColumn label="intervenant">
-                     <b:inputText  value="#{item.persEstim}"  />
+                     <b:inputText  value="#{item.persEstim}"  label="personnel Estimé"/>
       </b:dataTableColumn>
     <h:column>   
         <b:commandButton value="Ajouter au intervenant"  icon-awesome="plus" action="#{rtBean.affecter(item.idRec)}" />    

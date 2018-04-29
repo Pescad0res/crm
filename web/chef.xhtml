@@ -34,14 +34,14 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idRec}"/>
-                <b:dataTableColumn value="#{item.degUrgence}" />
-                <b:dataTableColumn value="#{item.descCli}" />
-                <b:dataTableColumn value="#{item.descExpert}" />
-                <b:dataTableColumn value="#{item.persEstim}"  />
+               <b:dataTableColumn value="#{item.nomRec}" label="Nom Réclamation"/>
+                <b:dataTableColumn value="#{item.degUrgence}" label="Degrée d'urgence"/>
+                <b:dataTableColumn value="#{item.descCli}" label="Description Client" />
+                <b:dataTableColumn value="#{item.descExpert}" label="Description Expert"/>
+                <b:dataTableColumn value="#{item.persEstim}" label="personnel Estimé" />
                 <b:dataTableColumn value="#{item.situation}" />
-                <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.dateCreRec}" />
+                <b:dataTableColumn value="#{item.typeRec}" label="Type Réclamation" />
+               <b:dataTableColumn value="#{item.dateCreRec}" label="Date de Creation Réclamation"/>
                
              
                 
@@ -49,11 +49,11 @@
                     <b:inputText id="estimation" value="#{item.estimation}"  />
        
     </b:dataTableColumn>
-    <h:column>   
+               <b:dataTableColumn label="Estimer">
         
-        <b:commandButton value="Estimer"  icon-awesome="clock-o"  actionListener="#{chefBean.edit(item.idRec)}" ></b:commandButton>
+        <b:commandButton  icon-awesome="clock-o"  actionListener="#{chefBean.edit(item.idRec)}" ></b:commandButton>
 
-            </h:column>
+           </b:dataTableColumn>
   </b:dataTable>
 </h:form>
 

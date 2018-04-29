@@ -14,8 +14,7 @@
             <h:form>
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="IdC:" for="idC" />
-                    <h:inputText id="idC" value="#{rfBean.cont.idC}" title="IdC" required="true" requiredMessage="The IdC field is required."/>
+                       
                     <h:outputLabel value="Client:" for="client" />
                     <b:selectOneMenu id="client" value="#{rfBean.idclient}" >
                         <!-- TODO: fixed -->
@@ -23,37 +22,39 @@
                         <f:selectItems value="#{rfBean.clientSelect}"  />
                 
                     </b:selectOneMenu>
-                    <h:outputLabel value="IdContrat:" for="idContrat" />
-                    <h:inputText id="idContrat" value="#{rfBean.cont.idContrat}" title="IdContrat" required="true" requiredMessage="The IdContrat field is required."/>
-                    <h:outputLabel value="DateContrat:" for="dateContrat" />
-                    <h:inputText id="dateContrat" value="#{rfBean.cont.dateContrat}" title="DateContrat" required="true" requiredMessage="The DateContrat field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="RefManuelle:" for="refManuelle" />
-                    <h:inputText id="refManuelle" value="#{rfBean.cont.refManuelle}" title="RefManuelle" required="true" requiredMessage="The RefManuelle field is required."/>
-                    <h:outputLabel value="DateSign:" for="dateSign" />
-                    <h:inputText id="dateSign" value="#{rfBean.cont.dateSign}" title="DateSign" required="true" requiredMessage="The DateSign field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="DateEffet:" for="dateEffet" />
-                    <h:inputText id="dateEffet" value="#{rfBean.cont.dateEffet}" title="DateEffet" required="true" requiredMessage="The DateEffet field is required."/>
+                    
+                    <h:outputLabel value="Date de Contrat:" for="dateContrat" />
+                     <b:datepicker id="dateContrat" mode="toggle-icon" showWeek="true"
+                  firstDay="1" value="#{rfBean.cont.dateContrat}" required="true"  />
+                    <h:outputLabel value="Référence manuelle du contrat :" for="refManuelle" />
+                    <b:inputText id="refManuelle" value="#{rfBean.cont.refManuelle}" title="RefManuelle" required="true" requiredMessage="The RefManuelle field is required."/>
+                    <h:outputLabel value="Date Signature:" for="dateSign"/>
+                      <b:datepicker id="dateSign" mode="toggle-icon" showWeek="true"
+                  firstDay="1" value="#{rfBean.cont.dateSign}" required="true"  />
+                    <h:outputLabel value="Date Effet:" for="dateEffet" />
+                    <b:datepicker id="dateEffet" mode="toggle-icon" showWeek="true"
+                  firstDay="1" value="#{rfBean.cont.dateEffet}" required="true"  />
+                    
+                     
                     <h:outputLabel value="Duree:" for="duree" />
-                    <h:inputText id="duree" value="#{rfBean.cont.duree}" title="Duree" required="true" requiredMessage="The Duree field is required."/>
-                    <h:outputLabel value="DateFin:" for="dateFin" />
-                    <h:inputText id="dateFin" value="#{rfBean.cont.dateFin}" title="DateFin" required="true" requiredMessage="The DateFin field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-                    <h:outputLabel value="NbInterPrev:" for="nbInterPrev" />
-                    <h:inputText id="nbInterPrev" value="#{rfBean.cont.nbInterPrev}" title="NbInterPrev" required="true" requiredMessage="The NbInterPrev field is required."/>
-                    <h:outputLabel value="ContratTechnique:" for="contratTechnique" />
-                    <h:selectOneMenu id="contratTechnique" value="#{rfBean.cont.contratTechnique}" title="ContratTechnique" >
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
-                    </h:selectOneMenu>
+                    <b:inputText id="duree" value="#{rfBean.cont.duree}" title="Duree" required="true" requiredMessage="The Duree field is required."/>
+                    <h:outputLabel value="Date Fin:" for="dateFin" />
+                  
+                       <b:datepicker id="dateFin" mode="toggle-icon" showWeek="true"
+                  firstDay="1" value="#{rfBean.cont.dateFin}" required="true"  />
+                    <h:outputLabel value="Nombre d'Intervention:" for="nbInterPrev" />
+                    <b:inputText id="nbInterPrev" value="#{rfBean.cont.nbInterPrev}" title="NbInterPrev" required="true" requiredMessage="The NbInterPrev field is required."/>
+                    <h:outputLabel value="Contrat Technique:" for="contratTechnique" />
+                     <b:selectOneMenu id="contratTechnique" value="#{rfBean.idcontrat}" >
+                    
+                        <!-- FIxed-->
+                        <f:selectItems value="#{rfBean.contrattechSelect}"  />
+                       
+                    </b:selectOneMenu>
                     <b:form horizontal="true">
                         <b:commandButton value="Add" action="#{rfBean.ajoutercont()}"/> 
                         <b:commandButton value="Enregister" action="#{rfBean.modifcont()}"/>  
-                    <b:commandButton value="retourner a la liste " action="rfcliAll.xhtml"/> 
+                    <b:commandButton value="retourner a la liste " action="rfcontAll.xhtml"/> 
                     </b:form>
                 </h:panelGrid>
             </h:form>

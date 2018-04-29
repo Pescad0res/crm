@@ -26,6 +26,9 @@ public class ChefBean {
     ReclamationDAO daorec =  new ReclamationDAOImpl();
     InterventionDAO daoint = new InterventionDAOImpl();
     Reclamation rec = new Reclamation();
+    PvIntervention pv = new PvIntervention();
+    
+    
     //public boolean edittable=true;
     
 //private String estimation;
@@ -36,6 +39,14 @@ public class ChefBean {
     public void setEstimation(String estimation) {
         this.estimation = estimation;
     }*/
+
+    public PvIntervention getPv() {
+        return pv;
+    }
+
+    public void setPv(PvIntervention pv) {
+        this.pv = pv;
+    }
 
     
 

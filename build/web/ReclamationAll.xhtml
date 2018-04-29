@@ -25,7 +25,7 @@
 </b:navBar>
         
         <h:form>
-            <b:commandButton value="Ajouter une reclamation" icon="cloud" action="Reclamation.xhtml"  ></b:commandButton>
+             <b:commandButton value="Ajouter une reclamation" icon="cloud" action="Reclamation.xhtml"  ></b:commandButton>
             <b:dataTable value="#{recBean.lister()}"
                var="item"
                excel="true"
@@ -34,23 +34,24 @@
                columnVisibility="true"
                print="true"
                >    
-                <b:dataTableColumn value="#{item.nomRec}" />
-                <b:dataTableColumn value="#{item.degUrgence}" />
-                <b:dataTableColumn value="#{item.descCli}" />
+                <b:dataTableColumn value="#{item.nomRec}" label="Nom de réclamation"  />
+                <b:dataTableColumn value="#{item.degUrgence}" label="Degré d'urgence" />
+                <b:dataTableColumn value="#{item.descCli}" label="Description client "/>
                 <b:dataTableColumn value="#{item.situation}" />
-                <b:dataTableColumn value="#{item.typeRec}"  />
-                <b:dataTableColumn value="#{item.dateCreRec}" />
+                <b:dataTableColumn value="#{item.typeRec}"  label="Type de réclamation"  />
+                <b:dataTableColumn value="#{item.dateCreRec}" label="Date de creation d'une réclamation"/>
           
               
-    <h:column>
+    
+                <b:dataTableColumn  label="Modifier">
                 
-        <b:commandButton value="Modifier" icon="edit" action="#{recBean.rechercher(item.idRec)}" />
+        <b:commandButton  icon="edit" action="#{recBean.rechercher(item.idRec)}" />
                 
               
-            </h:column>
-            <h:column>
-                <b:commandButton value="Supprimer" icon="trash" action="#{recBean.supprimer(item.idRec)}"/>
-</h:column>
+           </b:dataTableColumn>
+             <b:dataTableColumn  label="Supprimer">
+                <b:commandButton  icon="trash" action="#{recBean.supprimer(item.idRec)}"/>
+</b:dataTableColumn>
   </b:dataTable>
 </h:form>
 

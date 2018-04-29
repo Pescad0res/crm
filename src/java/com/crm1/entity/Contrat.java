@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Apr 20, 2018 2:07:18 PM by Hibernate Tools 4.3.1
+// Generated Apr 29, 2018 3:43:02 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -35,7 +35,7 @@ public class Contrat  implements java.io.Serializable {
      private Date dateContrat;
      private String refManuelle;
      private Date dateSign;
-     private int dateEffet;
+     private Date dateEffet;
      private int duree;
      private Date dateFin;
      private int nbInterPrev;
@@ -46,7 +46,7 @@ public class Contrat  implements java.io.Serializable {
     }
 
 	
-    public Contrat(Client client, String idContrat, Date dateContrat, String refManuelle, Date dateSign, int dateEffet, int duree, Date dateFin, int nbInterPrev) {
+    public Contrat(Client client, String idContrat, Date dateContrat, String refManuelle, Date dateSign, Date dateEffet, int duree, Date dateFin, int nbInterPrev) {
         this.client = client;
         this.idContrat = idContrat;
         this.dateContrat = dateContrat;
@@ -57,7 +57,7 @@ public class Contrat  implements java.io.Serializable {
         this.dateFin = dateFin;
         this.nbInterPrev = nbInterPrev;
     }
-    public Contrat(Client client, String idContrat, Date dateContrat, String refManuelle, Date dateSign, int dateEffet, int duree, Date dateFin, int nbInterPrev, Set<ContratLogiciel> contratLogiciels, ContratTechnique contratTechnique) {
+    public Contrat(Client client, String idContrat, Date dateContrat, String refManuelle, Date dateSign, Date dateEffet, int duree, Date dateFin, int nbInterPrev, Set<ContratLogiciel> contratLogiciels, ContratTechnique contratTechnique) {
        this.client = client;
        this.idContrat = idContrat;
        this.dateContrat = dateContrat;
@@ -94,7 +94,7 @@ public class Contrat  implements java.io.Serializable {
     }
 
     
-    @Column(name="Id_contrat", nullable=false, length=12)
+    @Column(name="Id_contrat", nullable=false, length=100)
     public String getIdContrat() {
         return this.idContrat;
     }
@@ -133,13 +133,13 @@ public class Contrat  implements java.io.Serializable {
         this.dateSign = dateSign;
     }
 
-    
-    @Column(name="Date_effet", nullable=false)
-    public int getDateEffet() {
+    @Temporal(TemporalType.DATE)
+    @Column(name="Date_effet", nullable=false, length=10)
+    public Date getDateEffet() {
         return this.dateEffet;
     }
     
-    public void setDateEffet(int dateEffet) {
+    public void setDateEffet(Date dateEffet) {
         this.dateEffet = dateEffet;
     }
 

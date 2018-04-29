@@ -33,22 +33,21 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idCli}"/>
-                <b:dataTableColumn value="#{item.matFisc}" />
-                <b:dataTableColumn value="#{item.nomCli}" />
-                <b:dataTableColumn value="#{item.loginCli}" />
-                <b:dataTableColumn value="#{item.nomRep}"  />
-                <b:dataTableColumn value="#{item.prenomRep}" />
+                <b:dataTableColumn value="#{item.matFisc}" label="Immatricule fiscal du client " />
+                <b:dataTableColumn value="#{item.nomCli}" label="Nom client"/>
+                <b:dataTableColumn value="#{item.loginCli}" label="login client"/>
+                <b:dataTableColumn value="#{item.nomRep}"  label="Nom du représentant du client "/>
+                <b:dataTableColumn value="#{item.prenomRep}" label="Prénom du représentant du client "/>
                
-    <h:column>
+                <b:dataTableColumn label="Modifier">
                 
-        <b:commandButton value="Modifier" icon="edit" action="#{rfBean.recherchercli(item.idCli)}" />
+        <b:commandButton  icon="edit" action="#{rfBean.recherchercli(item.idCli)}" />
                 
               
-            </h:column>
-            <h:column>
-                <b:commandButton value="Supprimer" icon="trash" action="#{rfBean.supprimercli(item.idCli)}"/>
-</h:column>
+            </b:dataTableColumn>
+                <b:dataTableColumn label="Supprimer">
+                <b:commandButton icon="trash" action="#{rfBean.supprimercli(item.idCli)}"/>
+</b:dataTableColumn>
   </b:dataTable>
 </h:form>
 

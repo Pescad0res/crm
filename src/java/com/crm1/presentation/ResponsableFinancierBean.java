@@ -9,10 +9,15 @@ import com.crm1.dao.ClientDAO;
 import com.crm1.dao.ClientDAOImpl;
 import com.crm1.dao.ContratDAO;
 import com.crm1.dao.ContratDAOImpl;
+import com.crm1.dao.ContratTechniqueDAO;
+import com.crm1.dao.ContratTechniqueDAOImpl;
 import com.crm1.entity.Client;
 import com.crm1.entity.Contrat;
+import com.crm1.entity.ContratTechnique;
+import com.crm1.entity.Materiel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -28,15 +33,18 @@ import javax.faces.model.SelectItem;
 public class ResponsableFinancierBean {
     ClientDAO daocli =  new  ClientDAOImpl();
     ContratDAO daocont = new ContratDAOImpl();
+    ContratTechniqueDAO daoconttech = new ContratTechniqueDAOImpl();
     
     Client cli = new Client();
     Contrat cont= new Contrat();
+    Materiel mat = new Materiel();
+    ContratTechnique conttech= new ContratTechnique();
     
     private Integer idclient;
     private Integer idcontrat;
     
     private List<SelectItem> clientSelect;
-    private List<SelectItem> contactSelect;
+    private List<SelectItem> contrattechSelect;
 
     public Integer getIdclient() {
         return idclient;
@@ -71,6 +79,15 @@ public class ResponsableFinancierBean {
     public void setCont(Contrat cont) {
         this.cont = cont;
     }
+
+    public ContratTechnique getConttech() {
+        return conttech;
+    }
+
+    public void setConttech(ContratTechnique conttech) {
+        this.conttech = conttech;
+    }
+    
     
             public List<SelectItem> getClientSelect() {
             if (clientSelect == null){
@@ -98,6 +115,27 @@ public class ResponsableFinancierBean {
                  daoo.findByidCli(idclient);   
                  
             }
+                           public List<SelectItem> getContrattechSelect() {
+            if (contrattechSelect == null){
+                
+                contrattechSelect = new ArrayList<SelectItem>();
+                ContratTechniqueDAO daoconttech = new ContratTechniqueDAOImpl();
+                
+                List<ContratTechnique> listContratstech = daoconttech.findAll();
+                if(listContratstech != null && !listContratstech.isEmpty()){
+                    SelectItem item;
+                    for (ContratTechnique Contrattechlist : listContratstech) {
+                        item = new SelectItem(Contrattechlist.getIdC() , Contrattechlist.getContrat().getRefManuelle());
+                  
+                        contrattechSelect.add(item);
+                        
+                    }
+                    
+                }
+  
+            }
+        return contrattechSelect;
+    }
     
           public List <Client> listercli(){
         return daocli.findAll();
@@ -137,6 +175,17 @@ public class ResponsableFinancierBean {
         
     }
      public void ajoutercont(){
+         cont.setClient(daocli.findByidCli(idclient));
+         String aux =  daoconttech.findByidtech(idclient).getContrat().getRefManuelle();
+         
+        // List<Materiel> list = daoconttech.findByidtech(idclient).;
+       
+      //   System.out.println("taib"+list.size());  
+         
+         
+           
+         cont.setIdContrat(aux);
+         //cont.setContratTechnique(daoconttech.findByidtech(idclient));
         daocont.add(cont);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
         

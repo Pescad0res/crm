@@ -14,24 +14,22 @@
             <h:form>
                 <h1><h:outputText value="Moddifier Client"/></h1>
                 <h:panelGrid columns="2">
-                     <h:outputLabel value="idCli:" for="idCli" />
-                    <h:inputText id="idCli" value="#{rfBean.cli.idCli}" />
-                    <h:outputLabel value="MatFisc:" for="matFisc" />
-                    <h:inputText id="matFisc" value="#{rfBean.cli.matFisc}" title="MatFisc" />
-                    <h:outputLabel value="NomCli:" for="nomCli" />
-                    <h:inputText id="nomCli" value="#{rfBean.cli.nomCli}" title="NomCli" />
-                    <h:outputLabel value="LoginCli:" for="loginCli" />
-                    <h:inputText id="loginCli" value="#{rfBean.cli.loginCli}" title="LoginCli" />
-                    <h:outputLabel value="PwdCli:" for="pwdCli" />
-                    <h:inputSecret   id="pwdCli" value="#{rfBean.cli.pwdCli}" title="PwdCli" />
-                    <h:outputLabel value="NomRep:" for="nomRep" />
-                    <h:inputText id="nomRep" value="#{rfBean.cli.nomRep}" title="NomRep" />
-                    <h:outputLabel value="PrenomRep:" for="prenomRep" />
-                    <h:inputText id="prenomRep" value="#{rfBean.cli.prenomRep}" title="PrenomRep" />
+                      <h:outputLabel value="Immatricule fiscal du client" for="matFisc" />
+                    <b:inputText id="matFisc" value="#{rfBean.cli.matFisc}" title="MatFisc" />
+                    <h:outputLabel value="Nom Client:" for="nomCli" />
+                    <b:inputText id="nomCli" value="#{rfBean.cli.nomCli}" title="NomCli" />
+                    <h:outputLabel value="Login Client:" for="loginCli" />
+                    <b:inputText id="loginCli" value="#{rfBean.cli.loginCli}" title="LoginCli" />
+                    <h:outputLabel value="Mot de passe:" for="pwdCli" />
+                    <b:inputSecret   id="pwdCli" value="#{rfBean.cli.pwdCli}" title="PwdCli" />
+                    <h:outputLabel value="Nom du représentant du client:" for="nomRep" />
+                    <b:inputText id="nomRep" value="#{rfBean.cli.nomRep}" title="NomRep" />
+                    <h:outputLabel value="Prénom du représentant du client:" for="prenomRep" />
+                    <b:inputText id="prenomRep" value="#{rfBean.cli.prenomRep}" title="PrenomRep" />
                     <b:form horizontal="true">
-                        <b:commandButton value="Add" action="#{rfBean.ajoutercli()}"/> 
-                        <b:commandButton value="Enregister" action="#{rfBean.modifcli()}"/>  
-                    <b:commandButton value="retourner a la liste " action="rfcliAll.xhtml"/> 
+                        <b:commandButton value="Ajouter" action="#{rfBean.ajoutercli()}"/> 
+                        <b:commandButton value="Modifier" action="#{rfBean.modifcli()}"/>  
+                    <b:commandButton value="Retourner a la liste " action="rfcliAll.xhtml"/> 
                     </b:form>
                 </h:panelGrid>
             </h:form>

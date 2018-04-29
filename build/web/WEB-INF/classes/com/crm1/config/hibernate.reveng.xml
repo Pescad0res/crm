@@ -41,28 +41,23 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="crm"/>
-  <table-filter match-name="pv_intervention"/>
   <table-filter match-name="contrat"/>
-  <table-filter match-name="contrat_logiciel"/>
-  <table-filter match-name="materiel"/>
-  <table-filter match-name="client"/>
-  <table-filter match-name="select_activite"/>
   <table-filter match-name="fiche_suivi"/>
-  <table-filter match-name="contact"/>
-  <table-filter match-name="liste_matriel"/>
-  <table-filter match-name="bon_commande"/>
-  <table-filter match-name="devis"/>
-  <table-filter match-name="reclamation"/>
-  <table-filter match-name="contrat_technique"/>
-  <table-filter match-name="select_service"/>
-  <table-filter match-name="produit"/>
-  <table-filter match-name="controle"/>
-  <table-filter match-name="service"/>
-  <table-filter match-name="affectation"/>
   <table-filter match-name="activite"/>
+  <table-filter match-name="reclamation"/>
+  <table-filter match-name="liste_matriel"/>
+  <table-filter match-name="client"/>
+  <table-filter match-name="affectation"/>
+  <table-filter match-name="contact"/>
+  <table-filter match-name="select_service"/>
+  <table-filter match-name="pv_intervention"/>
+  <table-filter match-name="service"/>
+  <table-filter match-name="controle"/>
+  <table-filter match-name="contrat_technique"/>
+  <table-filter match-name="produit"/>
+  <table-filter match-name="select_activite"/>
   <table-filter match-name="adresse"/>
   <table-filter match-name="personnel"/>
-  <table-filter match-name="facture"/>
-  <table-filter match-name="ligne"/>
-  <table-filter match-name="ligne_devis"/>
+  <table-filter match-name="materiel"/>
+  <table-filter match-name="contrat_logiciel"/>
 </hibernate-reverse-engineering>

@@ -5,7 +5,7 @@
  */
 package com.crm1.dao;
 
-import com.crm1.entity.Facture;
+import com.crm1.entity.Materiel;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -13,42 +13,42 @@ import org.hibernate.Session;
  *
  * @author REV DAMAGE
  */
-public class FactureDAOimpl implements FactureDAO{
+public class MaterielDAOImpl implements MaterielDAO{
 
     Session ses = HibernateUtil.getSession();
     @Override
-    public void add(Facture fac) {
+    public void add(Materiel m) {
         ses.beginTransaction();
-        ses.save(fac);
-        ses.getTransaction().commit();
+        ses.save(m);
+        ses.getTransaction().commit();    
     }
 
     @Override
-    public Facture edit(Facture fac) {
+    public Materiel edit(Materiel m) {
         ses.beginTransaction();
-        Facture fact = (Facture) ses.merge(fac);
+        Materiel mat = (Materiel) ses.merge(m);
         ses.getTransaction().commit();
         
-        return fact;
+        return mat;    
     }
 
     @Override
-    public Facture delete(Integer idFacture) {
+    public Materiel delete(Integer idM) {
         ses.beginTransaction();
-        Facture fact = findByidFacture(idFacture);
-        ses.delete(fact);
+        Materiel mat = findByidPers(idM);
+        ses.delete(mat);
         ses.getTransaction().commit();
-        return null;
+        return null;   
     }
 
     @Override
-    public List<Facture> findAll() {
-        return ses.createQuery("select obj from Facture obj").list();
+    public List<Materiel> findAll() {
+       return ses.createQuery("select obj from Materiel obj").list();    
     }
 
     @Override
-    public Facture findByidFacture(Integer idFacture) {
-        return (Facture) ses.get(Facture.class,idFacture);
+    public Materiel findByidPers(Integer idM) {
+        return (Materiel) ses.get(Materiel.class,idM); 
     }
     
 }

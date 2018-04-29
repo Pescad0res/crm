@@ -33,25 +33,33 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.idC}"/>
-                <b:dataTableColumn value="#{item.idContrat}" />
-                <b:dataTableColumn value="#{item.dateContrat}" />
-                <b:dataTableColumn value="#{item.refManuelle}" />
-                <b:dataTableColumn value="#{item.dateSign}"  />
-                <b:dataTableColumn value="#{item.dateEffet}" />
-                <b:dataTableColumn value="#{item.duree}" />
-                <b:dataTableColumn value="#{item.dateFin}" />
-                <b:dataTableColumn value="#{item.nbInterPrev}" />
-               
-    <h:column>
+                <b:dataTableColumn value="#{item.dateContrat}" label="date contrat"/>
+                <b:dataTableColumn value="#{item.refManuelle}" label="Référence manuelle du contrat :" />
+                <b:dataTableColumn value="#{item.dateSign}" label="Date Signature" />
                 
-        <b:commandButton value="Modifier" icon="edit" action="#{rfBean.recherchercont(item.idC)}" />
+                <b:dataTableColumn value="#{item.dateEffet}" label="Date  effet" />
+                <b:dataTableColumn value="#{item.duree}"  label="durée"/>
+                <b:dataTableColumn value="#{item.dateFin}" label=" Date Fin" />
+              
+              <b:dataTableColumn value="#{item.nbInterPrev}" label=" Nombre d'intervention" />
+   
+                 <b:dataTableColumn  label="Modifier">
+                
+        <b:commandButton  icon="edit" action="#{rfBean.recherchercont(item.idC)}" />
                 
               
-            </h:column>
-            <h:column>
-                <b:commandButton value="Supprimer" icon="trash" action="#{rfBean.supprimercont(item.idC)}"/>
-</h:column>
+           </b:dataTableColumn>
+             
+                
+        
+                   <b:dataTableColumn  label="Supprimer">
+                
+        <b:commandButton  icon="trash" action="#{rfBean.supprimercont(item.idC)}" />
+                
+              
+           </b:dataTableColumn>
+              
+         
   </b:dataTable>
 </h:form>
 

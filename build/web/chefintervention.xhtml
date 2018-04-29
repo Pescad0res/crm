@@ -40,10 +40,10 @@
                  <b:dataTableColumn label="Personnel">
                      <b:inputText  value="#{item.reclamation.persEstim}"  />
       </b:dataTableColumn>
-    <h:column>   
-         <b:commandButton value="Affecter"  icon-awesome="check" action="#{chefBean.affecter(item.reclamation.idRec)}" /> 
+                <b:dataTableColumn label="Affecter">
+         <b:commandButton  icon-awesome="check" action="#{chefBean.affecter(item.reclamation.idRec)}" /> 
   
-            </h:column>
+            </b:dataTableColumn>
   </b:dataTable>
 </h:form>
 

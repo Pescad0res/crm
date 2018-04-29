@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Apr 20, 2018 2:07:18 PM by Hibernate Tools 4.3.1
+// Generated Apr 29, 2018 3:43:02 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -38,8 +38,8 @@ public class Personnel  implements java.io.Serializable {
      private Date dateNais;
      private String sexe;
      private String etatCivil;
-     private Date nat;
-     private int dateEmbauche;
+     private String nat;
+     private Date dateEmbauche;
      private String tel;
      private String email;
      private String superieur;
@@ -50,7 +50,7 @@ public class Personnel  implements java.io.Serializable {
     }
 
 	
-    public Personnel(String cnrps, String cin, String nomPers, String prenomPers, String loginPers, String pwdPers, Date dateNais, String sexe, String etatCivil, Date nat, int dateEmbauche, String tel, String email, String superieur, String grade) {
+    public Personnel(String cnrps, String cin, String nomPers, String prenomPers, String loginPers, String pwdPers, Date dateNais, String sexe, String etatCivil, String nat, Date dateEmbauche, String tel, String email, String superieur, String grade) {
         this.cnrps = cnrps;
         this.cin = cin;
         this.nomPers = nomPers;
@@ -67,7 +67,7 @@ public class Personnel  implements java.io.Serializable {
         this.superieur = superieur;
         this.grade = grade;
     }
-    public Personnel(String cnrps, String cin, String nomPers, String prenomPers, String loginPers, String pwdPers, Date dateNais, String sexe, String etatCivil, Date nat, int dateEmbauche, String tel, String email, String superieur, String grade, Set<Affectation> affectations) {
+    public Personnel(String cnrps, String cin, String nomPers, String prenomPers, String loginPers, String pwdPers, Date dateNais, String sexe, String etatCivil, String nat, Date dateEmbauche, String tel, String email, String superieur, String grade, Set<Affectation> affectations) {
        this.cnrps = cnrps;
        this.cin = cin;
        this.nomPers = nomPers;
@@ -188,23 +188,23 @@ public class Personnel  implements java.io.Serializable {
         this.etatCivil = etatCivil;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="nat", nullable=false, length=10)
-    public Date getNat() {
+    
+    @Column(name="nat", nullable=false, length=5)
+    public String getNat() {
         return this.nat;
     }
     
-    public void setNat(Date nat) {
+    public void setNat(String nat) {
         this.nat = nat;
     }
 
-    
-    @Column(name="date_embauche", nullable=false)
-    public int getDateEmbauche() {
+    @Temporal(TemporalType.DATE)
+    @Column(name="date_embauche", nullable=false, length=10)
+    public Date getDateEmbauche() {
         return this.dateEmbauche;
     }
     
-    public void setDateEmbauche(int dateEmbauche) {
+    public void setDateEmbauche(Date dateEmbauche) {
         this.dateEmbauche = dateEmbauche;
     }
 

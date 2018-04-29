@@ -5,18 +5,18 @@
  */
 package com.crm1.dao;
 
-import com.crm1.entity.Facture;
+import com.crm1.entity.Materiel;
 import java.util.List;
 
 /**
  *
  * @author REV DAMAGE
  */
-public interface FactureDAO {
-    public void add(Facture fac);
-    public Facture edit(Facture fac);
-    public Facture delete(Integer idFacture);
-    public List<Facture> findAll();
-    public Facture findByidFacture(Integer idFacture);
+public interface MaterielDAO {
+    public void add(Materiel m);
+    public Materiel edit(Materiel m);
+    public Materiel delete(Integer idM);
+    public List<Materiel> findAll();
+    public Materiel findByidPers(Integer idM);
     
 }

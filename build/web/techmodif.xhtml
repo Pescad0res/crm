@@ -14,9 +14,7 @@
             <h:form>
                 <h1><h:outputText value="Intervention"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="idPv" for="idPv" />
-                    <b:inputText id="idPv" value="#{techlogBean.inter.idPv}" title="idPv" required="true" requiredMessage="The idPv field is required."/>
-                    
+                  
                     <h:outputLabel value="Reclamation:" for="reclamation" />
                     <b:selectOneMenu id="client" value="#{techlogBean.idreclamation}" >
                         <!-- TODO: fixed -->
@@ -24,11 +22,11 @@
                         <f:selectItems value="#{techlogBean.reclamationSelect}"  />
                 
                     </b:selectOneMenu>
-                    <h:outputLabel value="ObservGen:" for="observGen" />
-                    <b:inputText id="observGen" value="#{techlogBean.inter.observGen}" title="ObservGen" required="true" requiredMessage="The ObservGen field is required."/>
+                    <h:outputLabel value="Observation Générale:" for="observGen" />
+                    <b:inputTextarea id="observGen" value="#{techlogBean.inter.observGen}" title="ObservGen" required="true" requiredMessage="The ObservGen field is required."/>
                     <b:form horizontal="true">
                         
-                        <b:commandButton value="Enregister" action="#{techlogBean.modif()}"/> 
+                        <b:commandButton value="Modifier" action="#{techlogBean.modif()}"/> 
                         <b:commandButton value="retourner a la liste " action="technicien.xhtml"/> 
                     
                     </b:form>

@@ -50,12 +50,13 @@
                            <f:selectItem itemValue="5" itemLabel="veuve"></f:selectItem>
                              </b:selectOneMenu>
                     <h:outputLabel value="Nationalité:" for="nat" />
-                        <b:datepicker id="nat" mode="toggle-icon" showWeek="true"
-                                      firstDay="1" value="#{rhBean.per.nat}" />
+                    <b:inputText id="nat" value="#{rhBean.per.nat}" title="nat" required="true" requiredMessage="The nat field is required."/>
+                      
                         
               
                     <h:outputLabel value="Date Embauche:" for="dateEmbauche" />
-                    <b:inputText id="dateEmbauche" value="#{rhBean.per.dateEmbauche}" title="DateEmbauche" required="true" requiredMessage="The DateEmbauche field is required."/>
+                     <b:datepicker id="dateEmbauche" mode="toggle-icon" showWeek="true"
+                  firstDay="1" value="#{rhBean.per.dateEmbauche}" />
                     <h:outputLabel value="Tel:" for="tel" />
                     <b:inputText id="tel" value="#{rhBean.per.tel}" title="Tel" required="true" requiredMessage="The Tel field is required."/>
                     <h:outputLabel value="Email:" for="email" />

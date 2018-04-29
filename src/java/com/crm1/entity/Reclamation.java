@@ -1,5 +1,5 @@
 package com.crm1.entity;
-// Generated Apr 20, 2018 2:07:18 PM by Hibernate Tools 4.3.1
+// Generated Apr 29, 2018 3:43:02 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -48,7 +48,6 @@ public class Reclamation  implements java.io.Serializable {
      private Set<PvIntervention> pvInterventions = new HashSet<PvIntervention>(0);
      private Set<ListeMatriel> listeMatriels = new HashSet<ListeMatriel>(0);
      private Affectation affectation;
-     private Set<LigneDevis> ligneDevises = new HashSet<LigneDevis>(0);
 
     public Reclamation() {
     }
@@ -63,7 +62,7 @@ public class Reclamation  implements java.io.Serializable {
         this.recEstim = recEstim;
         this.degUrgence = degUrgence;
     }
-    public Reclamation(Client client, Produit produit, String nomRec, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, Integer estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation, Set<LigneDevis> ligneDevises) {
+    public Reclamation(Client client, Produit produit, String nomRec, Date dateCreRec, String typeRec, boolean preventive, String descCli, String situation, boolean recEstim, String persEstim, Integer estimation, String degUrgence, String descExpert, Date dateDebut, Date dateFin, Set<PvIntervention> pvInterventions, Set<ListeMatriel> listeMatriels, Affectation affectation) {
        this.client = client;
        this.produit = produit;
        this.nomRec = nomRec;
@@ -82,7 +81,6 @@ public class Reclamation  implements java.io.Serializable {
        this.pvInterventions = pvInterventions;
        this.listeMatriels = listeMatriels;
        this.affectation = affectation;
-       this.ligneDevises = ligneDevises;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -208,7 +206,7 @@ public class Reclamation  implements java.io.Serializable {
     }
 
     
-    @Column(name="Deg_urgence", nullable=false, length=12)
+    @Column(name="Deg_urgence", nullable=false, length=13)
     public String getDegUrgence() {
         return this.degUrgence;
     }
@@ -272,15 +270,6 @@ public class Reclamation  implements java.io.Serializable {
     
     public void setAffectation(Affectation affectation) {
         this.affectation = affectation;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="reclamation")
-    public Set<LigneDevis> getLigneDevises() {
-        return this.ligneDevises;
-    }
-    
-    public void setLigneDevises(Set<LigneDevis> ligneDevises) {
-        this.ligneDevises = ligneDevises;
     }
 
 
