@@ -1,30 +1,54 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+     
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
+     <f:metadata>
+    <f:event type="preRenderView" listener="#{recBean.permission()}"/>
+</f:metadata>
+     
+  
     <h:head>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Reclamation</title>
     </h:head>
+    <script type="text/javascript">
+    function sup(){
+   toastr.info("SUPPRIME !");
+}
+
+    </script> 
     <h:body>
+  
         <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
   <b:navbarLinks>
     <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml"></b:navLink>
     <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
     <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>
-           <h:form>
-            Welcome 
-            <h:outputText value="#{sessionScope['logcli'] }" />
+       <h:form>
+            <b:container fluid="true">
+                
+               <h3>Bienvenue  <h:outputText value="#{sessionScope['logcli'] }" /> </h3>
            
             
             <b:commandButton value="Logout" action="#{CliBean.doLogout()}"></b:commandButton> 
- 
+            </b:container>
         </h:form>  
   </b:navbarLinks>
 </b:navBar>
-        
+        <f:view>
         <h:form>
+            
+          
+           <h:panelGroup id="result">
+              
+              
+            
+           
              <b:commandButton value="Ajouter une reclamation" icon="cloud" action="Reclamation.xhtml"  ></b:commandButton>
             <b:dataTable value="#{recBean.lister()}"
                var="item"
@@ -50,16 +74,20 @@
               
            </b:dataTableColumn>
              <b:dataTableColumn  label="Supprimer">
-                <b:commandButton  icon="trash" action="#{recBean.supprimer(item.idRec)}"/>
+                
+   
+                 <b:commandButton  icon="trash"  action="#{recBean.supprimer(item.idRec)}" onclick="sup();"/>
+                 
+                
 </b:dataTableColumn>
+                 
   </b:dataTable>
+             </h:panelGroup>
+           
+            
+            
 </h:form>
 
-        <f:view>
-
-
-        
-        </f:view>
-
+</f:view>
     </h:body>
 </html>

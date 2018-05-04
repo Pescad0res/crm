@@ -16,12 +16,14 @@ import com.crm1.entity.Client;
 import com.crm1.entity.Produit;
 import com.crm1.entity.Reclamation;
 import com.crm1.metier.ProduitServicesImpl;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
@@ -46,13 +48,16 @@ public class ReclamationBean {
     ReclamationDAO dao = new ReclamationDAOImpl();
     ClientDAO daoclient = new ClientDAOImpl();
     ProduitDAO daoprod = new ProduitDAOImpl();
-    Client cli = new Client();
+    //Client cli = new Client();
     
     private Integer idclient1;
     private Integer idproduit;
     private String type;
      private String Situation;
      private String degreurgence;
+      Client cli = (Client) FacesContext.getCurrentInstance()
+            .getExternalContext().getSessionMap().get("cli");
+     
      
 
     public String getDegreurgence() {
@@ -125,7 +130,17 @@ public ReclamationBean() {
     public void setIdproduit(Integer idproduit) {
         this.idproduit = idproduit;
     }
-    
+    public void permission() throws IOException {
+     
+
+        if( clientBean.cli.getIdCli() == null) {
+            System.out.println("*** The user has no permission to visit this page. *** "+ clientBean.cli.getIdCli());
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect("index.xhtml");
+        } else  {
+            System.out.println("*** The session is still active. User is logged in. *** "+ clientBean.cli.getIdCli());
+        }
+    }
             public List<SelectItem> getClientSelect() {
             if (clientSelect == null){
                 
@@ -212,11 +227,10 @@ public ReclamationBean() {
     }*/
     
     public void ajouter(){
-        Client cli = (Client) FacesContext.getCurrentInstance()
-            .getExternalContext().getSessionMap().get("cli");
+        
       	
       idclient1 =  clientBean.cli.getIdCli();
-        System.out.println("taib"+idclient1);
+       // System.out.println("taib"+idclient1);
 //loadclient(idclient1);
 rec.setClient(daoclient.findByidCli(idclient1));
 rec.setProduit(daoprod.findByidP(idproduit));
@@ -227,7 +241,7 @@ rec.setDegUrgence(degreurgence);
         //rec.setClient(daoclient.findByidCli(2));
        //rec.setProduit(daoprod.findByidP(1));
         dao.add(rec);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ADDED !", ""));
+        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ADDED !", ""));
         
         
     }
@@ -242,9 +256,10 @@ public String modif()
         rec.setTypeRec(type);
         rec.setSituation("créé");
         rec.setDegUrgence(degreurgence);
+        //
     dao.edit(rec);
     }
-    return ("ReclamationAll.xhtml"); 
+    return null;//("ReclamationAll.xhtml"); 
 }
 
   

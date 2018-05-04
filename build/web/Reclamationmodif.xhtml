@@ -5,6 +5,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Reclamation</title>
     </h:head>
     <h:body>
@@ -18,34 +21,39 @@
 
 
         <f:view>
-
+<script type="text/javascript">
+    function success() {
+                  toastr.warning("La Reclamation a eté modifié !");
+              }
+       
+</script> 
 
             <h:form>
                 <h1><h:outputText value="Reclamation"/></h1>
+                <h:panelGroup id="result">
                 <h:panelGrid columns="2" cellpadding="2">
                     <h:outputLabel value="idRec" for="idRec" />
                     <b:inputText id="idRec" value="#{recBean.rec.idRec}" title="Nom De Reclamation" required="true" requiredMessage="The DescCli field is required."/>
                     <h:outputLabel value="Client:" for="client" />
 
-                    <b:selectOneMenu id="client" value="#{recBean.idclient1}" >
-                        <!-- TODO: fixed -->
+                    <b:selectOneMenu  id="client" value="#{sessionScope.idcli}" disabled="#{sessionScope.idcli==null ? false : true }" >
+                          
+                        <!-- fixed -->
                         
                         <f:selectItems value="#{recBean.clientSelect}"  />
                 
                     </b:selectOneMenu>
                     <h:outputLabel value="Produit:" for="produit" />
                     <b:selectOneMenu id="produit" value="#{recBean.idproduit}" >
-                        <!-- TODO: fixed -->
+                        <!-- fixed -->
                         <f:selectItems value="#{recBean.produitSelect}" />
-                        <f:ajax event="change" listener="#{recBean.getinfos()}"/>
+                       
                     </b:selectOneMenu>
+                    <h:outputLabel value="Nom De Reclamation" for="descCli" />
+                    <b:inputText id="nomRec" value="#{recBean.rec.nomRec}" title="Nom De Reclamation" required="true" requiredMessage="The DescCli field is required."/>
 
-                    <h:outputLabel value="Date de création:" for="dateCreRec" />
-                    <h:outputText id="dateCreRec" value="#{now}">
-                        
-    <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
-    
-</h:outputText>
+              <h:outputLabel value="DateCreRec:" for="dateCreRec" />
+                   <b:dateTimePicker id="dateCreRec" show-date="true" mode="toggle-icon"   required="true" use-current="true" value="#{recBean.rec.dateCreRec}"/>
                         
                
                     <h:outputLabel value="TypeRec:" for="type"/>                        
@@ -57,7 +65,7 @@
                                 
                         </h:selectOneRadio>
                     <h:outputLabel value="DescCli:" for="descCli" />
-                    <b:inputText id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
+                    <b:inputTextarea id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
                     
                     
                    
@@ -74,11 +82,15 @@
                     </b:selectOneMenu>
                    
                     
-                    <b:form horizontal="true">
-                    <b:commandButton value="Enregister" action="#{recBean.modif()}"/>  
+                  
+                    <b:commandButton value="Enregister" action="#{recBean.modif()}" onclick="success();">  
+                        <f:ajax execute="@form" render="result" />
+                    </b:commandButton>
+                    
                     <b:commandButton value="retourner a la liste " action="ReclamationAll.xhtml"/> 
-                    </b:form>
+                 
                 </h:panelGrid>
+                </h:panelGroup>
             </h:form>
         </f:view>
 

@@ -5,8 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+         <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Estimation</title>
     </h:head>
+    <script type="text/javascript">
+    function estim(){
+   toastr.warning("Estimation faite !");
+}
+    </script> 
     <h:body>
         <b:navBar brand="Estimation" brandHref="chef.xhtml" >
   <b:navbarLinks>
@@ -51,7 +59,7 @@
     </b:dataTableColumn>
                <b:dataTableColumn label="Estimer">
         
-        <b:commandButton  icon-awesome="clock-o"  actionListener="#{chefBean.edit(item.idRec)}" ></b:commandButton>
+                   <b:commandButton  icon-awesome="clock-o"  actionListener="#{chefBean.edit(item.idRec)}" onclick="estim();" ></b:commandButton>
 
            </b:dataTableColumn>
   </b:dataTable>

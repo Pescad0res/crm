@@ -5,8 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Intervention</title>
     </h:head>
+    <script type="text/javascript">
+    function sup(){
+   toastr.info("Supprimé !");
+}
+    </script> 
     <h:body>
         <b:navBar brand="Interventions" brandHref="IntervLogAll.xhtml" >
   <b:navbarLinks>
@@ -35,15 +43,15 @@
                 <b:dataTableColumn  value="#{item.reclamation.situation}"/>
                 <b:dataTableColumn label="Observation générale" value="#{item.observGen}" />
                 <b:dataTableColumn label="Personnel" value="#{item.reclamation.persEstim}"/>
-                <h:column  >
+                <b:dataTableColumn label="modifier une pv d'intervention">
                 
-                    <b:commandButton value="modifier une pv d'intervention" icon="edit" action="#{interlogBean.rechercher(item.idPv)}" />
+                    <b:commandButton  icon="edit" action="#{interlogBean.rechercher(item.idPv)}" />
                 
               
-            </h:column>
-            <h:column>
-                <b:commandButton value="supprimer une pv d'intervention" icon="trash" action="#{interlogBean.supprimer(item.idPv)}"/>
-</h:column>
+            </b:dataTableColumn>
+                <b:dataTableColumn label="supprimer une pv d'intervention">
+                    <b:commandButton  icon="trash" action="#{interlogBean.supprimer(item.idPv)}" onclick="sup();"/>
+</b:dataTableColumn>
              
   </b:dataTable>
 </h:form>

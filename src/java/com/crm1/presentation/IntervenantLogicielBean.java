@@ -92,7 +92,7 @@ public class IntervenantLogicielBean {
          public void ajouter(){
         inter.setReclamation(daorec.findByidRec(idreclamation));
         dao.add(inter);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
+        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
         
     }
     public void supprimer (Integer code)
@@ -112,6 +112,6 @@ public class IntervenantLogicielBean {
         inter.setReclamation(daorec.findByidRec(idreclamation));
     dao.edit(inter);
     }
-    return ("IntervLogAll.xhtml"); 
+    return null;//("IntervLogAll.xhtml"); 
 }       
 }

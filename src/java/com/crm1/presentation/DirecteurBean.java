@@ -101,7 +101,7 @@ public class DirecteurBean {
     
      public void ajouter(){
         daopro.add(pro);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
+        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
         
     }
 
@@ -111,7 +111,7 @@ public class DirecteurBean {
     {
     daopro.edit(pro);
     }
-    return ("directeurProduitAll.xhtml"); 
+    return null;//("directeurProduitAll.xhtml"); 
 }
     
 }

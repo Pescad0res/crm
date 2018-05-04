@@ -5,15 +5,32 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+             <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Contrat</title>
     </h:head>
+         <script type="text/javascript">
+   
+              function add() {
+                  toastr.success("Contrat Ajouté !");
+              }
+               function modif() {
+                  toastr.warning("Contrat Modiffié !");
+              }
+       
+</script> 
+    
     <h:body>
+       
         <f:view>
 
 
             <h:form>
                 <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGroup id="result">
                 <h:panelGrid columns="2">
+                   
                        
                     <h:outputLabel value="Client:" for="client" />
                     <b:selectOneMenu id="client" value="#{rfBean.idclient}" >
@@ -51,12 +68,17 @@
                         <f:selectItems value="#{rfBean.contrattechSelect}"  />
                        
                     </b:selectOneMenu>
-                    <b:form horizontal="true">
-                        <b:commandButton value="Add" action="#{rfBean.ajoutercont()}"/> 
-                        <b:commandButton value="Enregister" action="#{rfBean.modifcont()}"/>  
+              
+                        <b:commandButton value="Add" action="#{rfBean.ajoutercont()}" onclick="add();"> 
+                        <f:ajax execute="@form" render="result" />
+                    </b:commandButton>
+                        <b:commandButton value="Enregister" action="#{rfBean.modifcont()}" onclick="modif();">  
+                        <f:ajax execute="@form" render="result" />
+                    </b:commandButton>
                     <b:commandButton value="retourner a la liste " action="rfcontAll.xhtml"/> 
-                    </b:form>
+              
                 </h:panelGrid>
+                    </h:panelGroup>
             </h:form>
         </f:view>
 

@@ -5,13 +5,27 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
+        <title>Ajouter Produit</title>
     </h:head>
     <h:body>
         <f:view>
+            <script type="text/javascript">
+    function success() {
+                  toastr.success("Produit ajouté avec success !");
+              }
+               function modif() {
+                  toastr.warning("Produit Modifié !");
+              }
+       
+</script> 
+
 
      <h:form>
                 <h1><h:outputText value=""/></h1>
+                <h:panelGroup id="result">
                 <h:panelGrid columns="2">
                    <h:outputLabel value="Code de produit:" for="idProd" />
                     <b:inputText id="idProd" value="#{dirBean.pro.idProd}" title="IdProd" required="true" requiredMessage="The IdProd field is required."/>
@@ -38,12 +52,17 @@
                    <b:dateTimePicker id="dateCreaProd" show-date="true" mode="toggle-icon"   required="true" use-current="true" value="#{dirBean.pro.dateCreaProd}"/>
                      
                   
-                    <b:form horizontal="true">
-                    <b:commandButton value="Ajouter" action="#{dirBean.ajouter()}"/> 
-                    <b:commandButton value="Modifier" action="#{dirBean.modif()}"/>  
-                    <b:commandButton value="retourner a la liste " action="directeurProduitAll.xhtml"/> 
-                    </b:form>
+                    
+                    <b:commandButton value="Ajouter" action="#{dirBean.ajouter()}" onclick="success();"> 
+                       <f:ajax execute="@form" render="result"  />
+                    </b:commandButton>
+                    <b:commandButton value="Modifier" action="#{dirBean.modif()}" onclick="modif();" > 
+                    <f:ajax execute="@form" render="result"  />
+                    </b:commandButton>
+                    <b:commandButton value="retourner a la liste " action="directeurProduitAll.xhtml" /> 
+                   
                 </h:panelGrid>
+                    </h:panelGroup>
             </h:form>
         </f:view>
 

@@ -5,14 +5,22 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+          <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Intervention</title>
     </h:head>
     <h:body>
         <f:view>
-
+  <script type="text/javascript">
+    function success() {
+                  toastr.success("Observation ajouté avec success !");
+              }
+</script> 
 
             <h:form>
                 <h1><h:outputText value="Intervention"/></h1>
+                <h:panelGroup id="result" > 
                 <h:panelGrid columns="2">
                     
                     <h:outputLabel value="Reclamation:" for="reclamation" />
@@ -24,12 +32,15 @@
                     </b:selectOneMenu>
                     <h:outputLabel value="ObservGen:" for="observGen" />
                     <b:inputTextarea  id="observGen" value="#{techlogBean.inter.observGen}" title="ObservGen" required="true" requiredMessage="The ObservGen field is required."/>
-                    <b:form horizontal="true">
-                        <b:commandButton value="Ajouter" action="#{techlogBean.ajouter()}"/> 
+                 
+                        <b:commandButton value="Ajouter" action="#{techlogBean.ajouter()}" onclick="success();"> 
+                            <f:ajax execute="@form" render="result" />
+                        </b:commandButton>
                         <b:commandButton value="retourner a la liste " action="technicien.xhtml"/> 
                     
-                    </b:form>
+                
                 </h:panelGrid>
+                    </h:panelGroup>
             </h:form>
         </f:view>
 

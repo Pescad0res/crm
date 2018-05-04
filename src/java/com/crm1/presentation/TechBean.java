@@ -114,6 +114,6 @@ public class TechBean {
         inter.setReclamation(daorec.findByidRec(idreclamation));
     dao.edit(inter);
     }
-    return ("technicien.xhtml"); 
+    return null;//("technicien.xhtml"); 
 }
 }

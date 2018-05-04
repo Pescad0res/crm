@@ -5,33 +5,45 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Intervention</title>
     </h:head>
     <h:body>
         <f:view>
-
+<script type="text/javascript">
+    function success() {
+                  toastr.warning("L'Observation a eté modifié !");
+              }
+       
+</script> 
 
             <h:form>
                 <h1><h:outputText value="Intervention"/></h1>
+                <h:panelGroup id="result">
                 <h:panelGrid columns="2">
                      <h:outputLabel value="idPv" for="idPv" />
                      <b:inputText id="idPv" value="#{interlogBean.inter.idPv}" title="ObservGen" required="true" requiredMessage="The idPv field is required."/>
                     
                     <h:outputLabel value="Reclamation:" for="reclamation" />
                     <b:selectOneMenu id="client" value="#{interlogBean.idreclamation}" >
-                        <!-- TODO: fixed -->
+                        <!--fixed -->
                         
                         <f:selectItems value="#{interlogBean.reclamationSelect}"  />
                 
                     </b:selectOneMenu>
-                    <h:outputLabel value="ObservGen:" for="observGen" />
-                    <b:inputText id="observGen" value="#{interlogBean.inter.observGen}" title="ObservGen" required="true" requiredMessage="The ObservGen field is required."/>
-                    <b:form horizontal="true">
-                        <b:commandButton value="Enregister" action="#{interlogBean.modif()}"/> 
-                        <b:commandButton value="retourner a la liste " action="IntervLogAll.xhtml"/> 
+                    <h:outputLabel value="Observation générale:" for="observGen" />
+                    <b:inputTextarea id="observGen" value="#{interlogBean.inter.observGen}" title="ObservGen" required="true" requiredMessage="The ObservGen field is required."/>
+                   
+                        <b:commandButton value="Enregister" action="#{interlogBean.modif()}" onclick="success();"> 
+                        <f:ajax execute="@form" render="result" />
+                    </b:commandButton>
+                        <b:commandButton value="retourner a la liste " action="IntervLogAll.xhtml" /> 
                     
-                    </b:form>
+                    
                 </h:panelGrid>
+                    </h:panelGroup>
             </h:form>
         </f:view>
 

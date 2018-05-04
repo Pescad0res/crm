@@ -5,14 +5,28 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+               <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Ressource Humaine</title>
     </h:head>
+      <script type="text/javascript">
+   
+              function add() {
+                  toastr.success("Personnel Ajouté !");
+              }
+               function modif() {
+                  toastr.warning("Personnel Modiffié !");
+              }
+       
+</script> 
     <h:body>
         <f:view>
 
 
             <h:form>
                 <h1><h:outputText value="Ressource Humaine"/></h1>
+                <h:panelGroup id="result">
                 <h:panelGrid columns="2">
                     
                     <h:outputLabel value="Cnrps:" for="cnrps" />
@@ -65,10 +79,15 @@
                     <b:inputText id="superieur" value="#{rhBean.per.superieur}" title="Superieur" required="true" requiredMessage="The Superieur field is required."/>
                     <h:outputLabel value="Grade:" for="grade" />
                     <b:inputText id="grade" value="#{rhBean.per.grade}" title="Grade" required="true" requiredMessage="The Grade field is required."/>
-                    <b:commandButton value="Ajouter" action="#{rhBean.ajouter()}"/> 
-                    <b:commandButton value="Enregister" action="#{rhBean.modif()}"/>  
+                    <b:commandButton value="Ajouter" action="#{rhBean.ajouter()}" onclick="add();"> 
+                        <f:ajax execute="@form" render="result" />
+                    </b:commandButton>
+                    <b:commandButton value="Enregister" action="#{rhBean.modif()}" onclick="modif();">  
+                        <f:ajax execute="@form" render="result" />
+                    </b:commandButton>
                     <b:commandButton value="retourner a la liste " action="RHpersonnelAll.xhtml"/> 
                 </h:panelGrid>
+                    </h:panelGroup>
             </h:form>
         </f:view>
 

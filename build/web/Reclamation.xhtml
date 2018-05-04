@@ -1,11 +1,18 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:metadata>
+    <f:event type="preRenderView" listener="#{recBean.permission()}"/>
+</f:metadata>
     <h:head>
+        
+               <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Reclamation</title>
     </h:head>
     <h:body>
@@ -19,11 +26,19 @@
 
 
         <f:view>
-
+<script type="text/javascript">
+    function success() {
+                  toastr.success("Réclamation ajouté avec success !");
+              }
+       
+</script> 
 
             <h:form>
+
                 <h1><h:outputText value="Reclamation"/></h1>
-                <h:panelGrid columns="2" cellpadding="2">
+                <h:panelGroup id="result">
+                <h:panelGrid columns="2" cellpadding="2" >
+                    
                     
                     <h:outputLabel value="Client:" for="client" />
                    
@@ -74,12 +89,18 @@
                     </b:selectOneMenu>
                    
                     
-                    <b:form horizontal="true">
-                    <b:commandButton value="Add" action="#{recBean.ajouter()}"/>   
+                   
+                </h:panelGrid>
+                    </h:panelGroup>
+               
+                    <b:commandButton  value="Ajouter" action="#{recBean.ajouter()}" onclick="success();" >
+                  
+                        <f:ajax execute="@form" render="result"  />
+                    </b:commandButton>
                  
                     <b:commandButton value="retourner a la liste " action="ReclamationAll.xhtml"/> 
-                    </b:form>
-                </h:panelGrid>
+                 
+                
             </h:form>
         </f:view>
 

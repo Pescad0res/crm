@@ -5,8 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Produit</title>
     </h:head>
+     <script type="text/javascript">
+    function sup(){
+   toastr.info("Supprimé !");
+}
+    </script> 
     <h:body>
         <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" >
   <b:navbarLinks>
@@ -49,7 +57,7 @@
               
            </b:dataTableColumn> 
                 <b:dataTableColumn  label="Supprimer">
-                <b:commandButton  icon="trash" action="#{dirBean.supprimer(item.idP)}"/>
+                <b:commandButton  icon="trash" action="#{dirBean.supprimer(item.idP)}" onclick="sup();"/>
 </b:dataTableColumn>
   </b:dataTable>
 </h:form>

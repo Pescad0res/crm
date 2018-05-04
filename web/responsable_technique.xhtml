@@ -5,8 +5,25 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+              <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Reclamation</title>
     </h:head>
+         <script type="text/javascript">
+               function affecter(){
+   toastr.success("Personnel affecter !");
+}
+  function estimer(){
+   toastr.warning("Reclamation estimer !");
+}
+             function archive(){
+   toastr.info("Reclamation Archivé !");
+}
+    function annule(){
+   toastr.error("Reclamation annulé !");
+}
+ </script> 
     <h:body>
         <b:navBar brand="Reclamation" brandHref="responsable_technique.xhtml" >
   <b:navbarLinks>
@@ -35,7 +52,7 @@
                  <b:dataTableColumn value="#{item.nomRec}" label="Nom Réclamation"/>
                 <b:dataTableColumn value="#{item.degUrgence}" label="Degrée d'urgence"/>
                 <b:dataTableColumn value="#{item.descCli}"  label="Description Client"/>
-                <b:dataTableColumn value="#{item.descExpert}"  label="Description Expert"/>
+               
                 
                 <b:dataTableColumn value="#{item.situation}" />
                 <b:dataTableColumn value="#{item.typeRec}" label="Type Réclamation" />
@@ -44,27 +61,27 @@
                 
                 <b:dataTableColumn value="#{item.recEstim}" label="Réclamation Estimé" />
                 
-                <b:dataTableColumn label="intervenant">
-                     <b:inputText  value="#{item.persEstim}"  label="personnel Estimé"/>
+                <b:dataTableColumn label="personnel Estimé">
+                     <b:inputText  value="#{item.persEstim}"  />
       </b:dataTableColumn>
-    <h:column>   
-        <b:commandButton value="Ajouter au intervenant"  icon-awesome="plus" action="#{rtBean.affecter(item.idRec)}" />    
-            </h:column>
-                <h:column>   
-                    <b:commandButton value="Archiver"  icon-awesome="archive" action="#{rtBean.archive(item.idRec)}" />    
-            </h:column>
-                <h:column>   
-                    <b:commandButton value="Annuler"  icon-awesome="close" action="#{rtBean.supprimerrec(item.idRec)}" />    
-            </h:column>
+                <b:dataTableColumn label="Ajouter au intervenant">
+        <b:commandButton icon-awesome="plus" action="#{rtBean.affecter(item.idRec)}" onclick="affecter();" />    
+          </b:dataTableColumn>
+                <b:dataTableColumn label="Archiver">
+                    <b:commandButton  icon-awesome="archive" action="#{rtBean.archive(item.idRec)}" onclick="archive();" />    
+           </b:dataTableColumn> 
+                <b:dataTableColumn label="Annuler">
+                    <b:commandButton   icon-awesome="close" action="#{rtBean.supprimerrec(item.idRec)}" onclick="annule();"/>    
+            </b:dataTableColumn>
                 
                 <b:dataTableColumn label="Estimation en jour">
                     <b:inputText id="estimation" value="#{item.estimation}"  />
        
     </b:dataTableColumn>
                 
-                <h:column>   
-                    <b:commandButton value="Estimer"  icon-awesome="clock-o" action="#{rtBean.estime(item.idRec)}" />    
-            </h:column>
+                <b:dataTableColumn label="Estimer">
+                    <b:commandButton   icon-awesome="clock-o" action="#{rtBean.estime(item.idRec)}" onclick="estimer();"/>    
+            </b:dataTableColumn> 
   </b:dataTable>
 </h:form>
 

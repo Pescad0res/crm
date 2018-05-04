@@ -5,14 +5,25 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+            <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Client</title>
     </h:head>
     <h:body>
         <f:view>
+            <script type="text/javascript">
+   
+              function add() {
+                  toastr.success("Client Ajouté !");
+              }
+       
+</script> 
 
 
             <h:form>
                 <h1><h:outputText value="Ajouter Client"/></h1>
+                <h:panelGroup id="result">
                 <h:panelGrid columns="2">
                      
                     
@@ -28,12 +39,15 @@
                     <b:inputText id="nomRep" value="#{rfBean.cli.nomRep}" title="NomRep" />
                     <h:outputLabel value="Prénom du représentant du client:" for="prenomRep" />
                     <b:inputText id="prenomRep" value="#{rfBean.cli.prenomRep}" title="PrenomRep" />
-                    <b:form horizontal="true">
-                        <b:commandButton value="Ajouter" action="#{rfBean.ajoutercli()}"/> 
-                        <b:commandButton value="Enregister" action="#{rfBean.modifcli()}"/>  
+                 
+                        <b:commandButton value="Ajouter" action="#{rfBean.ajoutercli()}" onclick="add();"> 
+                        <f:ajax execute="@form" render="result" />
+                    </b:commandButton>
+                        
                     <b:commandButton value="retourner a la liste " action="rfcliAll.xhtml"/> 
-                    </b:form>
+                 
                 </h:panelGrid>
+                    </h:panelGroup>
             </h:form>
         </f:view>
 

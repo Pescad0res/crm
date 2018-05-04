@@ -5,10 +5,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+         <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Intervention</title>
     </h:head>
+      <script type="text/javascript">
+    function sup(){
+   toastr.info("Supprimé !");
+}
+ </script> 
     <h:body>
-        <b:navBar brand="Interventions" brandHref="IntervLogAll.xhtml" >
+        <b:navBar brand="Interventions" brandHref="technicien.xhtml" >
   <b:navbarLinks>
            <h:form>
             Welcome 
@@ -45,8 +53,8 @@
              
           <b:dataTableColumn  label="Supprimer">
                 
-        <b:commandButton  icon="edit" action="#{techlogBean.supprimer(item.idPv)}" />
-                
+        <b:commandButton  icon="trash" action="#{techlogBean.supprimer(item.idPv)}"  onclick="sup();"/>
+                 
               
            </b:dataTableColumn>
             

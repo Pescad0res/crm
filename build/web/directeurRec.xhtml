@@ -5,8 +5,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Reclamation</title>
     </h:head>
+     <script type="text/javascript">
+    function arch(){
+   toastr.info("Reclamation Archivé");
+}
+   function annuler(){
+   toastr.error("Reclamation Annulé");
+}
+    </script> 
+    
     <h:body>
         <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" >
   <b:navbarLinks>
@@ -45,12 +57,12 @@
                 <b:dataTableColumn value="#{item.recEstim}" label="Réclamation Estimé"/>
                 <b:dataTableColumn label="Archiver">
                 
-        <b:commandButton  icon="book" action="#{dirBean.archive(item.idRec)}" ></b:commandButton>
+        <b:commandButton  icon="book" action="#{dirBean.archive(item.idRec)}"  onclick="arch();"></b:commandButton>
                 
               
           </b:dataTableColumn>
                 <b:dataTableColumn label="Annuler">
-                <b:commandButton  icon="trash" action="#{dirBean.supprimerrec(item.idRec)}"/>
+                <b:commandButton  icon="trash" action="#{dirBean.supprimerrec(item.idRec)}" onclick="annuler();"/>
 </b:dataTableColumn>
   </b:dataTable>
 </h:form>

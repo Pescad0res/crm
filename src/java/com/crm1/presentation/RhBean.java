@@ -63,7 +63,7 @@ public String rechercher(Integer code)
     
     daoper.edit(per);
     }
-    return ("RHpersonnelAll.xhtml"); 
+    return null; //("RHpersonnelAll.xhtml"); 
 }
     
 }//class

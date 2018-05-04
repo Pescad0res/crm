@@ -5,8 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
+  <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
+  <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Affectation</title>
     </h:head>
+      <script type="text/javascript">
+    function affecter(){
+   toastr.success("Personnel affecter ");
+}
+    </script> 
     <h:body>
         <b:navBar brand="Estimation" brandHref="chef.xhtml"  >
   <b:navbarLinks>
@@ -41,7 +49,7 @@
                      <b:inputText  value="#{item.reclamation.persEstim}"  />
       </b:dataTableColumn>
                 <b:dataTableColumn label="Affecter">
-         <b:commandButton  icon-awesome="check" action="#{chefBean.affecter(item.reclamation.idRec)}" /> 
+         <b:commandButton  icon-awesome="check" action="#{chefBean.affecter(item.reclamation.idRec)}" onclick="affecter();"/> 
   
             </b:dataTableColumn>
   </b:dataTable>

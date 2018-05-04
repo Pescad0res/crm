@@ -205,7 +205,7 @@ public class ResponsableFinancierBean {
     {
     daocont.edit(cont);
     }
-    return ("rfcontAll.xhtml"); 
+    return null;//("rfcontAll.xhtml"); 
 }
     
 }
