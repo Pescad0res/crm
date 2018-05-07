@@ -5,6 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
               <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
@@ -25,22 +27,35 @@
 }
  </script> 
     <h:body>
-        <b:navBar brand="Reclamation" brandHref="responsable_technique.xhtml" >
+        <b:navBar brand="Reclamation" brandHref="responsable_technique.xhtml" inverse="true" class="footer-list">
   <b:navbarLinks>
     <b:navLink value="intervention" href="rtintervention.xhtml"></b:navLink>
  
    
-           <h:form>
-            Welcome 
+           <b:navLink value="                    " href="#"></b:navLink>
+   
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4 >
+            Bonjour 
             <h:outputText value="#{sessionScope['logper'] }" />
             
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
  
-        </h:form>  
+        </h4> 
+               </h:form> 
   </b:navbarLinks>
 </b:navBar>
         
         <h:form>
+            <style type="text/css">
+     
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
             <b:dataTable value="#{rtBean.listerrec()}"
                var="item"
                excel="true"
@@ -59,19 +74,19 @@
                 
                 <b:dataTableColumn value="#{item.dateCreRec}"  label="Date de Creation Réclamation"/>
                 
-                <b:dataTableColumn value="#{item.recEstim}" label="Réclamation Estimé" />
+              
                 
                 <b:dataTableColumn label="personnel Estimé">
                      <b:inputText  value="#{item.persEstim}"  />
       </b:dataTableColumn>
                 <b:dataTableColumn label="Ajouter au intervenant">
-        <b:commandButton icon-awesome="plus" action="#{rtBean.affecter(item.idRec)}" onclick="affecter();" />    
+        <b:commandButton class="btn-primary" icon-awesome="plus" action="#{rtBean.affecter(item.idRec)}" onclick="affecter();" />    
           </b:dataTableColumn>
                 <b:dataTableColumn label="Archiver">
-                    <b:commandButton  icon-awesome="archive" action="#{rtBean.archive(item.idRec)}" onclick="archive();" />    
+                    <b:commandButton class="btn-primary" icon-awesome="archive" action="#{rtBean.archive(item.idRec)}" onclick="archive();" />    
            </b:dataTableColumn> 
                 <b:dataTableColumn label="Annuler">
-                    <b:commandButton   icon-awesome="close" action="#{rtBean.supprimerrec(item.idRec)}" onclick="annule();"/>    
+                    <b:commandButton  class="btn-primary" icon-awesome="close" action="#{rtBean.supprimerrec(item.idRec)}" onclick="annule();"/>    
             </b:dataTableColumn>
                 
                 <b:dataTableColumn label="Estimation en jour">
@@ -80,7 +95,7 @@
     </b:dataTableColumn>
                 
                 <b:dataTableColumn label="Estimer">
-                    <b:commandButton   icon-awesome="clock-o" action="#{rtBean.estime(item.idRec)}" onclick="estimer();"/>    
+                    <b:commandButton  class="btn-primary" icon-awesome="clock-o" action="#{rtBean.estime(item.idRec)}" onclick="estimer();"/>    
             </b:dataTableColumn> 
   </b:dataTable>
 </h:form>

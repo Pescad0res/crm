@@ -5,6 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
          <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
@@ -16,22 +18,32 @@
 }
     </script> 
     <h:body>
-        <b:navBar brand="Estimation" brandHref="chef.xhtml" >
+        <b:navBar brand="Estimation" brandHref="chef.xhtml" inverse="true" class="footer-list">
   <b:navbarLinks>
     <b:navLink value="Affecter une intervention" href="chefintervention.xhtml"></b:navLink>
  
    
-           <h:form>
-            Welcome 
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4>
+            Bonjour 
             <h:outputText value="#{sessionScope['logper'] }" />
             
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary"></b:commandButton> 
  
-        </h:form>  
+          </h4>
+        </h:form> 
   </b:navbarLinks>
 </b:navBar>
         
         <h:form>
+            <style type="text/css">
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
           
             <b:dataTable value="#{chefBean.listerrec()}"
                var="item"
@@ -59,7 +71,7 @@
     </b:dataTableColumn>
                <b:dataTableColumn label="Estimer">
         
-                   <b:commandButton  icon-awesome="clock-o"  actionListener="#{chefBean.edit(item.idRec)}" onclick="estim();" ></b:commandButton>
+                   <b:commandButton  icon-awesome="clock-o"  actionListener="#{chefBean.edit(item.idRec)}" onclick="estim();" class="btn-primary"></b:commandButton>
 
            </b:dataTableColumn>
   </b:dataTable>

@@ -5,6 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
                <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
@@ -21,10 +23,34 @@
        
 </script> 
     <h:body>
+        <b:navBar brand="Personnel" brandHref="RHpersonnelAll.xhtml" inverse="true" class="footer-list">
+  <b:navbarLinks>
+    
+   
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4 >
+            Bonjour 
+            <h:outputText value="#{sessionScope['logper'] }" />
+            
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
+ 
+        </h4> 
+               </h:form>   
+  </b:navbarLinks>
+</b:navBar>
         <f:view>
 
 
             <h:form>
+                <style type="text/css">
+     
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
                 <h1><h:outputText value="Ressource Humaine"/></h1>
                 <h:panelGroup id="result">
                 <h:panelGrid columns="2">
@@ -79,13 +105,13 @@
                     <b:inputText id="superieur" value="#{rhBean.per.superieur}" title="Superieur" required="true" requiredMessage="The Superieur field is required."/>
                     <h:outputLabel value="Grade:" for="grade" />
                     <b:inputText id="grade" value="#{rhBean.per.grade}" title="Grade" required="true" requiredMessage="The Grade field is required."/>
-                    <b:commandButton value="Ajouter" action="#{rhBean.ajouter()}" onclick="add();"> 
+                    <b:commandButton class="btn-primary" value="Ajouter" action="#{rhBean.ajouter()}" onclick="add();"> 
                         <f:ajax execute="@form" render="result" />
                     </b:commandButton>
-                    <b:commandButton value="Enregister" action="#{rhBean.modif()}" onclick="modif();">  
+                    <b:commandButton class="btn-primary" value="Enregister" action="#{rhBean.modif()}" onclick="modif();">  
                         <f:ajax execute="@form" render="result" />
                     </b:commandButton>
-                    <b:commandButton value="retourner a la liste " action="RHpersonnelAll.xhtml"/> 
+                    <b:commandButton class="btn-primary" value="retourner a la liste " action="RHpersonnelAll.xhtml"/> 
                 </h:panelGrid>
                     </h:panelGroup>
             </h:form>

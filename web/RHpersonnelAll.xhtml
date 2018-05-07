@@ -5,6 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
           <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
@@ -17,22 +19,33 @@
 
     </script> 
     <h:body>
-        <b:navBar brand="Personnel" brandHref="RHpersonnelAll.xhtml" >
+        <b:navBar brand="Personnel" brandHref="RHpersonnelAll.xhtml" inverse="true" class="footer-list">
   <b:navbarLinks>
     
    
-           <h:form>
-            Welcome 
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4 >
+            Bonjour 
             <h:outputText value="#{sessionScope['logper'] }" />
             
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
  
-        </h:form>  
+        </h4> 
+               </h:form>   
   </b:navbarLinks>
 </b:navBar>
         
         <h:form>
-            <b:commandButton value="Ajouter un Personnel" icon="cloud" action="rh.xhtml"  ></b:commandButton>
+            <style type="text/css">
+     
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
+            <b:commandButton class="btn-primary" value="Ajouter un Personnel" icon="cloud" action="rh.xhtml"  ></b:commandButton>
             <b:dataTable value="#{rhBean.lister()}"
                var="item"
                excel="true"
@@ -50,7 +63,7 @@
                 <b:dataTableColumn value="#{item.sexe}" label="Sexe" />
                 <b:dataTableColumn value="#{item.etatCivil}" label="Etat Civil"  />
                 <b:dataTableColumn value="#{item.nat}" label="Nationnalité" />
-                <b:dataTableColumn value="#{item.dateEmbauche}" label="Date Embauche"  />
+               
                 <b:dataTableColumn value="#{item.tel}" label="Tel"  />
                 <b:dataTableColumn value="#{item.email}" label="Email"  />
                 <b:dataTableColumn value="#{item.superieur}"  label="Superieur" />
@@ -58,12 +71,12 @@
                   
                 <b:dataTableColumn label="Modifier">
                 
-        <b:commandButton  icon="edit" action="#{rhBean.rechercher(item.idPers)}" />
+        <b:commandButton class="btn-primary" icon="edit" action="#{rhBean.rechercher(item.idPers)}" />
                 
               
             </b:dataTableColumn>
              <b:dataTableColumn label="Supprimer">
-                <b:commandButton  icon="trash" action="#{rhBean.supprimer(item.idPers)}" onclick="sup();"/>
+                <b:commandButton class="btn-primary" icon="trash" action="#{rhBean.supprimer(item.idPers)}" onclick="sup();"/>
 </b:dataTableColumn>
   </b:dataTable>
 </h:form>

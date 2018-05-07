@@ -5,6 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+         <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
         <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
@@ -20,23 +22,35 @@
     </script> 
     
     <h:body>
-        <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" >
+        <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" inverse="true" class="footer-list" >
   <b:navbarLinks>
     <b:navLink value="archiver/annuler reclamation" href="directeurRec.xhtml"></b:navLink>
-    <b:navLink value="Pv d'interventionn" href="directeurintervention.xhtml"></b:navLink>
+    <b:navLink value="Pv d'intervention" href="directeurintervention.xhtml"></b:navLink>
     <b:navLink value="fiche de suivi" href="directeurfiche.xhtml"></b:navLink>
+   <b:navLink value="                    " href="#"></b:navLink>
    
-           <h:form>
-            Welcome 
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4 >
+            Bonjour 
             <h:outputText value="#{sessionScope['logper'] }" />
             
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
  
-        </h:form>  
+        </h4>
+        </h:form> 
   </b:navbarLinks>
 </b:navBar>
         
         <h:form>
+            <style type="text/css">
+     
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
             <b:dataTable value="#{dirBean.listerrec()}"
                var="item"
                excel="true"
@@ -47,22 +61,22 @@
                >
                 <b:dataTableColumn value="#{item.degUrgence}" label="degré d'Urgence" />
                 <b:dataTableColumn value="#{item.descCli}" label="Description Client" />
-                <b:dataTableColumn value="#{item.descExpert}" label="Description Expert" />
+              
                 <b:dataTableColumn value="#{item.persEstim}" label="Personnel Estimé" />
                 <b:dataTableColumn value="#{item.situation}"  label="Situation"/>
                 <b:dataTableColumn value="#{item.typeRec}" label="Type Réclamation" />
                 <b:dataTableColumn value="#{item.estimation}" label="Estimation" />
                 <b:dataTableColumn value="#{item.dateCreRec}" label="Date de Creation Réclamation" />
-                <b:dataTableColumn value="#{item.dateFin}"  label="Date Fin Réclamation"/>
+         
                 <b:dataTableColumn value="#{item.recEstim}" label="Réclamation Estimé"/>
                 <b:dataTableColumn label="Archiver">
                 
-        <b:commandButton  icon="book" action="#{dirBean.archive(item.idRec)}"  onclick="arch();"></b:commandButton>
+        <b:commandButton  icon="book" action="#{dirBean.archive(item.idRec)}"  onclick="arch();" class="btn-primary"></b:commandButton>
                 
               
           </b:dataTableColumn>
                 <b:dataTableColumn label="Annuler">
-                <b:commandButton  icon="trash" action="#{dirBean.supprimerrec(item.idRec)}" onclick="annuler();"/>
+                <b:commandButton  icon="trash" action="#{dirBean.supprimerrec(item.idRec)}" onclick="annuler();" class="btn-primary"/>
 </b:dataTableColumn>
   </b:dataTable>
 </h:form>

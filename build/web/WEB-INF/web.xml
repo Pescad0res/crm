@@ -21,12 +21,12 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    <context-param>
+<param-name>BootsFaces_USETHEME</param-name>
+<param-value>spacelab</param-value>
+</context-param>
     <error-page>
     <exception-type>javax.faces.application.ViewExpiredException</exception-type>
     <location>/exception/sessionexpired.xhtml</location>
 </error-page>
-<servlet>
-    <servlet-name>redirect</servlet-name>
-    <jsp-file>/Reclamation.xhtml</jsp-file>
-</servlet>
 </web-app>

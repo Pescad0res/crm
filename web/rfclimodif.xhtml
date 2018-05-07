@@ -5,12 +5,30 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
          <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Client</title>
     </h:head>
     <h:body>
+        <b:navBar brand="Client" brandHref="rfcliAll.xhtml" inverse="true" class="footer-list">
+  <b:navbarLinks>
+    <b:navLink value="contrat" href="rfcontAll.xhtml"></b:navLink>
+   
+   
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4 >
+            Bonjour 
+            <h:outputText value="#{sessionScope['logper'] }" />
+            
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
+ 
+        </h4> 
+               </h:form>  
+  </b:navbarLinks>
+</b:navBar>
         <f:view>
            <script type="text/javascript">
     function modif() {
@@ -21,6 +39,15 @@
 </script> 
 
             <h:form>
+                <style type="text/css">
+     
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
                 <h1><h:outputText value="Moddifier Client"/></h1>
                     <h:panelGroup id="result">
                 <h:panelGrid columns="2">
@@ -40,10 +67,10 @@
                     <b:inputText id="prenomRep" value="#{rfBean.cli.prenomRep}" title="PrenomRep" />
             
                        
-                      <b:commandButton value="Enregister" action="#{rfBean.modifcli()}" onclick="modif();">  
+                      <b:commandButton class="btn-primary" value="Enregister" action="#{rfBean.modifcli()}" onclick="modif();">  
                           <f:ajax execute="@form" render="result" />
                     </b:commandButton>
-                    <b:commandButton value="Retourner a la liste " action="rfcliAll.xhtml"/> 
+                    <b:commandButton class="btn-primary" value="Retourner a la liste " action="rfcliAll.xhtml"/> 
              
                 </h:panelGrid>
                 </h:panelGroup>

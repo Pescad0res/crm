@@ -8,25 +8,40 @@
     <f:event type="preRenderView" listener="#{recBean.permission()}"/>
 </f:metadata>
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
         <title>Contrat</title>
     </h:head>
     <h:body>
-        <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
+        <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" inverse="true" class="footer-list">
   <b:navbarLinks>
-    <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml"></b:navLink>
+      
+      <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml" ></b:navLink>
     <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
     <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>
-           <h:form>
-            Welcome 
+    <b:navLink value="                    " href="#"></b:navLink>
+   
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4>
+            Bonjour 
             <h:outputText value="#{sessionScope['logcli'] }" />
             
-            <b:commandButton value="       Logout" action="#{CliBean.doLogout()}"></b:commandButton> 
- 
-        </h:form>  
+            <b:commandButton class="btn-primary" value="Déconnexion" action="#{CliBean.doLogout()}"></b:commandButton> 
+               </h4>
+        </h:form>
+     
   </b:navbarLinks>
 </b:navBar>
         
         <h:form>
+            <style type="text/css">
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
           
             <b:dataTable value="#{conBean.lister()}"
                var="item"

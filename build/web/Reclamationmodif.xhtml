@@ -5,17 +5,31 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
         <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
         <title>Reclamation</title>
     </h:head>
     <h:body>
-        <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" >
+        <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" inverse="true" class="footer-list">
   <b:navbarLinks>
-   <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml"></b:navLink>
+      
+      <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml" ></b:navLink>
     <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
     <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>
+    <b:navLink value="                    " href="#"></b:navLink>
+   
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4>
+            Bonjour 
+            <h:outputText value="#{sessionScope['logcli'] }" />
+            
+            <b:commandButton class="btn-primary" value="Déconnexion" action="#{CliBean.doLogout()}"></b:commandButton> 
+               </h4>
+        </h:form>
+     
   </b:navbarLinks>
 </b:navBar>
 
@@ -29,6 +43,15 @@
 </script> 
 
             <h:form>
+                <style type="text/css">
+
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
                 <h1><h:outputText value="Reclamation"/></h1>
                 <h:panelGroup id="result">
                 <h:panelGrid columns="2" cellpadding="2">
@@ -83,11 +106,11 @@
                    
                     
                   
-                    <b:commandButton value="Enregister" action="#{recBean.modif()}" onclick="success();">  
+                    <b:commandButton class="btn btn-primary" value="Enregister" action="#{recBean.modif()}" onclick="success();">  
                         <f:ajax execute="@form" render="result" />
                     </b:commandButton>
                     
-                    <b:commandButton value="retourner a la liste " action="ReclamationAll.xhtml"/> 
+                    <b:commandButton class="btn btn-primary" value="retourner a la liste " action="ReclamationAll.xhtml"/> 
                  
                 </h:panelGrid>
                 </h:panelGroup>

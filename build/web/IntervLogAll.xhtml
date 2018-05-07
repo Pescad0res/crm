@@ -5,6 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
+        <h:outputStylesheet library="resources" name="theme/core.css"/>
+        <h:outputStylesheet library="resources" name="theme/theme.css"/>
         <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
@@ -16,20 +18,33 @@
 }
     </script> 
     <h:body>
-        <b:navBar brand="Interventions" brandHref="IntervLogAll.xhtml" >
+        <b:navBar brand="Interventions" brandHref="IntervLogAll.xhtml" inverse="true" class="footer-list">
   <b:navbarLinks>
-           <h:form>
-            Welcome 
-            <h:outputText value="#{sessionScope['logcli'] }" />
+            <b:navLink value="                    " href="#"></b:navLink>
+   
+           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
+               <h4 >
+            Bonjour 
+            <h:outputText value="#{sessionScope['logper'] }" />
             
-            <b:commandButton value="       Logout" action="#{PerBean.doLogout()}"></b:commandButton> 
+            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
  
-        </h:form>  
+        </h4> 
+               </h:form> 
   </b:navbarLinks>
 </b:navBar>
         
         <h:form>
-            <b:commandButton value="Ajouter une Intervention" icon="cloud" action="intervenant_logiciel.xhtml"  ></b:commandButton>
+             <style type="text/css">
+     
+                  .navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+             </style>
+            <b:commandButton class="btn-primary" value="Ajouter une Intervention" icon="cloud" action="intervenant_logiciel.xhtml"  ></b:commandButton>
             <b:dataTable value="#{interlogBean.lister()}"
                var="item"
                excel="true"
@@ -45,12 +60,12 @@
                 <b:dataTableColumn label="Personnel" value="#{item.reclamation.persEstim}"/>
                 <b:dataTableColumn label="modifier une pv d'intervention">
                 
-                    <b:commandButton  icon="edit" action="#{interlogBean.rechercher(item.idPv)}" />
+                    <b:commandButton  icon="edit" action="#{interlogBean.rechercher(item.idPv)}" class="btn-primary" />
                 
               
             </b:dataTableColumn>
                 <b:dataTableColumn label="supprimer une pv d'intervention">
-                    <b:commandButton  icon="trash" action="#{interlogBean.supprimer(item.idPv)}" onclick="sup();"/>
+                    <b:commandButton  icon="trash" action="#{interlogBean.supprimer(item.idPv)}" onclick="sup();" class="btn-primary"/>
 </b:dataTableColumn>
              
   </b:dataTable>
