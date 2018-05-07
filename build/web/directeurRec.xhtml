@@ -50,6 +50,18 @@
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
 }
+  .red {
+      background-color: #BD362F;
+    color: #000000;
+  }
+  .orange {
+      background-color: #F89406;
+      color: #000000;
+  }
+  .green {
+      background-color: #51A351;
+      color: #000000;
+  }
              </style>
             <b:dataTable value="#{dirBean.listerrec()}"
                var="item"
@@ -59,7 +71,9 @@
                columnVisibility="true"
                print="true"
                >
-                <b:dataTableColumn value="#{item.degUrgence}" label="degré d'Urgence" />
+                <b:dataTableColumn value="#{item.degUrgence}" label="Degré d'urgence" 
+                                   styleClass="#{item.degUrgence eq 'très urgente' ? 'red' : item.degUrgence eq 'urgente'? 'orange':item.degUrgence eq 'pas urgente'? 'green':''}"
+                                   />
                 <b:dataTableColumn value="#{item.descCli}" label="Description Client" />
               
                 <b:dataTableColumn value="#{item.persEstim}" label="Personnel Estimé" />
@@ -68,7 +82,7 @@
                 <b:dataTableColumn value="#{item.estimation}" label="Estimation" />
                 <b:dataTableColumn value="#{item.dateCreRec}" label="Date de Creation Réclamation" />
          
-                <b:dataTableColumn value="#{item.recEstim}" label="Réclamation Estimé"/>
+              
                 <b:dataTableColumn label="Archiver">
                 
         <b:commandButton  icon="book" action="#{dirBean.archive(item.idRec)}"  onclick="arch();" class="btn-primary"></b:commandButton>

@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="/crm1/faces/javax.faces.resource/toastr.min.css"></link>
   <script src="/crm1/faces/javax.faces.resource//jquery.min.js"></script>
   <script src="/crm1/faces/javax.faces.resource//toastr.min.js"></script>
-        <title>Intervention</title>
+        <title>Pv Intervention</title>
     </h:head>
     <script type="text/javascript">
     function sup(){
@@ -18,7 +18,7 @@
 }
     </script> 
     <h:body>
-        <b:navBar brand="Interventions" brandHref="IntervLogAll.xhtml" inverse="true" class="footer-list">
+        <b:navBar brand="Pv Interventions" brandHref="IntervLogAll.xhtml" inverse="true" class="footer-list">
   <b:navbarLinks>
             <b:navLink value="                    " href="#"></b:navLink>
    
@@ -44,7 +44,7 @@
     color: #fff;
 }
              </style>
-            <b:commandButton class="btn-primary" value="Ajouter une Intervention" icon="cloud" action="intervenant_logiciel.xhtml"  ></b:commandButton>
+            <b:commandButton class="btn-primary" value="Ajouter une Pv Intervention" icon="cloud" action="intervenant_logiciel.xhtml"  ></b:commandButton>
             <b:dataTable value="#{interlogBean.lister()}"
                var="item"
                excel="true"
