@@ -94,7 +94,7 @@ public class TechBean {
          public void ajouter(){
         inter.setReclamation(daorec.findByidRec(idreclamation));
         dao.add(inter);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
+        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
         
     }
          public void supprimer (Integer code)

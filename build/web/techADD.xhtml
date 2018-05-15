@@ -13,22 +13,29 @@
         <title>Intervention</title>
     </h:head>
     <h:body>
-        <b:navBar brand="Interventions" brandHref="technicien.xhtml" inverse="true" class="footer-list">
-  <b:navbarLinks>
-           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
-               <h4 >
+        <b:navBar inverse="true" class="footer-list">
+            <b:navbarLinks pull="left" styleClass="hidden-xs" >
+            <h4>
             Bonjour 
             <h:outputText value="#{sessionScope['logper'] }" />
-            
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
- 
-        </h4> 
-               </h:form>  
-  </b:navbarLinks>
+            </h4>
+                    </b:navbarLinks>
+                    <b:navbarLinks pull="left" styleClass="hidden-xs" >
+                        <b:navLink value="           " href=""></b:navLink>  
+                    </b:navbarLinks> 
+  <b:navbarLinks>
+      <b:navLink value="Interventions" href="technicien.xhtml" ></b:navLink>
+      </b:navbarLinks>
+            <b:navbarLinks pull="right" styleClass="hidden-xs">
+       <b:form>
+       <b:commandButton value="Déconnexion" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
+       </b:form>
+ </b:navbarLinks>
 </b:navBar>
         <f:view>
   <script type="text/javascript">
     function success() {
+        toastr.options.positionClass = 'toast-bottom-right';
                   toastr.success("Observation ajouté avec success !");
               }
 </script> 
@@ -40,6 +47,7 @@
     color: #fff;
 }
 .navbar-inverse .navbar-nav > li > a {
+    font-size: 16px;
     color: #fff;
 }
              </style>
@@ -56,15 +64,17 @@
                     </b:selectOneMenu>
                     <h:outputLabel value="ObservGen:" for="observGen" />
                     <b:inputTextarea  id="observGen" value="#{techlogBean.inter.observGen}" title="ObservGen" required="true" requiredMessage="The ObservGen field is required."/>
-                 
+                 </h:panelGrid>
+                    </h:panelGroup>
+                <b:column span="1" offset="1">
                         <b:commandButton class="btn-primary" value="Ajouter" action="#{techlogBean.ajouter()}" onclick="success();"> 
                             <f:ajax execute="@form" render="result" />
                         </b:commandButton>
+                    </b:column>
                         <b:commandButton class="btn-primary" value="retourner a la liste " action="technicien.xhtml"/> 
                     
                 
-                </h:panelGrid>
-                    </h:panelGroup>
+                
             </h:form>
         </f:view>
 

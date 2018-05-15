@@ -14,27 +14,33 @@
     </h:head>
      <script type="text/javascript">
     function sup(){
+        toastr.options.positionClass = 'toast-bottom-right';
    toastr.info("Supprimé !");
 }
     </script> 
     <h:body>
-        <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" inverse="true" class="footer-list" >
+        
+        <b:navBar  inverse="true" class="footer-list" >
+             <b:navbarLinks pull="left" styleClass="hidden-xs" >
+            <h4>
+            Bonjour 
+            <h:outputText value="#{sessionScope['logper'] }" />
+            </h4>
+</b:navbarLinks>
+            <b:navbarLinks pull="left" styleClass="hidden-xs" >
+                        <b:navLink value="           " href=""></b:navLink>  
+                    </b:navbarLinks>    
   <b:navbarLinks>
+      <b:navLink value="Produit" href="directeurProduitAll.xhtml"></b:navLink>
     <b:navLink value="archiver/annuler reclamation" href="directeurRec.xhtml"></b:navLink>
     <b:navLink value="Pv d'intervention" href="directeurintervention.xhtml"></b:navLink>
     <b:navLink value="fiche de suivi" href="directeurfiche.xhtml"></b:navLink>
-   <b:navLink value="                    " href="#"></b:navLink>
-   
-           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
-               <h4 >
-            Bonjour 
-            <h:outputText value="#{sessionScope['logper'] }" />
-            
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
- 
-        </h4>
-        </h:form> 
-  </b:navbarLinks>
+    </b:navbarLinks>
+   <b:navbarLinks pull="right" styleClass="hidden-xs">
+       <b:form>
+       <b:commandButton value="Déconnexion" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton>
+       </b:form>
+ </b:navbarLinks> 
 </b:navBar>
         
         <h:form>
@@ -44,6 +50,7 @@
     color: #fff;
 }
 .navbar-inverse .navbar-nav > li > a {
+    font-size: 16px;
     color: #fff;
 }
              </style>

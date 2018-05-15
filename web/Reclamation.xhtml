@@ -17,30 +17,34 @@
         <title>Reclamation</title>
     </h:head>
     <h:body>
-                <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" inverse="true" class="footer-list">
-  <b:navbarLinks>
-      
-      <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml" ></b:navLink>
-    <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
-    <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>
-    <b:navLink value="                    " href="#"></b:navLink>
-   
-           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
-               <h4>
+                <b:navBar  inverse="true" class="footer-list">
+                    <b:navbarLinks pull="left" styleClass="hidden-xs" >
+            <h4>
             Bonjour 
             <h:outputText value="#{sessionScope['logcli'] }" />
-            
-            <b:commandButton class="btn-primary" value="Déconnexion" action="#{CliBean.doLogout()}"></b:commandButton> 
-               </h4>
-        </h:form>
-     
+            </h4>
+</b:navbarLinks>
+                    <b:navbarLinks pull="left" styleClass="hidden-xs" >
+                        <b:navLink value="           " href=""></b:navLink>  
+                    </b:navbarLinks>    
+  <b:navbarLinks>
+      <b:navLink value="Reclamations" href="ReclamationAll.xhtml" ></b:navLink>
+      <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml" ></b:navLink>
+    <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
+    <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>   
   </b:navbarLinks>
+   <b:navbarLinks pull="right" styleClass="hidden-xs">
+       <b:form>
+       <b:commandButton class="btn-primary" value="Déconnexion" action="#{CliBean.doLogout()}"></b:commandButton> 
+       </b:form>
+ </b:navbarLinks>
 </b:navBar>
 
 
         <f:view>
 <script type="text/javascript">
     function success() {
+                  toastr.options.positionClass = 'toast-bottom-right';
                   toastr.success("Réclamation ajouté avec success !");
               }
        
@@ -52,6 +56,7 @@
     color: #fff;
 }
 .navbar-inverse .navbar-nav > li > a {
+    font-size: 16px;
     color: #fff;
 }
              </style>
@@ -76,15 +81,15 @@
                         <f:selectItems value="#{recBean.produitSelect}" />
                        
                     </b:selectOneMenu>
-                    <h:outputLabel value="Nom De Reclamation" for="descCli" />
+                    <h:outputLabel value="Nom de réclamation:" for="descCli" />
                     <b:inputText id="nomRec" value="#{recBean.rec.nomRec}" title="Nom De Reclamation" required="true" requiredMessage="The DescCli field is required."/>
 
-                   <h:outputLabel value="DateCreRec:" for="dateCreRec" />
+                   <h:outputLabel value="Date de création:" for="dateCreRec" />
                    <b:dateTimePicker id="dateCreRec" show-date="true" mode="toggle-icon"   required="true" use-current="true" value="#{recBean.rec.dateCreRec}"/>
                      
                         
                
-                    <h:outputLabel value="TypeRec:" for="type"/>                        
+                    <h:outputLabel value="Type de réclamation:" for="type"/>                        
                         <h:selectOneRadio  id ="type" value="#{recBean.type}">
                             <f:selectItem itemValue="réclamation logiciel" itemLabel="Reclamation Logiciel"></f:selectItem>
                             
@@ -92,13 +97,13 @@
                             <f:selectItem  itemValue="réclamation technique" itemLabel="Reclamation technique"></f:selectItem>
                                 
                         </h:selectOneRadio>
-                    <h:outputLabel value="DescCli:" for="descCli" />
+                    <h:outputLabel value="Description de client:" for="descCli" />
                     <b:inputTextarea id="descCli" value="#{recBean.rec.descCli}" title="DescCli" required="true" requiredMessage="The DescCli field is required."/>
                     
                     
                    
                     
-                     <h:outputLabel value="DegUrgence:" for="degUrgence" />
+                     <h:outputLabel value="Degré d'urgence:" for="degUrgence" />
                     
 
                      <b:selectOneMenu id="degUrgence" value="#{recBean.degreurgence}" >
@@ -113,13 +118,13 @@
                    
                 </h:panelGrid>
                     </h:panelGroup>
-               
+                <b:column span="1" offset="1">
                     <b:commandButton class="btn-primary" value="Ajouter" action="#{recBean.ajouter()}" onclick="success();" >
                   
                         <f:ajax execute="@form" render="result"  />
                     </b:commandButton>
-                 
-                    <b:commandButton class="btn-primary" value="retourner a la liste " action="ReclamationAll.xhtml"/> 
+                 </b:column>
+                    <b:commandButton class="btn-primary" value="Retourner a la liste " action="ReclamationAll.xhtml"/> 
                  
                 
             </h:form>

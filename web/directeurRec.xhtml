@@ -14,31 +14,37 @@
     </h:head>
      <script type="text/javascript">
     function arch(){
+        toastr.options.positionClass = 'toast-bottom-right';
    toastr.info("Reclamation Archivé");
 }
    function annuler(){
+       toastr.options.positionClass = 'toast-bottom-right';
    toastr.error("Reclamation Annulé");
 }
     </script> 
     
     <h:body>
-        <b:navBar brand="Produit" brandHref="directeurProduitAll.xhtml" inverse="true" class="footer-list" >
+        <b:navBar  inverse="true" class="footer-list" >
+             <b:navbarLinks pull="left" styleClass="hidden-xs" >
+            <h4>
+            Bonjour 
+            <h:outputText value="#{sessionScope['logper'] }" />
+            </h4>
+</b:navbarLinks>
+            <b:navbarLinks pull="left" styleClass="hidden-xs" >
+                        <b:navLink value="           " href=""></b:navLink>  
+                    </b:navbarLinks>    
   <b:navbarLinks>
+      <b:navLink value="Produit" href="directeurProduitAll.xhtml"></b:navLink>
     <b:navLink value="archiver/annuler reclamation" href="directeurRec.xhtml"></b:navLink>
     <b:navLink value="Pv d'intervention" href="directeurintervention.xhtml"></b:navLink>
     <b:navLink value="fiche de suivi" href="directeurfiche.xhtml"></b:navLink>
-   <b:navLink value="                    " href="#"></b:navLink>
-   
-           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
-               <h4 >
-            Bonjour 
-            <h:outputText value="#{sessionScope['logper'] }" />
-            
-            <b:commandButton value="Logout" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton> 
- 
-        </h4>
-        </h:form> 
-  </b:navbarLinks>
+    </b:navbarLinks>
+   <b:navbarLinks pull="right" styleClass="hidden-xs">
+       <b:form>
+       <b:commandButton value="Déconnexion" action="#{PerBean.doLogout()}" class="btn-primary" ></b:commandButton>
+       </b:form>
+ </b:navbarLinks> 
 </b:navBar>
         
         <h:form>
@@ -48,6 +54,7 @@
     color: #fff;
 }
 .navbar-inverse .navbar-nav > li > a {
+    font-size: 16px;
     color: #fff;
 }
   .red {
@@ -79,7 +86,7 @@
                 <b:dataTableColumn value="#{item.persEstim}" label="Personnel Estimé" />
                 <b:dataTableColumn value="#{item.situation}"  label="Situation"/>
                 <b:dataTableColumn value="#{item.typeRec}" label="Type Réclamation" />
-                <b:dataTableColumn value="#{item.estimation}" label="Estimation" />
+                <b:dataTableColumn value="#{item.estimation}" label="Estimation en Jours" />
                 <b:dataTableColumn value="#{item.dateCreRec}" label="Date de Creation Réclamation" />
          
               

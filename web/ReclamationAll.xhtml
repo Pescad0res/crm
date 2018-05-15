@@ -19,30 +19,34 @@
     </h:head>
     <script type="text/javascript">
     function sup(){
+        toastr.options.positionClass = 'toast-bottom-right';
    toastr.info("SUPPRIME !");
 }
 
     </script> 
     <h:body>
         
-             <b:navBar brand="Reclamations" brandHref="ReclamationAll.xhtml" inverse="true" class="footer-list">
-  <b:navbarLinks>
-      
-      <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml" ></b:navLink>
-    <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
-    <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>
-    <b:navLink value="                    " href="#"></b:navLink>
-   
-           <h:form class="navbar-form navbar-right hidden-md hidden-sm hidden-xs" >
-               <h4>
+  <b:navBar  inverse="true" class="footer-list">
+                    <b:navbarLinks pull="left" styleClass="hidden-xs" >
+            <h4>
             Bonjour 
             <h:outputText value="#{sessionScope['logcli'] }" />
-            
-            <b:commandButton class="btn-primary" value="Déconnexion" action="#{CliBean.doLogout()}"></b:commandButton> 
-               </h4>
-        </h:form>
-     
+            </h4>
+                    </b:navbarLinks>
+                    <b:navbarLinks pull="left" styleClass="hidden-xs" >
+                        <b:navLink value="           " href=""></b:navLink>  
+                    </b:navbarLinks>    
+  <b:navbarLinks>
+      <b:navLink value="Reclamations" href="ReclamationAll.xhtml" ></b:navLink>
+      <b:navLink value="Etats des Reclamation" href="InterventionAll.xhtml" ></b:navLink>
+    <b:navLink value="Contrat" href="ContratAll.xhtml"></b:navLink>
+    <b:navLink value="La liste de nos produit" href="produitAll.xhtml"></b:navLink>   
   </b:navbarLinks>
+   <b:navbarLinks pull="right" styleClass="hidden-xs">
+       <b:form>
+       <b:commandButton class="btn-primary" value="Déconnexion" action="#{CliBean.doLogout()}"></b:commandButton> 
+       </b:form>
+ </b:navbarLinks>
 </b:navBar>
             
         <f:view>
@@ -56,6 +60,7 @@
     color: #fff;
 }
 .navbar-inverse .navbar-nav > li > a {
+    font-size: 16px;
     color: #fff;
 }
   .red {
