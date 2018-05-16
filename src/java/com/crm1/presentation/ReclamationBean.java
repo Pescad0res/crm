@@ -273,7 +273,13 @@ public String modif()
     { 
         dao.delete(code);   
     }
-    
+        public void confirm(Integer code)
+    { 
+ 
+        rec = dao.findByidRec(code);
+        rec.setSituation("confirmé");
+        dao.edit(rec);
+    }
 
     
 }

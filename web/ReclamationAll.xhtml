@@ -22,6 +22,10 @@
         toastr.options.positionClass = 'toast-bottom-right';
    toastr.info("SUPPRIME !");
 }
+function conf(){
+        toastr.options.positionClass = 'toast-bottom-right';
+   toastr.sucess("Réclamation confirmé !");
+}
 
     </script> 
     <h:body>
@@ -98,7 +102,12 @@
                 <b:dataTableColumn value="#{item.typeRec}"  label="Type de réclamation"  />
                 <b:dataTableColumn value="#{item.dateCreRec}" label="Date de creation d'une réclamation"/>
           
+              <b:dataTableColumn label="Confirmer la reclamation">
+                
+        <b:commandButton  icon-awesome="check" action="#{recBean.confirm(item.idRec)}"  onclick="conf();" class="btn-primary"></b:commandButton>
+                
               
+          </b:dataTableColumn>
     
                 <b:dataTableColumn  label="Modifier">
                 

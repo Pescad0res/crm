@@ -94,7 +94,9 @@ public class IntervenantLogicielBean {
         dao.add(inter);
         rec.setSituation("acceptée");
         //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "ADDED !", ""));
-        
+        rec = daorec.findByidRec(idreclamation);
+        rec.setSituation("Traité");
+        daorec.edit(rec);
     }
     public void supprimer (Integer code)
     { 
